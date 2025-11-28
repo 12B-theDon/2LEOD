@@ -16,6 +16,6 @@ the file name is rosbagNumber_scenarioName.csv
 - If possible, check how long does it take to convert csv file 
 
 
-### 2D scan headmap conversion
+### 2D scan heatmap conversion
 Based on the image like at this site, https://www.nature.com/articles/s41467-019-12943-7/figures/4 we can visualize scan data and use that as a feature. Since it can be treated as an image, then we can use feature-descriptor method such as FAST, color histogram. So rather using csv file, we can make that as an image(just like occupangy grid map) per each frame. 
 We chekced how long does it take to convert the given /scan data to the grid map. 
