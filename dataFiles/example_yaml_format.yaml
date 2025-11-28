@@ -1,0 +1,96 @@
+format_name: "basic_rosbag_converted"
+
+csv_file:
+  name: "example_csv_format.csv"
+  has_header: true
+  delimiter: ","
+  encoding: "utf-8"
+
+columns:
+  Timestamp:
+    index: 0
+    type: float         
+    unit: "s"           # ROS time(sec) 기준일 때
+  frame_index:          # Frame index number(for 10hz freqeuncy 10 sec videos, 0~99)
+    index: 1
+    type: int
+  scan_index:
+    index: 2
+    type: int           # 특정 프레임 내에서 레이저 빔 번호 (0 ~ N-1)
+  distance_m:
+    index: 3
+    type: float
+    unit: "m"
+  x_global:
+    index: 4
+    type: float
+    unit: "m"
+    frame_id: "map"     # 또는 "odom" (더 안정적인 데이터 사용. 실제 사용 프레임으로 바꿔야 함)
+  y_global:
+    index: 5
+    type: float
+    unit: "m"
+    frame_id: "map"
+  x_local:
+    index: 6
+    type: float
+    unit: "m"
+    frame_id: "base_link"   # base_link frame(or laser frame)
+  y_local:
+    index: 7
+    type: float
+    unit: "m"
+    frame_id: "base_link"
+  isWall:
+    index: 8
+    type: bool
+  isObstacle:
+    index: 9
+    type: bool
+  isFree:
+    index: 10
+    type: bool
+
+laser:
+  frame_id: "base_link"     # laser 좌표계가 base_link 와 같은지 여부를 여기서 표현
+  same_as_base_link: true   # 이미 x_local, y_local 이 base_link 기준이라고 가정
+
+  # 레이저 스캔 각도 범위[degree or radian] (예시값, 실제 센서에 맞게 수정)
+  angle_min_deg: -135.0     # 최소 각도
+  angle_max_deg: 135.0      # 최대 각도
+
+  # 레이저 측정 거리 범위[m] (예시값)
+  range_min_m: 0.05
+  range_max_m: 12.0
+
+  # scan_index → angle 변환 규칙(있으면 좋음)
+  angle_model:
+    total_beams: 1080       # 예: 1080 beam (실제 센서 스펙으로 수정)
+    formula: "angle = angle_min + scan_index * (angle_max - angle_min) / (total_beams - 1)"
+
+sensor_frequency_hz: 10.0   # LaserScan 센서 주파수 (예: 10 Hz, 실제 값으로 수정)
+
+opponent_odom:
+  topic: "/opponent_odom"
+  publish_frequency_hz: 30.0   # opponent_odom 퍼블리시 주파수 (예시값)
+  frame_id: "map"
+
+validation:
+  enabled: true
+  checks:
+    - name: "distance_in_valid_range"
+      type: "range"
+      column: "distance_m"
+      min: 0.0
+      max: 30.0
+    - name: "label"
+      type: "bool" # 또는 확률 값 사용 가능
+      description: "Exactly one of isWall / isObstacle / isFree should be true"
+      columns: ["isWall", "isObstacle", "isFree"]
+
+conversion:
+  measure_time: true      # 변환 스크립트에서 시간 측정하도록 힌트
+  last_run:
+    tool_name: "csv_to_bag_annotations.py"
+    duration_sec: 0.0     # 변환 끝난 후 실제 걸린 시간으로 덮어쓰기
+    converted_at: ""      # ISO8601 문자열 예: "2025-11-28T14:32:10"
