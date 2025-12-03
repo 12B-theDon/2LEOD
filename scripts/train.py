@@ -147,7 +147,7 @@ def main() -> None:
     args.output.parent.mkdir(parents=True, exist_ok=True)
     with args.output.open("w", encoding="utf-8") as handle:
         json.dump(checkpoint, handle, ensure_ascii=False, indent=2)
-    diag_dir = args.output.parent / "linear_regression_diagnostics"
+    diag_dir = Path("linear_regression_metadata")
     diag_dir.mkdir(parents=True, exist_ok=True)
     diag_payload = {
         "created_at": datetime.datetime.now().isoformat(),
@@ -160,7 +160,7 @@ def main() -> None:
             for idx, data in frame_results.items()
         },
     }
-    diag_file = diag_dir / f"linear_regression_diagnostics_{int(datetime.datetime.now().timestamp())}.json"
+    diag_file = diag_dir / f"linear_regression_metadata_{int(datetime.datetime.now().timestamp())}.json"
     with diag_file.open("w", encoding="utf-8") as diag_handle:
         json.dump(diag_payload, diag_handle, ensure_ascii=False, indent=2)
     print(f"Checkpoint saved to {args.output}")

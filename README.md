@@ -62,7 +62,7 @@ The index set \(\mathbf{w}^{(i)} = \{\text{scan\_index} \mid \text{isWall}_{k} =
 - **Output**: For every frame the module emits:
   1. Two line models \(\ell_1, \ell_2\) with \((a_j, b_j)\), direction, support counts, and whether the line is vertical.
   2. `point_info` for each scan containing `distance_to_line`, `line_id`, and a boolean `is_wall` based on the threshold \(\tau\): \(\text{isWall}_k = \min_j \text{dist}_j(k) \le \tau\), where \(\text{dist}_j(k)\) is the perpendicular residual.
-  3. Diagnostics stored in `checkpoints/linear_regression_diagnostics/` that record the fitted parameters per frame for offline verification.
+  3. Diagnostics stored in `linear_regression_metadata/` that record the fitted parameters per frame for offline verification.
 
 #### `models/LogisticRegression.py`
 - **Input**: Every training sample is the original 360-dimensional vector \(\mathbf{x}^{(i)} \in \mathbb{R}^{360}\) fed directly to the classifier.
@@ -108,7 +108,7 @@ python3 scripts/train.py \
 This prints epoch-level logistic loss plus train/test accuracy for both logistic-only and ensemble predictions. After the run you will have:
 
 - `checkpoints/linear_wall_checkpoint.json` (logistic weights, frame-wise linear results, metrics).
-- `checkpoints/linear_regression_diagnostics/<timestamp>.json` (slope/intercept summaries for each frame to monitor how the line fits evolve).
+- `linear_regression_metadata/<timestamp>.json` (slope/intercept summaries for each frame to monitor how the line fits evolve).
 3. Re-run just the held-out test split using the saved checkpoint:
 
 ```bash

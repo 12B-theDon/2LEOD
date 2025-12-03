@@ -1,0 +1,30 @@
+{
+  "created_at": "2025-12-03T20:56:51.691581",
+  "frames": {
+    "0": {
+      "wall_ratio": 1.0,
+      "line_models": [
+        {
+          "angle_deg": 45.4353526720082,
+          "point": [
+            -1.9240747446709803,
+            -1.9413757228315813
+          ],
+          "direction": [
+            0.7017135846778125,
+            0.7124591532702871
+          ],
+          "support_total": 3,
+          "support_wall": 3,
+          "cluster_id": 0,
+          "slope": 1.0153133255891125,
+          "intercept": 0.012163004862334015,
+          "is_vertical": false
+        }
+      ],
+      "line_support": [
+        3
+      ]
+    }
+  }
+}
