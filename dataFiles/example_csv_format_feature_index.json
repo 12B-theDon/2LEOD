@@ -1,0 +1,7992 @@
+{
+  "csv_file": "example_csv_format.csv",
+  "yaml_file": "example_yaml_format.yaml",
+  "vector_length": 1080,
+  "angle_model": {
+    "angle_min_deg": -135.0,
+    "angle_max_deg": 135.0,
+    "total_beams": 1080,
+    "angle_step_deg": 0.25023,
+    "description": "angle = angle_min + scan_index * (angle_max - angle_min) / (total_beams - 1)"
+  },
+  "observed_scan_indexes": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    51,
+    52,
+    53,
+    54,
+    55,
+    56,
+    57,
+    58,
+    59,
+    60,
+    61,
+    62,
+    63,
+    64,
+    65,
+    66,
+    67,
+    68,
+    69,
+    70,
+    71,
+    72,
+    73,
+    74,
+    75,
+    76,
+    77,
+    78,
+    79,
+    80,
+    81,
+    82,
+    83,
+    84,
+    85,
+    86,
+    87,
+    88,
+    89,
+    90,
+    91,
+    92,
+    93,
+    94,
+    95,
+    96,
+    97,
+    98,
+    99,
+    100,
+    101,
+    102,
+    103,
+    104,
+    105,
+    106,
+    107,
+    108,
+    109,
+    110,
+    111,
+    112,
+    113,
+    114,
+    115,
+    116,
+    117,
+    118,
+    119,
+    120,
+    121,
+    122,
+    123,
+    124,
+    125,
+    126,
+    127,
+    128,
+    129,
+    130,
+    131,
+    132,
+    133,
+    134,
+    135,
+    136,
+    137,
+    138,
+    139,
+    140,
+    141,
+    142,
+    143,
+    144,
+    145,
+    146,
+    147,
+    148,
+    149,
+    150,
+    151,
+    152,
+    153,
+    154,
+    155,
+    156,
+    157,
+    158,
+    159,
+    160,
+    161,
+    162,
+    163,
+    164,
+    165,
+    166,
+    167,
+    168,
+    169,
+    170,
+    171,
+    172,
+    173,
+    174,
+    175,
+    176,
+    177,
+    178,
+    179,
+    180,
+    181,
+    182,
+    183,
+    184,
+    185,
+    186,
+    187,
+    188,
+    189,
+    190,
+    191,
+    192,
+    193,
+    194,
+    195,
+    196,
+    197,
+    198,
+    199,
+    200,
+    201,
+    202,
+    203,
+    204,
+    205,
+    206,
+    207,
+    208,
+    209,
+    210,
+    211,
+    212,
+    213,
+    214,
+    215,
+    216,
+    217,
+    218,
+    219,
+    220,
+    221,
+    222,
+    223,
+    224,
+    225,
+    226,
+    227,
+    228,
+    229,
+    230,
+    231,
+    232,
+    233,
+    234,
+    235,
+    236,
+    237,
+    238,
+    239,
+    240,
+    241,
+    242,
+    243,
+    244,
+    245,
+    246,
+    247,
+    248,
+    249,
+    250,
+    251,
+    252,
+    253,
+    254,
+    255,
+    256,
+    257,
+    258,
+    259,
+    260,
+    261,
+    262,
+    263,
+    264,
+    265,
+    266,
+    267,
+    268,
+    269,
+    270,
+    271,
+    272,
+    273,
+    274,
+    275,
+    276,
+    277,
+    278,
+    279,
+    280,
+    281,
+    282,
+    283,
+    284,
+    285,
+    286,
+    287,
+    288,
+    289,
+    290,
+    291,
+    292,
+    293,
+    294,
+    295,
+    296,
+    297,
+    298,
+    299,
+    300,
+    301,
+    302,
+    303,
+    304,
+    305,
+    306,
+    307,
+    308,
+    309,
+    310,
+    311,
+    312,
+    313,
+    314,
+    315,
+    316,
+    317,
+    318,
+    319,
+    320,
+    321,
+    322,
+    323,
+    324,
+    325,
+    326,
+    327,
+    328,
+    329,
+    330,
+    331,
+    332,
+    333,
+    334,
+    335,
+    336,
+    337,
+    338,
+    339,
+    340,
+    341,
+    342,
+    343,
+    344,
+    345,
+    346,
+    347,
+    348,
+    349,
+    350,
+    351,
+    352,
+    353,
+    354,
+    355,
+    356,
+    357,
+    358,
+    359
+  ],
+  "columns": {
+    "Timestamp": {
+      "index": 0,
+      "type": "float",
+      "unit": "s"
+    },
+    "frame_index": {
+      "index": 1,
+      "type": "int"
+    },
+    "scan_index": {
+      "index": 2,
+      "type": "int"
+    },
+    "distance_m": {
+      "index": 3,
+      "type": "float",
+      "unit": "m"
+    },
+    "x_global": {
+      "index": 4,
+      "type": "float",
+      "unit": "m",
+      "frame_id": "map"
+    },
+    "y_global": {
+      "index": 5,
+      "type": "float",
+      "unit": "m",
+      "frame_id": "map"
+    },
+    "x_local": {
+      "index": 6,
+      "type": "float",
+      "unit": "m",
+      "frame_id": "base_link"
+    },
+    "y_local": {
+      "index": 7,
+      "type": "float",
+      "unit": "m",
+      "frame_id": "base_link"
+    },
+    "isWall": {
+      "index": 8,
+      "type": "bool"
+    },
+    "isObstacle": {
+      "index": 9,
+      "type": "bool"
+    },
+    "isFree": {
+      "index": 10,
+      "type": "bool"
+    }
+  },
+  "vectors": [
+    {
+      "scan_index": 0,
+      "angle_deg": 225.0,
+      "angle_rad": 3.92699,
+      "direction": "right",
+      "description": "scan 0: 225.0°"
+    },
+    {
+      "scan_index": 1,
+      "angle_deg": 225.25,
+      "angle_rad": 3.93136,
+      "direction": "right",
+      "description": "scan 1: 225.3°"
+    },
+    {
+      "scan_index": 2,
+      "angle_deg": 225.5,
+      "angle_rad": 3.93573,
+      "direction": "right",
+      "description": "scan 2: 225.5°"
+    },
+    {
+      "scan_index": 3,
+      "angle_deg": 225.751,
+      "angle_rad": 3.94009,
+      "direction": "right",
+      "description": "scan 3: 225.8°"
+    },
+    {
+      "scan_index": 4,
+      "angle_deg": 226.001,
+      "angle_rad": 3.94446,
+      "direction": "right",
+      "description": "scan 4: 226.0°"
+    },
+    {
+      "scan_index": 5,
+      "angle_deg": 226.251,
+      "angle_rad": 3.94883,
+      "direction": "right",
+      "description": "scan 5: 226.3°"
+    },
+    {
+      "scan_index": 6,
+      "angle_deg": 226.501,
+      "angle_rad": 3.9532,
+      "direction": "right",
+      "description": "scan 6: 226.5°"
+    },
+    {
+      "scan_index": 7,
+      "angle_deg": 226.752,
+      "angle_rad": 3.95756,
+      "direction": "right",
+      "description": "scan 7: 226.8°"
+    },
+    {
+      "scan_index": 8,
+      "angle_deg": 227.002,
+      "angle_rad": 3.96193,
+      "direction": "right",
+      "description": "scan 8: 227.0°"
+    },
+    {
+      "scan_index": 9,
+      "angle_deg": 227.252,
+      "angle_rad": 3.9663,
+      "direction": "right",
+      "description": "scan 9: 227.3°"
+    },
+    {
+      "scan_index": 10,
+      "angle_deg": 227.502,
+      "angle_rad": 3.97066,
+      "direction": "right",
+      "description": "scan 10: 227.5°"
+    },
+    {
+      "scan_index": 11,
+      "angle_deg": 227.753,
+      "angle_rad": 3.97503,
+      "direction": "right",
+      "description": "scan 11: 227.8°"
+    },
+    {
+      "scan_index": 12,
+      "angle_deg": 228.003,
+      "angle_rad": 3.9794,
+      "direction": "right",
+      "description": "scan 12: 228.0°"
+    },
+    {
+      "scan_index": 13,
+      "angle_deg": 228.253,
+      "angle_rad": 3.98377,
+      "direction": "right",
+      "description": "scan 13: 228.3°"
+    },
+    {
+      "scan_index": 14,
+      "angle_deg": 228.503,
+      "angle_rad": 3.98813,
+      "direction": "right",
+      "description": "scan 14: 228.5°"
+    },
+    {
+      "scan_index": 15,
+      "angle_deg": 228.753,
+      "angle_rad": 3.9925,
+      "direction": "right",
+      "description": "scan 15: 228.8°"
+    },
+    {
+      "scan_index": 16,
+      "angle_deg": 229.004,
+      "angle_rad": 3.99687,
+      "direction": "right",
+      "description": "scan 16: 229.0°"
+    },
+    {
+      "scan_index": 17,
+      "angle_deg": 229.254,
+      "angle_rad": 4.00124,
+      "direction": "right",
+      "description": "scan 17: 229.3°"
+    },
+    {
+      "scan_index": 18,
+      "angle_deg": 229.504,
+      "angle_rad": 4.0056,
+      "direction": "right",
+      "description": "scan 18: 229.5°"
+    },
+    {
+      "scan_index": 19,
+      "angle_deg": 229.754,
+      "angle_rad": 4.00997,
+      "direction": "right",
+      "description": "scan 19: 229.8°"
+    },
+    {
+      "scan_index": 20,
+      "angle_deg": 230.005,
+      "angle_rad": 4.01434,
+      "direction": "right",
+      "description": "scan 20: 230.0°"
+    },
+    {
+      "scan_index": 21,
+      "angle_deg": 230.255,
+      "angle_rad": 4.01871,
+      "direction": "right",
+      "description": "scan 21: 230.3°"
+    },
+    {
+      "scan_index": 22,
+      "angle_deg": 230.505,
+      "angle_rad": 4.02307,
+      "direction": "right",
+      "description": "scan 22: 230.5°"
+    },
+    {
+      "scan_index": 23,
+      "angle_deg": 230.755,
+      "angle_rad": 4.02744,
+      "direction": "right",
+      "description": "scan 23: 230.8°"
+    },
+    {
+      "scan_index": 24,
+      "angle_deg": 231.006,
+      "angle_rad": 4.03181,
+      "direction": "right",
+      "description": "scan 24: 231.0°"
+    },
+    {
+      "scan_index": 25,
+      "angle_deg": 231.256,
+      "angle_rad": 4.03617,
+      "direction": "right",
+      "description": "scan 25: 231.3°"
+    },
+    {
+      "scan_index": 26,
+      "angle_deg": 231.506,
+      "angle_rad": 4.04054,
+      "direction": "right",
+      "description": "scan 26: 231.5°"
+    },
+    {
+      "scan_index": 27,
+      "angle_deg": 231.756,
+      "angle_rad": 4.04491,
+      "direction": "right",
+      "description": "scan 27: 231.8°"
+    },
+    {
+      "scan_index": 28,
+      "angle_deg": 232.006,
+      "angle_rad": 4.04928,
+      "direction": "right",
+      "description": "scan 28: 232.0°"
+    },
+    {
+      "scan_index": 29,
+      "angle_deg": 232.257,
+      "angle_rad": 4.05364,
+      "direction": "right",
+      "description": "scan 29: 232.3°"
+    },
+    {
+      "scan_index": 30,
+      "angle_deg": 232.507,
+      "angle_rad": 4.05801,
+      "direction": "right",
+      "description": "scan 30: 232.5°"
+    },
+    {
+      "scan_index": 31,
+      "angle_deg": 232.757,
+      "angle_rad": 4.06238,
+      "direction": "right",
+      "description": "scan 31: 232.8°"
+    },
+    {
+      "scan_index": 32,
+      "angle_deg": 233.007,
+      "angle_rad": 4.06675,
+      "direction": "right",
+      "description": "scan 32: 233.0°"
+    },
+    {
+      "scan_index": 33,
+      "angle_deg": 233.258,
+      "angle_rad": 4.07111,
+      "direction": "right",
+      "description": "scan 33: 233.3°"
+    },
+    {
+      "scan_index": 34,
+      "angle_deg": 233.508,
+      "angle_rad": 4.07548,
+      "direction": "right",
+      "description": "scan 34: 233.5°"
+    },
+    {
+      "scan_index": 35,
+      "angle_deg": 233.758,
+      "angle_rad": 4.07985,
+      "direction": "right",
+      "description": "scan 35: 233.8°"
+    },
+    {
+      "scan_index": 36,
+      "angle_deg": 234.008,
+      "angle_rad": 4.08422,
+      "direction": "right",
+      "description": "scan 36: 234.0°"
+    },
+    {
+      "scan_index": 37,
+      "angle_deg": 234.259,
+      "angle_rad": 4.08858,
+      "direction": "right",
+      "description": "scan 37: 234.3°"
+    },
+    {
+      "scan_index": 38,
+      "angle_deg": 234.509,
+      "angle_rad": 4.09295,
+      "direction": "right",
+      "description": "scan 38: 234.5°"
+    },
+    {
+      "scan_index": 39,
+      "angle_deg": 234.759,
+      "angle_rad": 4.09732,
+      "direction": "right",
+      "description": "scan 39: 234.8°"
+    },
+    {
+      "scan_index": 40,
+      "angle_deg": 235.009,
+      "angle_rad": 4.10169,
+      "direction": "right",
+      "description": "scan 40: 235.0°"
+    },
+    {
+      "scan_index": 41,
+      "angle_deg": 235.259,
+      "angle_rad": 4.10605,
+      "direction": "right",
+      "description": "scan 41: 235.3°"
+    },
+    {
+      "scan_index": 42,
+      "angle_deg": 235.51,
+      "angle_rad": 4.11042,
+      "direction": "right",
+      "description": "scan 42: 235.5°"
+    },
+    {
+      "scan_index": 43,
+      "angle_deg": 235.76,
+      "angle_rad": 4.11479,
+      "direction": "right",
+      "description": "scan 43: 235.8°"
+    },
+    {
+      "scan_index": 44,
+      "angle_deg": 236.01,
+      "angle_rad": 4.11915,
+      "direction": "right",
+      "description": "scan 44: 236.0°"
+    },
+    {
+      "scan_index": 45,
+      "angle_deg": 236.26,
+      "angle_rad": 4.12352,
+      "direction": "right",
+      "description": "scan 45: 236.3°"
+    },
+    {
+      "scan_index": 46,
+      "angle_deg": 236.511,
+      "angle_rad": 4.12789,
+      "direction": "right",
+      "description": "scan 46: 236.5°"
+    },
+    {
+      "scan_index": 47,
+      "angle_deg": 236.761,
+      "angle_rad": 4.13226,
+      "direction": "right",
+      "description": "scan 47: 236.8°"
+    },
+    {
+      "scan_index": 48,
+      "angle_deg": 237.011,
+      "angle_rad": 4.13662,
+      "direction": "right",
+      "description": "scan 48: 237.0°"
+    },
+    {
+      "scan_index": 49,
+      "angle_deg": 237.261,
+      "angle_rad": 4.14099,
+      "direction": "right",
+      "description": "scan 49: 237.3°"
+    },
+    {
+      "scan_index": 50,
+      "angle_deg": 237.512,
+      "angle_rad": 4.14536,
+      "direction": "right",
+      "description": "scan 50: 237.5°"
+    },
+    {
+      "scan_index": 51,
+      "angle_deg": 237.762,
+      "angle_rad": 4.14973,
+      "direction": "right",
+      "description": "scan 51: 237.8°"
+    },
+    {
+      "scan_index": 52,
+      "angle_deg": 238.012,
+      "angle_rad": 4.15409,
+      "direction": "right",
+      "description": "scan 52: 238.0°"
+    },
+    {
+      "scan_index": 53,
+      "angle_deg": 238.262,
+      "angle_rad": 4.15846,
+      "direction": "right",
+      "description": "scan 53: 238.3°"
+    },
+    {
+      "scan_index": 54,
+      "angle_deg": 238.513,
+      "angle_rad": 4.16283,
+      "direction": "right",
+      "description": "scan 54: 238.5°"
+    },
+    {
+      "scan_index": 55,
+      "angle_deg": 238.763,
+      "angle_rad": 4.1672,
+      "direction": "right",
+      "description": "scan 55: 238.8°"
+    },
+    {
+      "scan_index": 56,
+      "angle_deg": 239.013,
+      "angle_rad": 4.17156,
+      "direction": "right",
+      "description": "scan 56: 239.0°"
+    },
+    {
+      "scan_index": 57,
+      "angle_deg": 239.263,
+      "angle_rad": 4.17593,
+      "direction": "right",
+      "description": "scan 57: 239.3°"
+    },
+    {
+      "scan_index": 58,
+      "angle_deg": 239.513,
+      "angle_rad": 4.1803,
+      "direction": "right",
+      "description": "scan 58: 239.5°"
+    },
+    {
+      "scan_index": 59,
+      "angle_deg": 239.764,
+      "angle_rad": 4.18467,
+      "direction": "right",
+      "description": "scan 59: 239.8°"
+    },
+    {
+      "scan_index": 60,
+      "angle_deg": 240.014,
+      "angle_rad": 4.18903,
+      "direction": "right",
+      "description": "scan 60: 240.0°"
+    },
+    {
+      "scan_index": 61,
+      "angle_deg": 240.264,
+      "angle_rad": 4.1934,
+      "direction": "right",
+      "description": "scan 61: 240.3°"
+    },
+    {
+      "scan_index": 62,
+      "angle_deg": 240.514,
+      "angle_rad": 4.19777,
+      "direction": "right",
+      "description": "scan 62: 240.5°"
+    },
+    {
+      "scan_index": 63,
+      "angle_deg": 240.765,
+      "angle_rad": 4.20213,
+      "direction": "right",
+      "description": "scan 63: 240.8°"
+    },
+    {
+      "scan_index": 64,
+      "angle_deg": 241.015,
+      "angle_rad": 4.2065,
+      "direction": "right",
+      "description": "scan 64: 241.0°"
+    },
+    {
+      "scan_index": 65,
+      "angle_deg": 241.265,
+      "angle_rad": 4.21087,
+      "direction": "right",
+      "description": "scan 65: 241.3°"
+    },
+    {
+      "scan_index": 66,
+      "angle_deg": 241.515,
+      "angle_rad": 4.21524,
+      "direction": "right",
+      "description": "scan 66: 241.5°"
+    },
+    {
+      "scan_index": 67,
+      "angle_deg": 241.766,
+      "angle_rad": 4.2196,
+      "direction": "right",
+      "description": "scan 67: 241.8°"
+    },
+    {
+      "scan_index": 68,
+      "angle_deg": 242.016,
+      "angle_rad": 4.22397,
+      "direction": "right",
+      "description": "scan 68: 242.0°"
+    },
+    {
+      "scan_index": 69,
+      "angle_deg": 242.266,
+      "angle_rad": 4.22834,
+      "direction": "right",
+      "description": "scan 69: 242.3°"
+    },
+    {
+      "scan_index": 70,
+      "angle_deg": 242.516,
+      "angle_rad": 4.23271,
+      "direction": "right",
+      "description": "scan 70: 242.5°"
+    },
+    {
+      "scan_index": 71,
+      "angle_deg": 242.766,
+      "angle_rad": 4.23707,
+      "direction": "right",
+      "description": "scan 71: 242.8°"
+    },
+    {
+      "scan_index": 72,
+      "angle_deg": 243.017,
+      "angle_rad": 4.24144,
+      "direction": "right",
+      "description": "scan 72: 243.0°"
+    },
+    {
+      "scan_index": 73,
+      "angle_deg": 243.267,
+      "angle_rad": 4.24581,
+      "direction": "right",
+      "description": "scan 73: 243.3°"
+    },
+    {
+      "scan_index": 74,
+      "angle_deg": 243.517,
+      "angle_rad": 4.25018,
+      "direction": "right",
+      "description": "scan 74: 243.5°"
+    },
+    {
+      "scan_index": 75,
+      "angle_deg": 243.767,
+      "angle_rad": 4.25454,
+      "direction": "right",
+      "description": "scan 75: 243.8°"
+    },
+    {
+      "scan_index": 76,
+      "angle_deg": 244.018,
+      "angle_rad": 4.25891,
+      "direction": "right",
+      "description": "scan 76: 244.0°"
+    },
+    {
+      "scan_index": 77,
+      "angle_deg": 244.268,
+      "angle_rad": 4.26328,
+      "direction": "right",
+      "description": "scan 77: 244.3°"
+    },
+    {
+      "scan_index": 78,
+      "angle_deg": 244.518,
+      "angle_rad": 4.26765,
+      "direction": "right",
+      "description": "scan 78: 244.5°"
+    },
+    {
+      "scan_index": 79,
+      "angle_deg": 244.768,
+      "angle_rad": 4.27201,
+      "direction": "right",
+      "description": "scan 79: 244.8°"
+    },
+    {
+      "scan_index": 80,
+      "angle_deg": 245.019,
+      "angle_rad": 4.27638,
+      "direction": "right",
+      "description": "scan 80: 245.0°"
+    },
+    {
+      "scan_index": 81,
+      "angle_deg": 245.269,
+      "angle_rad": 4.28075,
+      "direction": "right",
+      "description": "scan 81: 245.3°"
+    },
+    {
+      "scan_index": 82,
+      "angle_deg": 245.519,
+      "angle_rad": 4.28511,
+      "direction": "right",
+      "description": "scan 82: 245.5°"
+    },
+    {
+      "scan_index": 83,
+      "angle_deg": 245.769,
+      "angle_rad": 4.28948,
+      "direction": "right",
+      "description": "scan 83: 245.8°"
+    },
+    {
+      "scan_index": 84,
+      "angle_deg": 246.019,
+      "angle_rad": 4.29385,
+      "direction": "right",
+      "description": "scan 84: 246.0°"
+    },
+    {
+      "scan_index": 85,
+      "angle_deg": 246.27,
+      "angle_rad": 4.29822,
+      "direction": "right",
+      "description": "scan 85: 246.3°"
+    },
+    {
+      "scan_index": 86,
+      "angle_deg": 246.52,
+      "angle_rad": 4.30258,
+      "direction": "right",
+      "description": "scan 86: 246.5°"
+    },
+    {
+      "scan_index": 87,
+      "angle_deg": 246.77,
+      "angle_rad": 4.30695,
+      "direction": "right",
+      "description": "scan 87: 246.8°"
+    },
+    {
+      "scan_index": 88,
+      "angle_deg": 247.02,
+      "angle_rad": 4.31132,
+      "direction": "right",
+      "description": "scan 88: 247.0°"
+    },
+    {
+      "scan_index": 89,
+      "angle_deg": 247.271,
+      "angle_rad": 4.31569,
+      "direction": "right",
+      "description": "scan 89: 247.3°"
+    },
+    {
+      "scan_index": 90,
+      "angle_deg": 247.521,
+      "angle_rad": 4.32005,
+      "direction": "right",
+      "description": "scan 90: 247.5°"
+    },
+    {
+      "scan_index": 91,
+      "angle_deg": 247.771,
+      "angle_rad": 4.32442,
+      "direction": "right",
+      "description": "scan 91: 247.8°"
+    },
+    {
+      "scan_index": 92,
+      "angle_deg": 248.021,
+      "angle_rad": 4.32879,
+      "direction": "right",
+      "description": "scan 92: 248.0°"
+    },
+    {
+      "scan_index": 93,
+      "angle_deg": 248.272,
+      "angle_rad": 4.33316,
+      "direction": "right",
+      "description": "scan 93: 248.3°"
+    },
+    {
+      "scan_index": 94,
+      "angle_deg": 248.522,
+      "angle_rad": 4.33752,
+      "direction": "right",
+      "description": "scan 94: 248.5°"
+    },
+    {
+      "scan_index": 95,
+      "angle_deg": 248.772,
+      "angle_rad": 4.34189,
+      "direction": "right",
+      "description": "scan 95: 248.8°"
+    },
+    {
+      "scan_index": 96,
+      "angle_deg": 249.022,
+      "angle_rad": 4.34626,
+      "direction": "right",
+      "description": "scan 96: 249.0°"
+    },
+    {
+      "scan_index": 97,
+      "angle_deg": 249.272,
+      "angle_rad": 4.35063,
+      "direction": "right",
+      "description": "scan 97: 249.3°"
+    },
+    {
+      "scan_index": 98,
+      "angle_deg": 249.523,
+      "angle_rad": 4.35499,
+      "direction": "right",
+      "description": "scan 98: 249.5°"
+    },
+    {
+      "scan_index": 99,
+      "angle_deg": 249.773,
+      "angle_rad": 4.35936,
+      "direction": "right",
+      "description": "scan 99: 249.8°"
+    },
+    {
+      "scan_index": 100,
+      "angle_deg": 250.023,
+      "angle_rad": 4.36373,
+      "direction": "right",
+      "description": "scan 100: 250.0°"
+    },
+    {
+      "scan_index": 101,
+      "angle_deg": 250.273,
+      "angle_rad": 4.36809,
+      "direction": "right",
+      "description": "scan 101: 250.3°"
+    },
+    {
+      "scan_index": 102,
+      "angle_deg": 250.524,
+      "angle_rad": 4.37246,
+      "direction": "right",
+      "description": "scan 102: 250.5°"
+    },
+    {
+      "scan_index": 103,
+      "angle_deg": 250.774,
+      "angle_rad": 4.37683,
+      "direction": "right",
+      "description": "scan 103: 250.8°"
+    },
+    {
+      "scan_index": 104,
+      "angle_deg": 251.024,
+      "angle_rad": 4.3812,
+      "direction": "right",
+      "description": "scan 104: 251.0°"
+    },
+    {
+      "scan_index": 105,
+      "angle_deg": 251.274,
+      "angle_rad": 4.38556,
+      "direction": "right",
+      "description": "scan 105: 251.3°"
+    },
+    {
+      "scan_index": 106,
+      "angle_deg": 251.525,
+      "angle_rad": 4.38993,
+      "direction": "right",
+      "description": "scan 106: 251.5°"
+    },
+    {
+      "scan_index": 107,
+      "angle_deg": 251.775,
+      "angle_rad": 4.3943,
+      "direction": "right",
+      "description": "scan 107: 251.8°"
+    },
+    {
+      "scan_index": 108,
+      "angle_deg": 252.025,
+      "angle_rad": 4.39867,
+      "direction": "right",
+      "description": "scan 108: 252.0°"
+    },
+    {
+      "scan_index": 109,
+      "angle_deg": 252.275,
+      "angle_rad": 4.40303,
+      "direction": "right",
+      "description": "scan 109: 252.3°"
+    },
+    {
+      "scan_index": 110,
+      "angle_deg": 252.525,
+      "angle_rad": 4.4074,
+      "direction": "right",
+      "description": "scan 110: 252.5°"
+    },
+    {
+      "scan_index": 111,
+      "angle_deg": 252.776,
+      "angle_rad": 4.41177,
+      "direction": "right",
+      "description": "scan 111: 252.8°"
+    },
+    {
+      "scan_index": 112,
+      "angle_deg": 253.026,
+      "angle_rad": 4.41614,
+      "direction": "right",
+      "description": "scan 112: 253.0°"
+    },
+    {
+      "scan_index": 113,
+      "angle_deg": 253.276,
+      "angle_rad": 4.4205,
+      "direction": "right",
+      "description": "scan 113: 253.3°"
+    },
+    {
+      "scan_index": 114,
+      "angle_deg": 253.526,
+      "angle_rad": 4.42487,
+      "direction": "right",
+      "description": "scan 114: 253.5°"
+    },
+    {
+      "scan_index": 115,
+      "angle_deg": 253.777,
+      "angle_rad": 4.42924,
+      "direction": "right",
+      "description": "scan 115: 253.8°"
+    },
+    {
+      "scan_index": 116,
+      "angle_deg": 254.027,
+      "angle_rad": 4.43361,
+      "direction": "right",
+      "description": "scan 116: 254.0°"
+    },
+    {
+      "scan_index": 117,
+      "angle_deg": 254.277,
+      "angle_rad": 4.43797,
+      "direction": "right",
+      "description": "scan 117: 254.3°"
+    },
+    {
+      "scan_index": 118,
+      "angle_deg": 254.527,
+      "angle_rad": 4.44234,
+      "direction": "right",
+      "description": "scan 118: 254.5°"
+    },
+    {
+      "scan_index": 119,
+      "angle_deg": 254.778,
+      "angle_rad": 4.44671,
+      "direction": "right",
+      "description": "scan 119: 254.8°"
+    },
+    {
+      "scan_index": 120,
+      "angle_deg": 255.028,
+      "angle_rad": 4.45107,
+      "direction": "right",
+      "description": "scan 120: 255.0°"
+    },
+    {
+      "scan_index": 121,
+      "angle_deg": 255.278,
+      "angle_rad": 4.45544,
+      "direction": "right",
+      "description": "scan 121: 255.3°"
+    },
+    {
+      "scan_index": 122,
+      "angle_deg": 255.528,
+      "angle_rad": 4.45981,
+      "direction": "right",
+      "description": "scan 122: 255.5°"
+    },
+    {
+      "scan_index": 123,
+      "angle_deg": 255.778,
+      "angle_rad": 4.46418,
+      "direction": "right",
+      "description": "scan 123: 255.8°"
+    },
+    {
+      "scan_index": 124,
+      "angle_deg": 256.029,
+      "angle_rad": 4.46854,
+      "direction": "right",
+      "description": "scan 124: 256.0°"
+    },
+    {
+      "scan_index": 125,
+      "angle_deg": 256.279,
+      "angle_rad": 4.47291,
+      "direction": "right",
+      "description": "scan 125: 256.3°"
+    },
+    {
+      "scan_index": 126,
+      "angle_deg": 256.529,
+      "angle_rad": 4.47728,
+      "direction": "right",
+      "description": "scan 126: 256.5°"
+    },
+    {
+      "scan_index": 127,
+      "angle_deg": 256.779,
+      "angle_rad": 4.48165,
+      "direction": "right",
+      "description": "scan 127: 256.8°"
+    },
+    {
+      "scan_index": 128,
+      "angle_deg": 257.03,
+      "angle_rad": 4.48601,
+      "direction": "right",
+      "description": "scan 128: 257.0°"
+    },
+    {
+      "scan_index": 129,
+      "angle_deg": 257.28,
+      "angle_rad": 4.49038,
+      "direction": "right",
+      "description": "scan 129: 257.3°"
+    },
+    {
+      "scan_index": 130,
+      "angle_deg": 257.53,
+      "angle_rad": 4.49475,
+      "direction": "right",
+      "description": "scan 130: 257.5°"
+    },
+    {
+      "scan_index": 131,
+      "angle_deg": 257.78,
+      "angle_rad": 4.49912,
+      "direction": "right",
+      "description": "scan 131: 257.8°"
+    },
+    {
+      "scan_index": 132,
+      "angle_deg": 258.031,
+      "angle_rad": 4.50348,
+      "direction": "right",
+      "description": "scan 132: 258.0°"
+    },
+    {
+      "scan_index": 133,
+      "angle_deg": 258.281,
+      "angle_rad": 4.50785,
+      "direction": "right",
+      "description": "scan 133: 258.3°"
+    },
+    {
+      "scan_index": 134,
+      "angle_deg": 258.531,
+      "angle_rad": 4.51222,
+      "direction": "right",
+      "description": "scan 134: 258.5°"
+    },
+    {
+      "scan_index": 135,
+      "angle_deg": 258.781,
+      "angle_rad": 4.51659,
+      "direction": "right",
+      "description": "scan 135: 258.8°"
+    },
+    {
+      "scan_index": 136,
+      "angle_deg": 259.032,
+      "angle_rad": 4.52095,
+      "direction": "right",
+      "description": "scan 136: 259.0°"
+    },
+    {
+      "scan_index": 137,
+      "angle_deg": 259.282,
+      "angle_rad": 4.52532,
+      "direction": "right",
+      "description": "scan 137: 259.3°"
+    },
+    {
+      "scan_index": 138,
+      "angle_deg": 259.532,
+      "angle_rad": 4.52969,
+      "direction": "right",
+      "description": "scan 138: 259.5°"
+    },
+    {
+      "scan_index": 139,
+      "angle_deg": 259.782,
+      "angle_rad": 4.53405,
+      "direction": "right",
+      "description": "scan 139: 259.8°"
+    },
+    {
+      "scan_index": 140,
+      "angle_deg": 260.032,
+      "angle_rad": 4.53842,
+      "direction": "right",
+      "description": "scan 140: 260.0°"
+    },
+    {
+      "scan_index": 141,
+      "angle_deg": 260.283,
+      "angle_rad": 4.54279,
+      "direction": "right",
+      "description": "scan 141: 260.3°"
+    },
+    {
+      "scan_index": 142,
+      "angle_deg": 260.533,
+      "angle_rad": 4.54716,
+      "direction": "right",
+      "description": "scan 142: 260.5°"
+    },
+    {
+      "scan_index": 143,
+      "angle_deg": 260.783,
+      "angle_rad": 4.55152,
+      "direction": "right",
+      "description": "scan 143: 260.8°"
+    },
+    {
+      "scan_index": 144,
+      "angle_deg": 261.033,
+      "angle_rad": 4.55589,
+      "direction": "right",
+      "description": "scan 144: 261.0°"
+    },
+    {
+      "scan_index": 145,
+      "angle_deg": 261.284,
+      "angle_rad": 4.56026,
+      "direction": "right",
+      "description": "scan 145: 261.3°"
+    },
+    {
+      "scan_index": 146,
+      "angle_deg": 261.534,
+      "angle_rad": 4.56463,
+      "direction": "right",
+      "description": "scan 146: 261.5°"
+    },
+    {
+      "scan_index": 147,
+      "angle_deg": 261.784,
+      "angle_rad": 4.56899,
+      "direction": "right",
+      "description": "scan 147: 261.8°"
+    },
+    {
+      "scan_index": 148,
+      "angle_deg": 262.034,
+      "angle_rad": 4.57336,
+      "direction": "right",
+      "description": "scan 148: 262.0°"
+    },
+    {
+      "scan_index": 149,
+      "angle_deg": 262.285,
+      "angle_rad": 4.57773,
+      "direction": "right",
+      "description": "scan 149: 262.3°"
+    },
+    {
+      "scan_index": 150,
+      "angle_deg": 262.535,
+      "angle_rad": 4.5821,
+      "direction": "right",
+      "description": "scan 150: 262.5°"
+    },
+    {
+      "scan_index": 151,
+      "angle_deg": 262.785,
+      "angle_rad": 4.58646,
+      "direction": "right",
+      "description": "scan 151: 262.8°"
+    },
+    {
+      "scan_index": 152,
+      "angle_deg": 263.035,
+      "angle_rad": 4.59083,
+      "direction": "right",
+      "description": "scan 152: 263.0°"
+    },
+    {
+      "scan_index": 153,
+      "angle_deg": 263.285,
+      "angle_rad": 4.5952,
+      "direction": "right",
+      "description": "scan 153: 263.3°"
+    },
+    {
+      "scan_index": 154,
+      "angle_deg": 263.536,
+      "angle_rad": 4.59957,
+      "direction": "right",
+      "description": "scan 154: 263.5°"
+    },
+    {
+      "scan_index": 155,
+      "angle_deg": 263.786,
+      "angle_rad": 4.60393,
+      "direction": "right",
+      "description": "scan 155: 263.8°"
+    },
+    {
+      "scan_index": 156,
+      "angle_deg": 264.036,
+      "angle_rad": 4.6083,
+      "direction": "right",
+      "description": "scan 156: 264.0°"
+    },
+    {
+      "scan_index": 157,
+      "angle_deg": 264.286,
+      "angle_rad": 4.61267,
+      "direction": "right",
+      "description": "scan 157: 264.3°"
+    },
+    {
+      "scan_index": 158,
+      "angle_deg": 264.537,
+      "angle_rad": 4.61703,
+      "direction": "right",
+      "description": "scan 158: 264.5°"
+    },
+    {
+      "scan_index": 159,
+      "angle_deg": 264.787,
+      "angle_rad": 4.6214,
+      "direction": "right",
+      "description": "scan 159: 264.8°"
+    },
+    {
+      "scan_index": 160,
+      "angle_deg": 265.037,
+      "angle_rad": 4.62577,
+      "direction": "right",
+      "description": "scan 160: 265.0°"
+    },
+    {
+      "scan_index": 161,
+      "angle_deg": 265.287,
+      "angle_rad": 4.63014,
+      "direction": "right",
+      "description": "scan 161: 265.3°"
+    },
+    {
+      "scan_index": 162,
+      "angle_deg": 265.538,
+      "angle_rad": 4.6345,
+      "direction": "right",
+      "description": "scan 162: 265.5°"
+    },
+    {
+      "scan_index": 163,
+      "angle_deg": 265.788,
+      "angle_rad": 4.63887,
+      "direction": "right",
+      "description": "scan 163: 265.8°"
+    },
+    {
+      "scan_index": 164,
+      "angle_deg": 266.038,
+      "angle_rad": 4.64324,
+      "direction": "right",
+      "description": "scan 164: 266.0°"
+    },
+    {
+      "scan_index": 165,
+      "angle_deg": 266.288,
+      "angle_rad": 4.64761,
+      "direction": "right",
+      "description": "scan 165: 266.3°"
+    },
+    {
+      "scan_index": 166,
+      "angle_deg": 266.538,
+      "angle_rad": 4.65197,
+      "direction": "right",
+      "description": "scan 166: 266.5°"
+    },
+    {
+      "scan_index": 167,
+      "angle_deg": 266.789,
+      "angle_rad": 4.65634,
+      "direction": "right",
+      "description": "scan 167: 266.8°"
+    },
+    {
+      "scan_index": 168,
+      "angle_deg": 267.039,
+      "angle_rad": 4.66071,
+      "direction": "right",
+      "description": "scan 168: 267.0°"
+    },
+    {
+      "scan_index": 169,
+      "angle_deg": 267.289,
+      "angle_rad": 4.66508,
+      "direction": "right",
+      "description": "scan 169: 267.3°"
+    },
+    {
+      "scan_index": 170,
+      "angle_deg": 267.539,
+      "angle_rad": 4.66944,
+      "direction": "right",
+      "description": "scan 170: 267.5°"
+    },
+    {
+      "scan_index": 171,
+      "angle_deg": 267.79,
+      "angle_rad": 4.67381,
+      "direction": "right",
+      "description": "scan 171: 267.8°"
+    },
+    {
+      "scan_index": 172,
+      "angle_deg": 268.04,
+      "angle_rad": 4.67818,
+      "direction": "right",
+      "description": "scan 172: 268.0°"
+    },
+    {
+      "scan_index": 173,
+      "angle_deg": 268.29,
+      "angle_rad": 4.68255,
+      "direction": "right",
+      "description": "scan 173: 268.3°"
+    },
+    {
+      "scan_index": 174,
+      "angle_deg": 268.54,
+      "angle_rad": 4.68691,
+      "direction": "right",
+      "description": "scan 174: 268.5°"
+    },
+    {
+      "scan_index": 175,
+      "angle_deg": 268.791,
+      "angle_rad": 4.69128,
+      "direction": "right",
+      "description": "scan 175: 268.8°"
+    },
+    {
+      "scan_index": 176,
+      "angle_deg": 269.041,
+      "angle_rad": 4.69565,
+      "direction": "right",
+      "description": "scan 176: 269.0°"
+    },
+    {
+      "scan_index": 177,
+      "angle_deg": 269.291,
+      "angle_rad": 4.70001,
+      "direction": "right",
+      "description": "scan 177: 269.3°"
+    },
+    {
+      "scan_index": 178,
+      "angle_deg": 269.541,
+      "angle_rad": 4.70438,
+      "direction": "right",
+      "description": "scan 178: 269.5°"
+    },
+    {
+      "scan_index": 179,
+      "angle_deg": 269.791,
+      "angle_rad": 4.70875,
+      "direction": "right",
+      "description": "scan 179: 269.8°"
+    },
+    {
+      "scan_index": 180,
+      "angle_deg": 270.042,
+      "angle_rad": 4.71312,
+      "direction": "right",
+      "description": "scan 180: 270.0°"
+    },
+    {
+      "scan_index": 181,
+      "angle_deg": 270.292,
+      "angle_rad": 4.71748,
+      "direction": "right",
+      "description": "scan 181: 270.3°"
+    },
+    {
+      "scan_index": 182,
+      "angle_deg": 270.542,
+      "angle_rad": 4.72185,
+      "direction": "right",
+      "description": "scan 182: 270.5°"
+    },
+    {
+      "scan_index": 183,
+      "angle_deg": 270.792,
+      "angle_rad": 4.72622,
+      "direction": "right",
+      "description": "scan 183: 270.8°"
+    },
+    {
+      "scan_index": 184,
+      "angle_deg": 271.043,
+      "angle_rad": 4.73059,
+      "direction": "right",
+      "description": "scan 184: 271.0°"
+    },
+    {
+      "scan_index": 185,
+      "angle_deg": 271.293,
+      "angle_rad": 4.73495,
+      "direction": "right",
+      "description": "scan 185: 271.3°"
+    },
+    {
+      "scan_index": 186,
+      "angle_deg": 271.543,
+      "angle_rad": 4.73932,
+      "direction": "right",
+      "description": "scan 186: 271.5°"
+    },
+    {
+      "scan_index": 187,
+      "angle_deg": 271.793,
+      "angle_rad": 4.74369,
+      "direction": "right",
+      "description": "scan 187: 271.8°"
+    },
+    {
+      "scan_index": 188,
+      "angle_deg": 272.044,
+      "angle_rad": 4.74806,
+      "direction": "right",
+      "description": "scan 188: 272.0°"
+    },
+    {
+      "scan_index": 189,
+      "angle_deg": 272.294,
+      "angle_rad": 4.75242,
+      "direction": "right",
+      "description": "scan 189: 272.3°"
+    },
+    {
+      "scan_index": 190,
+      "angle_deg": 272.544,
+      "angle_rad": 4.75679,
+      "direction": "right",
+      "description": "scan 190: 272.5°"
+    },
+    {
+      "scan_index": 191,
+      "angle_deg": 272.794,
+      "angle_rad": 4.76116,
+      "direction": "right",
+      "description": "scan 191: 272.8°"
+    },
+    {
+      "scan_index": 192,
+      "angle_deg": 273.044,
+      "angle_rad": 4.76553,
+      "direction": "right",
+      "description": "scan 192: 273.0°"
+    },
+    {
+      "scan_index": 193,
+      "angle_deg": 273.295,
+      "angle_rad": 4.76989,
+      "direction": "right",
+      "description": "scan 193: 273.3°"
+    },
+    {
+      "scan_index": 194,
+      "angle_deg": 273.545,
+      "angle_rad": 4.77426,
+      "direction": "right",
+      "description": "scan 194: 273.5°"
+    },
+    {
+      "scan_index": 195,
+      "angle_deg": 273.795,
+      "angle_rad": 4.77863,
+      "direction": "right",
+      "description": "scan 195: 273.8°"
+    },
+    {
+      "scan_index": 196,
+      "angle_deg": 274.045,
+      "angle_rad": 4.78299,
+      "direction": "right",
+      "description": "scan 196: 274.0°"
+    },
+    {
+      "scan_index": 197,
+      "angle_deg": 274.296,
+      "angle_rad": 4.78736,
+      "direction": "right",
+      "description": "scan 197: 274.3°"
+    },
+    {
+      "scan_index": 198,
+      "angle_deg": 274.546,
+      "angle_rad": 4.79173,
+      "direction": "right",
+      "description": "scan 198: 274.5°"
+    },
+    {
+      "scan_index": 199,
+      "angle_deg": 274.796,
+      "angle_rad": 4.7961,
+      "direction": "right",
+      "description": "scan 199: 274.8°"
+    },
+    {
+      "scan_index": 200,
+      "angle_deg": 275.046,
+      "angle_rad": 4.80046,
+      "direction": "right",
+      "description": "scan 200: 275.0°"
+    },
+    {
+      "scan_index": 201,
+      "angle_deg": 275.297,
+      "angle_rad": 4.80483,
+      "direction": "right",
+      "description": "scan 201: 275.3°"
+    },
+    {
+      "scan_index": 202,
+      "angle_deg": 275.547,
+      "angle_rad": 4.8092,
+      "direction": "right",
+      "description": "scan 202: 275.5°"
+    },
+    {
+      "scan_index": 203,
+      "angle_deg": 275.797,
+      "angle_rad": 4.81357,
+      "direction": "right",
+      "description": "scan 203: 275.8°"
+    },
+    {
+      "scan_index": 204,
+      "angle_deg": 276.047,
+      "angle_rad": 4.81793,
+      "direction": "right",
+      "description": "scan 204: 276.0°"
+    },
+    {
+      "scan_index": 205,
+      "angle_deg": 276.297,
+      "angle_rad": 4.8223,
+      "direction": "right",
+      "description": "scan 205: 276.3°"
+    },
+    {
+      "scan_index": 206,
+      "angle_deg": 276.548,
+      "angle_rad": 4.82667,
+      "direction": "right",
+      "description": "scan 206: 276.5°"
+    },
+    {
+      "scan_index": 207,
+      "angle_deg": 276.798,
+      "angle_rad": 4.83104,
+      "direction": "right",
+      "description": "scan 207: 276.8°"
+    },
+    {
+      "scan_index": 208,
+      "angle_deg": 277.048,
+      "angle_rad": 4.8354,
+      "direction": "right",
+      "description": "scan 208: 277.0°"
+    },
+    {
+      "scan_index": 209,
+      "angle_deg": 277.298,
+      "angle_rad": 4.83977,
+      "direction": "right",
+      "description": "scan 209: 277.3°"
+    },
+    {
+      "scan_index": 210,
+      "angle_deg": 277.549,
+      "angle_rad": 4.84414,
+      "direction": "right",
+      "description": "scan 210: 277.5°"
+    },
+    {
+      "scan_index": 211,
+      "angle_deg": 277.799,
+      "angle_rad": 4.84851,
+      "direction": "right",
+      "description": "scan 211: 277.8°"
+    },
+    {
+      "scan_index": 212,
+      "angle_deg": 278.049,
+      "angle_rad": 4.85287,
+      "direction": "right",
+      "description": "scan 212: 278.0°"
+    },
+    {
+      "scan_index": 213,
+      "angle_deg": 278.299,
+      "angle_rad": 4.85724,
+      "direction": "right",
+      "description": "scan 213: 278.3°"
+    },
+    {
+      "scan_index": 214,
+      "angle_deg": 278.55,
+      "angle_rad": 4.86161,
+      "direction": "right",
+      "description": "scan 214: 278.5°"
+    },
+    {
+      "scan_index": 215,
+      "angle_deg": 278.8,
+      "angle_rad": 4.86597,
+      "direction": "right",
+      "description": "scan 215: 278.8°"
+    },
+    {
+      "scan_index": 216,
+      "angle_deg": 279.05,
+      "angle_rad": 4.87034,
+      "direction": "right",
+      "description": "scan 216: 279.1°"
+    },
+    {
+      "scan_index": 217,
+      "angle_deg": 279.3,
+      "angle_rad": 4.87471,
+      "direction": "right",
+      "description": "scan 217: 279.3°"
+    },
+    {
+      "scan_index": 218,
+      "angle_deg": 279.551,
+      "angle_rad": 4.87908,
+      "direction": "right",
+      "description": "scan 218: 279.6°"
+    },
+    {
+      "scan_index": 219,
+      "angle_deg": 279.801,
+      "angle_rad": 4.88344,
+      "direction": "right",
+      "description": "scan 219: 279.8°"
+    },
+    {
+      "scan_index": 220,
+      "angle_deg": 280.051,
+      "angle_rad": 4.88781,
+      "direction": "right",
+      "description": "scan 220: 280.1°"
+    },
+    {
+      "scan_index": 221,
+      "angle_deg": 280.301,
+      "angle_rad": 4.89218,
+      "direction": "right",
+      "description": "scan 221: 280.3°"
+    },
+    {
+      "scan_index": 222,
+      "angle_deg": 280.551,
+      "angle_rad": 4.89655,
+      "direction": "right",
+      "description": "scan 222: 280.6°"
+    },
+    {
+      "scan_index": 223,
+      "angle_deg": 280.802,
+      "angle_rad": 4.90091,
+      "direction": "right",
+      "description": "scan 223: 280.8°"
+    },
+    {
+      "scan_index": 224,
+      "angle_deg": 281.052,
+      "angle_rad": 4.90528,
+      "direction": "right",
+      "description": "scan 224: 281.1°"
+    },
+    {
+      "scan_index": 225,
+      "angle_deg": 281.302,
+      "angle_rad": 4.90965,
+      "direction": "right",
+      "description": "scan 225: 281.3°"
+    },
+    {
+      "scan_index": 226,
+      "angle_deg": 281.552,
+      "angle_rad": 4.91402,
+      "direction": "right",
+      "description": "scan 226: 281.6°"
+    },
+    {
+      "scan_index": 227,
+      "angle_deg": 281.803,
+      "angle_rad": 4.91838,
+      "direction": "right",
+      "description": "scan 227: 281.8°"
+    },
+    {
+      "scan_index": 228,
+      "angle_deg": 282.053,
+      "angle_rad": 4.92275,
+      "direction": "right",
+      "description": "scan 228: 282.1°"
+    },
+    {
+      "scan_index": 229,
+      "angle_deg": 282.303,
+      "angle_rad": 4.92712,
+      "direction": "right",
+      "description": "scan 229: 282.3°"
+    },
+    {
+      "scan_index": 230,
+      "angle_deg": 282.553,
+      "angle_rad": 4.93149,
+      "direction": "right",
+      "description": "scan 230: 282.6°"
+    },
+    {
+      "scan_index": 231,
+      "angle_deg": 282.804,
+      "angle_rad": 4.93585,
+      "direction": "right",
+      "description": "scan 231: 282.8°"
+    },
+    {
+      "scan_index": 232,
+      "angle_deg": 283.054,
+      "angle_rad": 4.94022,
+      "direction": "right",
+      "description": "scan 232: 283.1°"
+    },
+    {
+      "scan_index": 233,
+      "angle_deg": 283.304,
+      "angle_rad": 4.94459,
+      "direction": "right",
+      "description": "scan 233: 283.3°"
+    },
+    {
+      "scan_index": 234,
+      "angle_deg": 283.554,
+      "angle_rad": 4.94895,
+      "direction": "right",
+      "description": "scan 234: 283.6°"
+    },
+    {
+      "scan_index": 235,
+      "angle_deg": 283.804,
+      "angle_rad": 4.95332,
+      "direction": "right",
+      "description": "scan 235: 283.8°"
+    },
+    {
+      "scan_index": 236,
+      "angle_deg": 284.055,
+      "angle_rad": 4.95769,
+      "direction": "right",
+      "description": "scan 236: 284.1°"
+    },
+    {
+      "scan_index": 237,
+      "angle_deg": 284.305,
+      "angle_rad": 4.96206,
+      "direction": "right",
+      "description": "scan 237: 284.3°"
+    },
+    {
+      "scan_index": 238,
+      "angle_deg": 284.555,
+      "angle_rad": 4.96642,
+      "direction": "right",
+      "description": "scan 238: 284.6°"
+    },
+    {
+      "scan_index": 239,
+      "angle_deg": 284.805,
+      "angle_rad": 4.97079,
+      "direction": "right",
+      "description": "scan 239: 284.8°"
+    },
+    {
+      "scan_index": 240,
+      "angle_deg": 285.056,
+      "angle_rad": 4.97516,
+      "direction": "right",
+      "description": "scan 240: 285.1°"
+    },
+    {
+      "scan_index": 241,
+      "angle_deg": 285.306,
+      "angle_rad": 4.97953,
+      "direction": "right",
+      "description": "scan 241: 285.3°"
+    },
+    {
+      "scan_index": 242,
+      "angle_deg": 285.556,
+      "angle_rad": 4.98389,
+      "direction": "right",
+      "description": "scan 242: 285.6°"
+    },
+    {
+      "scan_index": 243,
+      "angle_deg": 285.806,
+      "angle_rad": 4.98826,
+      "direction": "right",
+      "description": "scan 243: 285.8°"
+    },
+    {
+      "scan_index": 244,
+      "angle_deg": 286.057,
+      "angle_rad": 4.99263,
+      "direction": "right",
+      "description": "scan 244: 286.1°"
+    },
+    {
+      "scan_index": 245,
+      "angle_deg": 286.307,
+      "angle_rad": 4.997,
+      "direction": "right",
+      "description": "scan 245: 286.3°"
+    },
+    {
+      "scan_index": 246,
+      "angle_deg": 286.557,
+      "angle_rad": 5.00136,
+      "direction": "right",
+      "description": "scan 246: 286.6°"
+    },
+    {
+      "scan_index": 247,
+      "angle_deg": 286.807,
+      "angle_rad": 5.00573,
+      "direction": "right",
+      "description": "scan 247: 286.8°"
+    },
+    {
+      "scan_index": 248,
+      "angle_deg": 287.057,
+      "angle_rad": 5.0101,
+      "direction": "right",
+      "description": "scan 248: 287.1°"
+    },
+    {
+      "scan_index": 249,
+      "angle_deg": 287.308,
+      "angle_rad": 5.01447,
+      "direction": "right",
+      "description": "scan 249: 287.3°"
+    },
+    {
+      "scan_index": 250,
+      "angle_deg": 287.558,
+      "angle_rad": 5.01883,
+      "direction": "right",
+      "description": "scan 250: 287.6°"
+    },
+    {
+      "scan_index": 251,
+      "angle_deg": 287.808,
+      "angle_rad": 5.0232,
+      "direction": "right",
+      "description": "scan 251: 287.8°"
+    },
+    {
+      "scan_index": 252,
+      "angle_deg": 288.058,
+      "angle_rad": 5.02757,
+      "direction": "right",
+      "description": "scan 252: 288.1°"
+    },
+    {
+      "scan_index": 253,
+      "angle_deg": 288.309,
+      "angle_rad": 5.03193,
+      "direction": "right",
+      "description": "scan 253: 288.3°"
+    },
+    {
+      "scan_index": 254,
+      "angle_deg": 288.559,
+      "angle_rad": 5.0363,
+      "direction": "right",
+      "description": "scan 254: 288.6°"
+    },
+    {
+      "scan_index": 255,
+      "angle_deg": 288.809,
+      "angle_rad": 5.04067,
+      "direction": "right",
+      "description": "scan 255: 288.8°"
+    },
+    {
+      "scan_index": 256,
+      "angle_deg": 289.059,
+      "angle_rad": 5.04504,
+      "direction": "right",
+      "description": "scan 256: 289.1°"
+    },
+    {
+      "scan_index": 257,
+      "angle_deg": 289.31,
+      "angle_rad": 5.0494,
+      "direction": "right",
+      "description": "scan 257: 289.3°"
+    },
+    {
+      "scan_index": 258,
+      "angle_deg": 289.56,
+      "angle_rad": 5.05377,
+      "direction": "right",
+      "description": "scan 258: 289.6°"
+    },
+    {
+      "scan_index": 259,
+      "angle_deg": 289.81,
+      "angle_rad": 5.05814,
+      "direction": "right",
+      "description": "scan 259: 289.8°"
+    },
+    {
+      "scan_index": 260,
+      "angle_deg": 290.06,
+      "angle_rad": 5.06251,
+      "direction": "right",
+      "description": "scan 260: 290.1°"
+    },
+    {
+      "scan_index": 261,
+      "angle_deg": 290.31,
+      "angle_rad": 5.06687,
+      "direction": "right",
+      "description": "scan 261: 290.3°"
+    },
+    {
+      "scan_index": 262,
+      "angle_deg": 290.561,
+      "angle_rad": 5.07124,
+      "direction": "right",
+      "description": "scan 262: 290.6°"
+    },
+    {
+      "scan_index": 263,
+      "angle_deg": 290.811,
+      "angle_rad": 5.07561,
+      "direction": "right",
+      "description": "scan 263: 290.8°"
+    },
+    {
+      "scan_index": 264,
+      "angle_deg": 291.061,
+      "angle_rad": 5.07998,
+      "direction": "right",
+      "description": "scan 264: 291.1°"
+    },
+    {
+      "scan_index": 265,
+      "angle_deg": 291.311,
+      "angle_rad": 5.08434,
+      "direction": "right",
+      "description": "scan 265: 291.3°"
+    },
+    {
+      "scan_index": 266,
+      "angle_deg": 291.562,
+      "angle_rad": 5.08871,
+      "direction": "right",
+      "description": "scan 266: 291.6°"
+    },
+    {
+      "scan_index": 267,
+      "angle_deg": 291.812,
+      "angle_rad": 5.09308,
+      "direction": "right",
+      "description": "scan 267: 291.8°"
+    },
+    {
+      "scan_index": 268,
+      "angle_deg": 292.062,
+      "angle_rad": 5.09745,
+      "direction": "right",
+      "description": "scan 268: 292.1°"
+    },
+    {
+      "scan_index": 269,
+      "angle_deg": 292.312,
+      "angle_rad": 5.10181,
+      "direction": "right",
+      "description": "scan 269: 292.3°"
+    },
+    {
+      "scan_index": 270,
+      "angle_deg": 292.563,
+      "angle_rad": 5.10618,
+      "direction": "right",
+      "description": "scan 270: 292.6°"
+    },
+    {
+      "scan_index": 271,
+      "angle_deg": 292.813,
+      "angle_rad": 5.11055,
+      "direction": "right",
+      "description": "scan 271: 292.8°"
+    },
+    {
+      "scan_index": 272,
+      "angle_deg": 293.063,
+      "angle_rad": 5.11491,
+      "direction": "right",
+      "description": "scan 272: 293.1°"
+    },
+    {
+      "scan_index": 273,
+      "angle_deg": 293.313,
+      "angle_rad": 5.11928,
+      "direction": "right",
+      "description": "scan 273: 293.3°"
+    },
+    {
+      "scan_index": 274,
+      "angle_deg": 293.563,
+      "angle_rad": 5.12365,
+      "direction": "right",
+      "description": "scan 274: 293.6°"
+    },
+    {
+      "scan_index": 275,
+      "angle_deg": 293.814,
+      "angle_rad": 5.12802,
+      "direction": "right",
+      "description": "scan 275: 293.8°"
+    },
+    {
+      "scan_index": 276,
+      "angle_deg": 294.064,
+      "angle_rad": 5.13238,
+      "direction": "right",
+      "description": "scan 276: 294.1°"
+    },
+    {
+      "scan_index": 277,
+      "angle_deg": 294.314,
+      "angle_rad": 5.13675,
+      "direction": "right",
+      "description": "scan 277: 294.3°"
+    },
+    {
+      "scan_index": 278,
+      "angle_deg": 294.564,
+      "angle_rad": 5.14112,
+      "direction": "right",
+      "description": "scan 278: 294.6°"
+    },
+    {
+      "scan_index": 279,
+      "angle_deg": 294.815,
+      "angle_rad": 5.14549,
+      "direction": "right",
+      "description": "scan 279: 294.8°"
+    },
+    {
+      "scan_index": 280,
+      "angle_deg": 295.065,
+      "angle_rad": 5.14985,
+      "direction": "right",
+      "description": "scan 280: 295.1°"
+    },
+    {
+      "scan_index": 281,
+      "angle_deg": 295.315,
+      "angle_rad": 5.15422,
+      "direction": "right",
+      "description": "scan 281: 295.3°"
+    },
+    {
+      "scan_index": 282,
+      "angle_deg": 295.565,
+      "angle_rad": 5.15859,
+      "direction": "right",
+      "description": "scan 282: 295.6°"
+    },
+    {
+      "scan_index": 283,
+      "angle_deg": 295.816,
+      "angle_rad": 5.16296,
+      "direction": "right",
+      "description": "scan 283: 295.8°"
+    },
+    {
+      "scan_index": 284,
+      "angle_deg": 296.066,
+      "angle_rad": 5.16732,
+      "direction": "right",
+      "description": "scan 284: 296.1°"
+    },
+    {
+      "scan_index": 285,
+      "angle_deg": 296.316,
+      "angle_rad": 5.17169,
+      "direction": "right",
+      "description": "scan 285: 296.3°"
+    },
+    {
+      "scan_index": 286,
+      "angle_deg": 296.566,
+      "angle_rad": 5.17606,
+      "direction": "right",
+      "description": "scan 286: 296.6°"
+    },
+    {
+      "scan_index": 287,
+      "angle_deg": 296.816,
+      "angle_rad": 5.18043,
+      "direction": "right",
+      "description": "scan 287: 296.8°"
+    },
+    {
+      "scan_index": 288,
+      "angle_deg": 297.067,
+      "angle_rad": 5.18479,
+      "direction": "right",
+      "description": "scan 288: 297.1°"
+    },
+    {
+      "scan_index": 289,
+      "angle_deg": 297.317,
+      "angle_rad": 5.18916,
+      "direction": "right",
+      "description": "scan 289: 297.3°"
+    },
+    {
+      "scan_index": 290,
+      "angle_deg": 297.567,
+      "angle_rad": 5.19353,
+      "direction": "right",
+      "description": "scan 290: 297.6°"
+    },
+    {
+      "scan_index": 291,
+      "angle_deg": 297.817,
+      "angle_rad": 5.19789,
+      "direction": "right",
+      "description": "scan 291: 297.8°"
+    },
+    {
+      "scan_index": 292,
+      "angle_deg": 298.068,
+      "angle_rad": 5.20226,
+      "direction": "right",
+      "description": "scan 292: 298.1°"
+    },
+    {
+      "scan_index": 293,
+      "angle_deg": 298.318,
+      "angle_rad": 5.20663,
+      "direction": "right",
+      "description": "scan 293: 298.3°"
+    },
+    {
+      "scan_index": 294,
+      "angle_deg": 298.568,
+      "angle_rad": 5.211,
+      "direction": "right",
+      "description": "scan 294: 298.6°"
+    },
+    {
+      "scan_index": 295,
+      "angle_deg": 298.818,
+      "angle_rad": 5.21536,
+      "direction": "right",
+      "description": "scan 295: 298.8°"
+    },
+    {
+      "scan_index": 296,
+      "angle_deg": 299.069,
+      "angle_rad": 5.21973,
+      "direction": "right",
+      "description": "scan 296: 299.1°"
+    },
+    {
+      "scan_index": 297,
+      "angle_deg": 299.319,
+      "angle_rad": 5.2241,
+      "direction": "right",
+      "description": "scan 297: 299.3°"
+    },
+    {
+      "scan_index": 298,
+      "angle_deg": 299.569,
+      "angle_rad": 5.22847,
+      "direction": "right",
+      "description": "scan 298: 299.6°"
+    },
+    {
+      "scan_index": 299,
+      "angle_deg": 299.819,
+      "angle_rad": 5.23283,
+      "direction": "right",
+      "description": "scan 299: 299.8°"
+    },
+    {
+      "scan_index": 300,
+      "angle_deg": 300.07,
+      "angle_rad": 5.2372,
+      "direction": "right",
+      "description": "scan 300: 300.1°"
+    },
+    {
+      "scan_index": 301,
+      "angle_deg": 300.32,
+      "angle_rad": 5.24157,
+      "direction": "right",
+      "description": "scan 301: 300.3°"
+    },
+    {
+      "scan_index": 302,
+      "angle_deg": 300.57,
+      "angle_rad": 5.24594,
+      "direction": "right",
+      "description": "scan 302: 300.6°"
+    },
+    {
+      "scan_index": 303,
+      "angle_deg": 300.82,
+      "angle_rad": 5.2503,
+      "direction": "right",
+      "description": "scan 303: 300.8°"
+    },
+    {
+      "scan_index": 304,
+      "angle_deg": 301.07,
+      "angle_rad": 5.25467,
+      "direction": "right",
+      "description": "scan 304: 301.1°"
+    },
+    {
+      "scan_index": 305,
+      "angle_deg": 301.321,
+      "angle_rad": 5.25904,
+      "direction": "right",
+      "description": "scan 305: 301.3°"
+    },
+    {
+      "scan_index": 306,
+      "angle_deg": 301.571,
+      "angle_rad": 5.26341,
+      "direction": "right",
+      "description": "scan 306: 301.6°"
+    },
+    {
+      "scan_index": 307,
+      "angle_deg": 301.821,
+      "angle_rad": 5.26777,
+      "direction": "right",
+      "description": "scan 307: 301.8°"
+    },
+    {
+      "scan_index": 308,
+      "angle_deg": 302.071,
+      "angle_rad": 5.27214,
+      "direction": "right",
+      "description": "scan 308: 302.1°"
+    },
+    {
+      "scan_index": 309,
+      "angle_deg": 302.322,
+      "angle_rad": 5.27651,
+      "direction": "right",
+      "description": "scan 309: 302.3°"
+    },
+    {
+      "scan_index": 310,
+      "angle_deg": 302.572,
+      "angle_rad": 5.28087,
+      "direction": "right",
+      "description": "scan 310: 302.6°"
+    },
+    {
+      "scan_index": 311,
+      "angle_deg": 302.822,
+      "angle_rad": 5.28524,
+      "direction": "right",
+      "description": "scan 311: 302.8°"
+    },
+    {
+      "scan_index": 312,
+      "angle_deg": 303.072,
+      "angle_rad": 5.28961,
+      "direction": "right",
+      "description": "scan 312: 303.1°"
+    },
+    {
+      "scan_index": 313,
+      "angle_deg": 303.323,
+      "angle_rad": 5.29398,
+      "direction": "right",
+      "description": "scan 313: 303.3°"
+    },
+    {
+      "scan_index": 314,
+      "angle_deg": 303.573,
+      "angle_rad": 5.29834,
+      "direction": "right",
+      "description": "scan 314: 303.6°"
+    },
+    {
+      "scan_index": 315,
+      "angle_deg": 303.823,
+      "angle_rad": 5.30271,
+      "direction": "right",
+      "description": "scan 315: 303.8°"
+    },
+    {
+      "scan_index": 316,
+      "angle_deg": 304.073,
+      "angle_rad": 5.30708,
+      "direction": "right",
+      "description": "scan 316: 304.1°"
+    },
+    {
+      "scan_index": 317,
+      "angle_deg": 304.323,
+      "angle_rad": 5.31145,
+      "direction": "right",
+      "description": "scan 317: 304.3°"
+    },
+    {
+      "scan_index": 318,
+      "angle_deg": 304.574,
+      "angle_rad": 5.31581,
+      "direction": "right",
+      "description": "scan 318: 304.6°"
+    },
+    {
+      "scan_index": 319,
+      "angle_deg": 304.824,
+      "angle_rad": 5.32018,
+      "direction": "right",
+      "description": "scan 319: 304.8°"
+    },
+    {
+      "scan_index": 320,
+      "angle_deg": 305.074,
+      "angle_rad": 5.32455,
+      "direction": "right",
+      "description": "scan 320: 305.1°"
+    },
+    {
+      "scan_index": 321,
+      "angle_deg": 305.324,
+      "angle_rad": 5.32892,
+      "direction": "right",
+      "description": "scan 321: 305.3°"
+    },
+    {
+      "scan_index": 322,
+      "angle_deg": 305.575,
+      "angle_rad": 5.33328,
+      "direction": "right",
+      "description": "scan 322: 305.6°"
+    },
+    {
+      "scan_index": 323,
+      "angle_deg": 305.825,
+      "angle_rad": 5.33765,
+      "direction": "right",
+      "description": "scan 323: 305.8°"
+    },
+    {
+      "scan_index": 324,
+      "angle_deg": 306.075,
+      "angle_rad": 5.34202,
+      "direction": "right",
+      "description": "scan 324: 306.1°"
+    },
+    {
+      "scan_index": 325,
+      "angle_deg": 306.325,
+      "angle_rad": 5.34639,
+      "direction": "right",
+      "description": "scan 325: 306.3°"
+    },
+    {
+      "scan_index": 326,
+      "angle_deg": 306.576,
+      "angle_rad": 5.35075,
+      "direction": "right",
+      "description": "scan 326: 306.6°"
+    },
+    {
+      "scan_index": 327,
+      "angle_deg": 306.826,
+      "angle_rad": 5.35512,
+      "direction": "right",
+      "description": "scan 327: 306.8°"
+    },
+    {
+      "scan_index": 328,
+      "angle_deg": 307.076,
+      "angle_rad": 5.35949,
+      "direction": "right",
+      "description": "scan 328: 307.1°"
+    },
+    {
+      "scan_index": 329,
+      "angle_deg": 307.326,
+      "angle_rad": 5.36385,
+      "direction": "right",
+      "description": "scan 329: 307.3°"
+    },
+    {
+      "scan_index": 330,
+      "angle_deg": 307.576,
+      "angle_rad": 5.36822,
+      "direction": "right",
+      "description": "scan 330: 307.6°"
+    },
+    {
+      "scan_index": 331,
+      "angle_deg": 307.827,
+      "angle_rad": 5.37259,
+      "direction": "right",
+      "description": "scan 331: 307.8°"
+    },
+    {
+      "scan_index": 332,
+      "angle_deg": 308.077,
+      "angle_rad": 5.37696,
+      "direction": "right",
+      "description": "scan 332: 308.1°"
+    },
+    {
+      "scan_index": 333,
+      "angle_deg": 308.327,
+      "angle_rad": 5.38132,
+      "direction": "right",
+      "description": "scan 333: 308.3°"
+    },
+    {
+      "scan_index": 334,
+      "angle_deg": 308.577,
+      "angle_rad": 5.38569,
+      "direction": "right",
+      "description": "scan 334: 308.6°"
+    },
+    {
+      "scan_index": 335,
+      "angle_deg": 308.828,
+      "angle_rad": 5.39006,
+      "direction": "right",
+      "description": "scan 335: 308.8°"
+    },
+    {
+      "scan_index": 336,
+      "angle_deg": 309.078,
+      "angle_rad": 5.39443,
+      "direction": "right",
+      "description": "scan 336: 309.1°"
+    },
+    {
+      "scan_index": 337,
+      "angle_deg": 309.328,
+      "angle_rad": 5.39879,
+      "direction": "right",
+      "description": "scan 337: 309.3°"
+    },
+    {
+      "scan_index": 338,
+      "angle_deg": 309.578,
+      "angle_rad": 5.40316,
+      "direction": "right",
+      "description": "scan 338: 309.6°"
+    },
+    {
+      "scan_index": 339,
+      "angle_deg": 309.829,
+      "angle_rad": 5.40753,
+      "direction": "right",
+      "description": "scan 339: 309.8°"
+    },
+    {
+      "scan_index": 340,
+      "angle_deg": 310.079,
+      "angle_rad": 5.4119,
+      "direction": "right",
+      "description": "scan 340: 310.1°"
+    },
+    {
+      "scan_index": 341,
+      "angle_deg": 310.329,
+      "angle_rad": 5.41626,
+      "direction": "right",
+      "description": "scan 341: 310.3°"
+    },
+    {
+      "scan_index": 342,
+      "angle_deg": 310.579,
+      "angle_rad": 5.42063,
+      "direction": "right",
+      "description": "scan 342: 310.6°"
+    },
+    {
+      "scan_index": 343,
+      "angle_deg": 310.829,
+      "angle_rad": 5.425,
+      "direction": "right",
+      "description": "scan 343: 310.8°"
+    },
+    {
+      "scan_index": 344,
+      "angle_deg": 311.08,
+      "angle_rad": 5.42937,
+      "direction": "right",
+      "description": "scan 344: 311.1°"
+    },
+    {
+      "scan_index": 345,
+      "angle_deg": 311.33,
+      "angle_rad": 5.43373,
+      "direction": "right",
+      "description": "scan 345: 311.3°"
+    },
+    {
+      "scan_index": 346,
+      "angle_deg": 311.58,
+      "angle_rad": 5.4381,
+      "direction": "right",
+      "description": "scan 346: 311.6°"
+    },
+    {
+      "scan_index": 347,
+      "angle_deg": 311.83,
+      "angle_rad": 5.44247,
+      "direction": "right",
+      "description": "scan 347: 311.8°"
+    },
+    {
+      "scan_index": 348,
+      "angle_deg": 312.081,
+      "angle_rad": 5.44683,
+      "direction": "right",
+      "description": "scan 348: 312.1°"
+    },
+    {
+      "scan_index": 349,
+      "angle_deg": 312.331,
+      "angle_rad": 5.4512,
+      "direction": "right",
+      "description": "scan 349: 312.3°"
+    },
+    {
+      "scan_index": 350,
+      "angle_deg": 312.581,
+      "angle_rad": 5.45557,
+      "direction": "right",
+      "description": "scan 350: 312.6°"
+    },
+    {
+      "scan_index": 351,
+      "angle_deg": 312.831,
+      "angle_rad": 5.45994,
+      "direction": "right",
+      "description": "scan 351: 312.8°"
+    },
+    {
+      "scan_index": 352,
+      "angle_deg": 313.082,
+      "angle_rad": 5.4643,
+      "direction": "right",
+      "description": "scan 352: 313.1°"
+    },
+    {
+      "scan_index": 353,
+      "angle_deg": 313.332,
+      "angle_rad": 5.46867,
+      "direction": "right",
+      "description": "scan 353: 313.3°"
+    },
+    {
+      "scan_index": 354,
+      "angle_deg": 313.582,
+      "angle_rad": 5.47304,
+      "direction": "right",
+      "description": "scan 354: 313.6°"
+    },
+    {
+      "scan_index": 355,
+      "angle_deg": 313.832,
+      "angle_rad": 5.47741,
+      "direction": "right",
+      "description": "scan 355: 313.8°"
+    },
+    {
+      "scan_index": 356,
+      "angle_deg": 314.082,
+      "angle_rad": 5.48177,
+      "direction": "right",
+      "description": "scan 356: 314.1°"
+    },
+    {
+      "scan_index": 357,
+      "angle_deg": 314.333,
+      "angle_rad": 5.48614,
+      "direction": "right",
+      "description": "scan 357: 314.3°"
+    },
+    {
+      "scan_index": 358,
+      "angle_deg": 314.583,
+      "angle_rad": 5.49051,
+      "direction": "right",
+      "description": "scan 358: 314.6°"
+    },
+    {
+      "scan_index": 359,
+      "angle_deg": 314.833,
+      "angle_rad": 5.49488,
+      "direction": "right",
+      "description": "scan 359: 314.8°"
+    },
+    {
+      "scan_index": 360,
+      "angle_deg": 315.083,
+      "angle_rad": 5.49924,
+      "direction": "front",
+      "description": "scan 360: 315.1°"
+    },
+    {
+      "scan_index": 361,
+      "angle_deg": 315.334,
+      "angle_rad": 5.50361,
+      "direction": "front",
+      "description": "scan 361: 315.3°"
+    },
+    {
+      "scan_index": 362,
+      "angle_deg": 315.584,
+      "angle_rad": 5.50798,
+      "direction": "front",
+      "description": "scan 362: 315.6°"
+    },
+    {
+      "scan_index": 363,
+      "angle_deg": 315.834,
+      "angle_rad": 5.51235,
+      "direction": "front",
+      "description": "scan 363: 315.8°"
+    },
+    {
+      "scan_index": 364,
+      "angle_deg": 316.084,
+      "angle_rad": 5.51671,
+      "direction": "front",
+      "description": "scan 364: 316.1°"
+    },
+    {
+      "scan_index": 365,
+      "angle_deg": 316.335,
+      "angle_rad": 5.52108,
+      "direction": "front",
+      "description": "scan 365: 316.3°"
+    },
+    {
+      "scan_index": 366,
+      "angle_deg": 316.585,
+      "angle_rad": 5.52545,
+      "direction": "front",
+      "description": "scan 366: 316.6°"
+    },
+    {
+      "scan_index": 367,
+      "angle_deg": 316.835,
+      "angle_rad": 5.52981,
+      "direction": "front",
+      "description": "scan 367: 316.8°"
+    },
+    {
+      "scan_index": 368,
+      "angle_deg": 317.085,
+      "angle_rad": 5.53418,
+      "direction": "front",
+      "description": "scan 368: 317.1°"
+    },
+    {
+      "scan_index": 369,
+      "angle_deg": 317.335,
+      "angle_rad": 5.53855,
+      "direction": "front",
+      "description": "scan 369: 317.3°"
+    },
+    {
+      "scan_index": 370,
+      "angle_deg": 317.586,
+      "angle_rad": 5.54292,
+      "direction": "front",
+      "description": "scan 370: 317.6°"
+    },
+    {
+      "scan_index": 371,
+      "angle_deg": 317.836,
+      "angle_rad": 5.54728,
+      "direction": "front",
+      "description": "scan 371: 317.8°"
+    },
+    {
+      "scan_index": 372,
+      "angle_deg": 318.086,
+      "angle_rad": 5.55165,
+      "direction": "front",
+      "description": "scan 372: 318.1°"
+    },
+    {
+      "scan_index": 373,
+      "angle_deg": 318.336,
+      "angle_rad": 5.55602,
+      "direction": "front",
+      "description": "scan 373: 318.3°"
+    },
+    {
+      "scan_index": 374,
+      "angle_deg": 318.587,
+      "angle_rad": 5.56039,
+      "direction": "front",
+      "description": "scan 374: 318.6°"
+    },
+    {
+      "scan_index": 375,
+      "angle_deg": 318.837,
+      "angle_rad": 5.56475,
+      "direction": "front",
+      "description": "scan 375: 318.8°"
+    },
+    {
+      "scan_index": 376,
+      "angle_deg": 319.087,
+      "angle_rad": 5.56912,
+      "direction": "front",
+      "description": "scan 376: 319.1°"
+    },
+    {
+      "scan_index": 377,
+      "angle_deg": 319.337,
+      "angle_rad": 5.57349,
+      "direction": "front",
+      "description": "scan 377: 319.3°"
+    },
+    {
+      "scan_index": 378,
+      "angle_deg": 319.588,
+      "angle_rad": 5.57786,
+      "direction": "front",
+      "description": "scan 378: 319.6°"
+    },
+    {
+      "scan_index": 379,
+      "angle_deg": 319.838,
+      "angle_rad": 5.58222,
+      "direction": "front",
+      "description": "scan 379: 319.8°"
+    },
+    {
+      "scan_index": 380,
+      "angle_deg": 320.088,
+      "angle_rad": 5.58659,
+      "direction": "front",
+      "description": "scan 380: 320.1°"
+    },
+    {
+      "scan_index": 381,
+      "angle_deg": 320.338,
+      "angle_rad": 5.59096,
+      "direction": "front",
+      "description": "scan 381: 320.3°"
+    },
+    {
+      "scan_index": 382,
+      "angle_deg": 320.589,
+      "angle_rad": 5.59533,
+      "direction": "front",
+      "description": "scan 382: 320.6°"
+    },
+    {
+      "scan_index": 383,
+      "angle_deg": 320.839,
+      "angle_rad": 5.59969,
+      "direction": "front",
+      "description": "scan 383: 320.8°"
+    },
+    {
+      "scan_index": 384,
+      "angle_deg": 321.089,
+      "angle_rad": 5.60406,
+      "direction": "front",
+      "description": "scan 384: 321.1°"
+    },
+    {
+      "scan_index": 385,
+      "angle_deg": 321.339,
+      "angle_rad": 5.60843,
+      "direction": "front",
+      "description": "scan 385: 321.3°"
+    },
+    {
+      "scan_index": 386,
+      "angle_deg": 321.589,
+      "angle_rad": 5.61279,
+      "direction": "front",
+      "description": "scan 386: 321.6°"
+    },
+    {
+      "scan_index": 387,
+      "angle_deg": 321.84,
+      "angle_rad": 5.61716,
+      "direction": "front",
+      "description": "scan 387: 321.8°"
+    },
+    {
+      "scan_index": 388,
+      "angle_deg": 322.09,
+      "angle_rad": 5.62153,
+      "direction": "front",
+      "description": "scan 388: 322.1°"
+    },
+    {
+      "scan_index": 389,
+      "angle_deg": 322.34,
+      "angle_rad": 5.6259,
+      "direction": "front",
+      "description": "scan 389: 322.3°"
+    },
+    {
+      "scan_index": 390,
+      "angle_deg": 322.59,
+      "angle_rad": 5.63026,
+      "direction": "front",
+      "description": "scan 390: 322.6°"
+    },
+    {
+      "scan_index": 391,
+      "angle_deg": 322.841,
+      "angle_rad": 5.63463,
+      "direction": "front",
+      "description": "scan 391: 322.8°"
+    },
+    {
+      "scan_index": 392,
+      "angle_deg": 323.091,
+      "angle_rad": 5.639,
+      "direction": "front",
+      "description": "scan 392: 323.1°"
+    },
+    {
+      "scan_index": 393,
+      "angle_deg": 323.341,
+      "angle_rad": 5.64337,
+      "direction": "front",
+      "description": "scan 393: 323.3°"
+    },
+    {
+      "scan_index": 394,
+      "angle_deg": 323.591,
+      "angle_rad": 5.64773,
+      "direction": "front",
+      "description": "scan 394: 323.6°"
+    },
+    {
+      "scan_index": 395,
+      "angle_deg": 323.842,
+      "angle_rad": 5.6521,
+      "direction": "front",
+      "description": "scan 395: 323.8°"
+    },
+    {
+      "scan_index": 396,
+      "angle_deg": 324.092,
+      "angle_rad": 5.65647,
+      "direction": "front",
+      "description": "scan 396: 324.1°"
+    },
+    {
+      "scan_index": 397,
+      "angle_deg": 324.342,
+      "angle_rad": 5.66084,
+      "direction": "front",
+      "description": "scan 397: 324.3°"
+    },
+    {
+      "scan_index": 398,
+      "angle_deg": 324.592,
+      "angle_rad": 5.6652,
+      "direction": "front",
+      "description": "scan 398: 324.6°"
+    },
+    {
+      "scan_index": 399,
+      "angle_deg": 324.842,
+      "angle_rad": 5.66957,
+      "direction": "front",
+      "description": "scan 399: 324.8°"
+    },
+    {
+      "scan_index": 400,
+      "angle_deg": 325.093,
+      "angle_rad": 5.67394,
+      "direction": "front",
+      "description": "scan 400: 325.1°"
+    },
+    {
+      "scan_index": 401,
+      "angle_deg": 325.343,
+      "angle_rad": 5.6783,
+      "direction": "front",
+      "description": "scan 401: 325.3°"
+    },
+    {
+      "scan_index": 402,
+      "angle_deg": 325.593,
+      "angle_rad": 5.68267,
+      "direction": "front",
+      "description": "scan 402: 325.6°"
+    },
+    {
+      "scan_index": 403,
+      "angle_deg": 325.843,
+      "angle_rad": 5.68704,
+      "direction": "front",
+      "description": "scan 403: 325.8°"
+    },
+    {
+      "scan_index": 404,
+      "angle_deg": 326.094,
+      "angle_rad": 5.69141,
+      "direction": "front",
+      "description": "scan 404: 326.1°"
+    },
+    {
+      "scan_index": 405,
+      "angle_deg": 326.344,
+      "angle_rad": 5.69577,
+      "direction": "front",
+      "description": "scan 405: 326.3°"
+    },
+    {
+      "scan_index": 406,
+      "angle_deg": 326.594,
+      "angle_rad": 5.70014,
+      "direction": "front",
+      "description": "scan 406: 326.6°"
+    },
+    {
+      "scan_index": 407,
+      "angle_deg": 326.844,
+      "angle_rad": 5.70451,
+      "direction": "front",
+      "description": "scan 407: 326.8°"
+    },
+    {
+      "scan_index": 408,
+      "angle_deg": 327.095,
+      "angle_rad": 5.70888,
+      "direction": "front",
+      "description": "scan 408: 327.1°"
+    },
+    {
+      "scan_index": 409,
+      "angle_deg": 327.345,
+      "angle_rad": 5.71324,
+      "direction": "front",
+      "description": "scan 409: 327.3°"
+    },
+    {
+      "scan_index": 410,
+      "angle_deg": 327.595,
+      "angle_rad": 5.71761,
+      "direction": "front",
+      "description": "scan 410: 327.6°"
+    },
+    {
+      "scan_index": 411,
+      "angle_deg": 327.845,
+      "angle_rad": 5.72198,
+      "direction": "front",
+      "description": "scan 411: 327.8°"
+    },
+    {
+      "scan_index": 412,
+      "angle_deg": 328.095,
+      "angle_rad": 5.72635,
+      "direction": "front",
+      "description": "scan 412: 328.1°"
+    },
+    {
+      "scan_index": 413,
+      "angle_deg": 328.346,
+      "angle_rad": 5.73071,
+      "direction": "front",
+      "description": "scan 413: 328.3°"
+    },
+    {
+      "scan_index": 414,
+      "angle_deg": 328.596,
+      "angle_rad": 5.73508,
+      "direction": "front",
+      "description": "scan 414: 328.6°"
+    },
+    {
+      "scan_index": 415,
+      "angle_deg": 328.846,
+      "angle_rad": 5.73945,
+      "direction": "front",
+      "description": "scan 415: 328.8°"
+    },
+    {
+      "scan_index": 416,
+      "angle_deg": 329.096,
+      "angle_rad": 5.74382,
+      "direction": "front",
+      "description": "scan 416: 329.1°"
+    },
+    {
+      "scan_index": 417,
+      "angle_deg": 329.347,
+      "angle_rad": 5.74818,
+      "direction": "front",
+      "description": "scan 417: 329.3°"
+    },
+    {
+      "scan_index": 418,
+      "angle_deg": 329.597,
+      "angle_rad": 5.75255,
+      "direction": "front",
+      "description": "scan 418: 329.6°"
+    },
+    {
+      "scan_index": 419,
+      "angle_deg": 329.847,
+      "angle_rad": 5.75692,
+      "direction": "front",
+      "description": "scan 419: 329.8°"
+    },
+    {
+      "scan_index": 420,
+      "angle_deg": 330.097,
+      "angle_rad": 5.76128,
+      "direction": "front",
+      "description": "scan 420: 330.1°"
+    },
+    {
+      "scan_index": 421,
+      "angle_deg": 330.348,
+      "angle_rad": 5.76565,
+      "direction": "front",
+      "description": "scan 421: 330.3°"
+    },
+    {
+      "scan_index": 422,
+      "angle_deg": 330.598,
+      "angle_rad": 5.77002,
+      "direction": "front",
+      "description": "scan 422: 330.6°"
+    },
+    {
+      "scan_index": 423,
+      "angle_deg": 330.848,
+      "angle_rad": 5.77439,
+      "direction": "front",
+      "description": "scan 423: 330.8°"
+    },
+    {
+      "scan_index": 424,
+      "angle_deg": 331.098,
+      "angle_rad": 5.77875,
+      "direction": "front",
+      "description": "scan 424: 331.1°"
+    },
+    {
+      "scan_index": 425,
+      "angle_deg": 331.348,
+      "angle_rad": 5.78312,
+      "direction": "front",
+      "description": "scan 425: 331.3°"
+    },
+    {
+      "scan_index": 426,
+      "angle_deg": 331.599,
+      "angle_rad": 5.78749,
+      "direction": "front",
+      "description": "scan 426: 331.6°"
+    },
+    {
+      "scan_index": 427,
+      "angle_deg": 331.849,
+      "angle_rad": 5.79186,
+      "direction": "front",
+      "description": "scan 427: 331.8°"
+    },
+    {
+      "scan_index": 428,
+      "angle_deg": 332.099,
+      "angle_rad": 5.79622,
+      "direction": "front",
+      "description": "scan 428: 332.1°"
+    },
+    {
+      "scan_index": 429,
+      "angle_deg": 332.349,
+      "angle_rad": 5.80059,
+      "direction": "front",
+      "description": "scan 429: 332.3°"
+    },
+    {
+      "scan_index": 430,
+      "angle_deg": 332.6,
+      "angle_rad": 5.80496,
+      "direction": "front",
+      "description": "scan 430: 332.6°"
+    },
+    {
+      "scan_index": 431,
+      "angle_deg": 332.85,
+      "angle_rad": 5.80933,
+      "direction": "front",
+      "description": "scan 431: 332.8°"
+    },
+    {
+      "scan_index": 432,
+      "angle_deg": 333.1,
+      "angle_rad": 5.81369,
+      "direction": "front",
+      "description": "scan 432: 333.1°"
+    },
+    {
+      "scan_index": 433,
+      "angle_deg": 333.35,
+      "angle_rad": 5.81806,
+      "direction": "front",
+      "description": "scan 433: 333.4°"
+    },
+    {
+      "scan_index": 434,
+      "angle_deg": 333.601,
+      "angle_rad": 5.82243,
+      "direction": "front",
+      "description": "scan 434: 333.6°"
+    },
+    {
+      "scan_index": 435,
+      "angle_deg": 333.851,
+      "angle_rad": 5.8268,
+      "direction": "front",
+      "description": "scan 435: 333.9°"
+    },
+    {
+      "scan_index": 436,
+      "angle_deg": 334.101,
+      "angle_rad": 5.83116,
+      "direction": "front",
+      "description": "scan 436: 334.1°"
+    },
+    {
+      "scan_index": 437,
+      "angle_deg": 334.351,
+      "angle_rad": 5.83553,
+      "direction": "front",
+      "description": "scan 437: 334.4°"
+    },
+    {
+      "scan_index": 438,
+      "angle_deg": 334.601,
+      "angle_rad": 5.8399,
+      "direction": "front",
+      "description": "scan 438: 334.6°"
+    },
+    {
+      "scan_index": 439,
+      "angle_deg": 334.852,
+      "angle_rad": 5.84426,
+      "direction": "front",
+      "description": "scan 439: 334.9°"
+    },
+    {
+      "scan_index": 440,
+      "angle_deg": 335.102,
+      "angle_rad": 5.84863,
+      "direction": "front",
+      "description": "scan 440: 335.1°"
+    },
+    {
+      "scan_index": 441,
+      "angle_deg": 335.352,
+      "angle_rad": 5.853,
+      "direction": "front",
+      "description": "scan 441: 335.4°"
+    },
+    {
+      "scan_index": 442,
+      "angle_deg": 335.602,
+      "angle_rad": 5.85737,
+      "direction": "front",
+      "description": "scan 442: 335.6°"
+    },
+    {
+      "scan_index": 443,
+      "angle_deg": 335.853,
+      "angle_rad": 5.86173,
+      "direction": "front",
+      "description": "scan 443: 335.9°"
+    },
+    {
+      "scan_index": 444,
+      "angle_deg": 336.103,
+      "angle_rad": 5.8661,
+      "direction": "front",
+      "description": "scan 444: 336.1°"
+    },
+    {
+      "scan_index": 445,
+      "angle_deg": 336.353,
+      "angle_rad": 5.87047,
+      "direction": "front",
+      "description": "scan 445: 336.4°"
+    },
+    {
+      "scan_index": 446,
+      "angle_deg": 336.603,
+      "angle_rad": 5.87484,
+      "direction": "front",
+      "description": "scan 446: 336.6°"
+    },
+    {
+      "scan_index": 447,
+      "angle_deg": 336.854,
+      "angle_rad": 5.8792,
+      "direction": "front",
+      "description": "scan 447: 336.9°"
+    },
+    {
+      "scan_index": 448,
+      "angle_deg": 337.104,
+      "angle_rad": 5.88357,
+      "direction": "front",
+      "description": "scan 448: 337.1°"
+    },
+    {
+      "scan_index": 449,
+      "angle_deg": 337.354,
+      "angle_rad": 5.88794,
+      "direction": "front",
+      "description": "scan 449: 337.4°"
+    },
+    {
+      "scan_index": 450,
+      "angle_deg": 337.604,
+      "angle_rad": 5.89231,
+      "direction": "front",
+      "description": "scan 450: 337.6°"
+    },
+    {
+      "scan_index": 451,
+      "angle_deg": 337.854,
+      "angle_rad": 5.89667,
+      "direction": "front",
+      "description": "scan 451: 337.9°"
+    },
+    {
+      "scan_index": 452,
+      "angle_deg": 338.105,
+      "angle_rad": 5.90104,
+      "direction": "front",
+      "description": "scan 452: 338.1°"
+    },
+    {
+      "scan_index": 453,
+      "angle_deg": 338.355,
+      "angle_rad": 5.90541,
+      "direction": "front",
+      "description": "scan 453: 338.4°"
+    },
+    {
+      "scan_index": 454,
+      "angle_deg": 338.605,
+      "angle_rad": 5.90978,
+      "direction": "front",
+      "description": "scan 454: 338.6°"
+    },
+    {
+      "scan_index": 455,
+      "angle_deg": 338.855,
+      "angle_rad": 5.91414,
+      "direction": "front",
+      "description": "scan 455: 338.9°"
+    },
+    {
+      "scan_index": 456,
+      "angle_deg": 339.106,
+      "angle_rad": 5.91851,
+      "direction": "front",
+      "description": "scan 456: 339.1°"
+    },
+    {
+      "scan_index": 457,
+      "angle_deg": 339.356,
+      "angle_rad": 5.92288,
+      "direction": "front",
+      "description": "scan 457: 339.4°"
+    },
+    {
+      "scan_index": 458,
+      "angle_deg": 339.606,
+      "angle_rad": 5.92724,
+      "direction": "front",
+      "description": "scan 458: 339.6°"
+    },
+    {
+      "scan_index": 459,
+      "angle_deg": 339.856,
+      "angle_rad": 5.93161,
+      "direction": "front",
+      "description": "scan 459: 339.9°"
+    },
+    {
+      "scan_index": 460,
+      "angle_deg": 340.107,
+      "angle_rad": 5.93598,
+      "direction": "front",
+      "description": "scan 460: 340.1°"
+    },
+    {
+      "scan_index": 461,
+      "angle_deg": 340.357,
+      "angle_rad": 5.94035,
+      "direction": "front",
+      "description": "scan 461: 340.4°"
+    },
+    {
+      "scan_index": 462,
+      "angle_deg": 340.607,
+      "angle_rad": 5.94471,
+      "direction": "front",
+      "description": "scan 462: 340.6°"
+    },
+    {
+      "scan_index": 463,
+      "angle_deg": 340.857,
+      "angle_rad": 5.94908,
+      "direction": "front",
+      "description": "scan 463: 340.9°"
+    },
+    {
+      "scan_index": 464,
+      "angle_deg": 341.108,
+      "angle_rad": 5.95345,
+      "direction": "front",
+      "description": "scan 464: 341.1°"
+    },
+    {
+      "scan_index": 465,
+      "angle_deg": 341.358,
+      "angle_rad": 5.95782,
+      "direction": "front",
+      "description": "scan 465: 341.4°"
+    },
+    {
+      "scan_index": 466,
+      "angle_deg": 341.608,
+      "angle_rad": 5.96218,
+      "direction": "front",
+      "description": "scan 466: 341.6°"
+    },
+    {
+      "scan_index": 467,
+      "angle_deg": 341.858,
+      "angle_rad": 5.96655,
+      "direction": "front",
+      "description": "scan 467: 341.9°"
+    },
+    {
+      "scan_index": 468,
+      "angle_deg": 342.108,
+      "angle_rad": 5.97092,
+      "direction": "front",
+      "description": "scan 468: 342.1°"
+    },
+    {
+      "scan_index": 469,
+      "angle_deg": 342.359,
+      "angle_rad": 5.97529,
+      "direction": "front",
+      "description": "scan 469: 342.4°"
+    },
+    {
+      "scan_index": 470,
+      "angle_deg": 342.609,
+      "angle_rad": 5.97965,
+      "direction": "front",
+      "description": "scan 470: 342.6°"
+    },
+    {
+      "scan_index": 471,
+      "angle_deg": 342.859,
+      "angle_rad": 5.98402,
+      "direction": "front",
+      "description": "scan 471: 342.9°"
+    },
+    {
+      "scan_index": 472,
+      "angle_deg": 343.109,
+      "angle_rad": 5.98839,
+      "direction": "front",
+      "description": "scan 472: 343.1°"
+    },
+    {
+      "scan_index": 473,
+      "angle_deg": 343.36,
+      "angle_rad": 5.99276,
+      "direction": "front",
+      "description": "scan 473: 343.4°"
+    },
+    {
+      "scan_index": 474,
+      "angle_deg": 343.61,
+      "angle_rad": 5.99712,
+      "direction": "front",
+      "description": "scan 474: 343.6°"
+    },
+    {
+      "scan_index": 475,
+      "angle_deg": 343.86,
+      "angle_rad": 6.00149,
+      "direction": "front",
+      "description": "scan 475: 343.9°"
+    },
+    {
+      "scan_index": 476,
+      "angle_deg": 344.11,
+      "angle_rad": 6.00586,
+      "direction": "front",
+      "description": "scan 476: 344.1°"
+    },
+    {
+      "scan_index": 477,
+      "angle_deg": 344.361,
+      "angle_rad": 6.01022,
+      "direction": "front",
+      "description": "scan 477: 344.4°"
+    },
+    {
+      "scan_index": 478,
+      "angle_deg": 344.611,
+      "angle_rad": 6.01459,
+      "direction": "front",
+      "description": "scan 478: 344.6°"
+    },
+    {
+      "scan_index": 479,
+      "angle_deg": 344.861,
+      "angle_rad": 6.01896,
+      "direction": "front",
+      "description": "scan 479: 344.9°"
+    },
+    {
+      "scan_index": 480,
+      "angle_deg": 345.111,
+      "angle_rad": 6.02333,
+      "direction": "front",
+      "description": "scan 480: 345.1°"
+    },
+    {
+      "scan_index": 481,
+      "angle_deg": 345.361,
+      "angle_rad": 6.02769,
+      "direction": "front",
+      "description": "scan 481: 345.4°"
+    },
+    {
+      "scan_index": 482,
+      "angle_deg": 345.612,
+      "angle_rad": 6.03206,
+      "direction": "front",
+      "description": "scan 482: 345.6°"
+    },
+    {
+      "scan_index": 483,
+      "angle_deg": 345.862,
+      "angle_rad": 6.03643,
+      "direction": "front",
+      "description": "scan 483: 345.9°"
+    },
+    {
+      "scan_index": 484,
+      "angle_deg": 346.112,
+      "angle_rad": 6.0408,
+      "direction": "front",
+      "description": "scan 484: 346.1°"
+    },
+    {
+      "scan_index": 485,
+      "angle_deg": 346.362,
+      "angle_rad": 6.04516,
+      "direction": "front",
+      "description": "scan 485: 346.4°"
+    },
+    {
+      "scan_index": 486,
+      "angle_deg": 346.613,
+      "angle_rad": 6.04953,
+      "direction": "front",
+      "description": "scan 486: 346.6°"
+    },
+    {
+      "scan_index": 487,
+      "angle_deg": 346.863,
+      "angle_rad": 6.0539,
+      "direction": "front",
+      "description": "scan 487: 346.9°"
+    },
+    {
+      "scan_index": 488,
+      "angle_deg": 347.113,
+      "angle_rad": 6.05827,
+      "direction": "front",
+      "description": "scan 488: 347.1°"
+    },
+    {
+      "scan_index": 489,
+      "angle_deg": 347.363,
+      "angle_rad": 6.06263,
+      "direction": "front",
+      "description": "scan 489: 347.4°"
+    },
+    {
+      "scan_index": 490,
+      "angle_deg": 347.614,
+      "angle_rad": 6.067,
+      "direction": "front",
+      "description": "scan 490: 347.6°"
+    },
+    {
+      "scan_index": 491,
+      "angle_deg": 347.864,
+      "angle_rad": 6.07137,
+      "direction": "front",
+      "description": "scan 491: 347.9°"
+    },
+    {
+      "scan_index": 492,
+      "angle_deg": 348.114,
+      "angle_rad": 6.07574,
+      "direction": "front",
+      "description": "scan 492: 348.1°"
+    },
+    {
+      "scan_index": 493,
+      "angle_deg": 348.364,
+      "angle_rad": 6.0801,
+      "direction": "front",
+      "description": "scan 493: 348.4°"
+    },
+    {
+      "scan_index": 494,
+      "angle_deg": 348.614,
+      "angle_rad": 6.08447,
+      "direction": "front",
+      "description": "scan 494: 348.6°"
+    },
+    {
+      "scan_index": 495,
+      "angle_deg": 348.865,
+      "angle_rad": 6.08884,
+      "direction": "front",
+      "description": "scan 495: 348.9°"
+    },
+    {
+      "scan_index": 496,
+      "angle_deg": 349.115,
+      "angle_rad": 6.0932,
+      "direction": "front",
+      "description": "scan 496: 349.1°"
+    },
+    {
+      "scan_index": 497,
+      "angle_deg": 349.365,
+      "angle_rad": 6.09757,
+      "direction": "front",
+      "description": "scan 497: 349.4°"
+    },
+    {
+      "scan_index": 498,
+      "angle_deg": 349.615,
+      "angle_rad": 6.10194,
+      "direction": "front",
+      "description": "scan 498: 349.6°"
+    },
+    {
+      "scan_index": 499,
+      "angle_deg": 349.866,
+      "angle_rad": 6.10631,
+      "direction": "front",
+      "description": "scan 499: 349.9°"
+    },
+    {
+      "scan_index": 500,
+      "angle_deg": 350.116,
+      "angle_rad": 6.11067,
+      "direction": "front",
+      "description": "scan 500: 350.1°"
+    },
+    {
+      "scan_index": 501,
+      "angle_deg": 350.366,
+      "angle_rad": 6.11504,
+      "direction": "front",
+      "description": "scan 501: 350.4°"
+    },
+    {
+      "scan_index": 502,
+      "angle_deg": 350.616,
+      "angle_rad": 6.11941,
+      "direction": "front",
+      "description": "scan 502: 350.6°"
+    },
+    {
+      "scan_index": 503,
+      "angle_deg": 350.867,
+      "angle_rad": 6.12378,
+      "direction": "front",
+      "description": "scan 503: 350.9°"
+    },
+    {
+      "scan_index": 504,
+      "angle_deg": 351.117,
+      "angle_rad": 6.12814,
+      "direction": "front",
+      "description": "scan 504: 351.1°"
+    },
+    {
+      "scan_index": 505,
+      "angle_deg": 351.367,
+      "angle_rad": 6.13251,
+      "direction": "front",
+      "description": "scan 505: 351.4°"
+    },
+    {
+      "scan_index": 506,
+      "angle_deg": 351.617,
+      "angle_rad": 6.13688,
+      "direction": "front",
+      "description": "scan 506: 351.6°"
+    },
+    {
+      "scan_index": 507,
+      "angle_deg": 351.867,
+      "angle_rad": 6.14125,
+      "direction": "front",
+      "description": "scan 507: 351.9°"
+    },
+    {
+      "scan_index": 508,
+      "angle_deg": 352.118,
+      "angle_rad": 6.14561,
+      "direction": "front",
+      "description": "scan 508: 352.1°"
+    },
+    {
+      "scan_index": 509,
+      "angle_deg": 352.368,
+      "angle_rad": 6.14998,
+      "direction": "front",
+      "description": "scan 509: 352.4°"
+    },
+    {
+      "scan_index": 510,
+      "angle_deg": 352.618,
+      "angle_rad": 6.15435,
+      "direction": "front",
+      "description": "scan 510: 352.6°"
+    },
+    {
+      "scan_index": 511,
+      "angle_deg": 352.868,
+      "angle_rad": 6.15872,
+      "direction": "front",
+      "description": "scan 511: 352.9°"
+    },
+    {
+      "scan_index": 512,
+      "angle_deg": 353.119,
+      "angle_rad": 6.16308,
+      "direction": "front",
+      "description": "scan 512: 353.1°"
+    },
+    {
+      "scan_index": 513,
+      "angle_deg": 353.369,
+      "angle_rad": 6.16745,
+      "direction": "front",
+      "description": "scan 513: 353.4°"
+    },
+    {
+      "scan_index": 514,
+      "angle_deg": 353.619,
+      "angle_rad": 6.17182,
+      "direction": "front",
+      "description": "scan 514: 353.6°"
+    },
+    {
+      "scan_index": 515,
+      "angle_deg": 353.869,
+      "angle_rad": 6.17618,
+      "direction": "front",
+      "description": "scan 515: 353.9°"
+    },
+    {
+      "scan_index": 516,
+      "angle_deg": 354.12,
+      "angle_rad": 6.18055,
+      "direction": "front",
+      "description": "scan 516: 354.1°"
+    },
+    {
+      "scan_index": 517,
+      "angle_deg": 354.37,
+      "angle_rad": 6.18492,
+      "direction": "front",
+      "description": "scan 517: 354.4°"
+    },
+    {
+      "scan_index": 518,
+      "angle_deg": 354.62,
+      "angle_rad": 6.18929,
+      "direction": "front",
+      "description": "scan 518: 354.6°"
+    },
+    {
+      "scan_index": 519,
+      "angle_deg": 354.87,
+      "angle_rad": 6.19365,
+      "direction": "front",
+      "description": "scan 519: 354.9°"
+    },
+    {
+      "scan_index": 520,
+      "angle_deg": 355.12,
+      "angle_rad": 6.19802,
+      "direction": "front",
+      "description": "scan 520: 355.1°"
+    },
+    {
+      "scan_index": 521,
+      "angle_deg": 355.371,
+      "angle_rad": 6.20239,
+      "direction": "front",
+      "description": "scan 521: 355.4°"
+    },
+    {
+      "scan_index": 522,
+      "angle_deg": 355.621,
+      "angle_rad": 6.20676,
+      "direction": "front",
+      "description": "scan 522: 355.6°"
+    },
+    {
+      "scan_index": 523,
+      "angle_deg": 355.871,
+      "angle_rad": 6.21112,
+      "direction": "front",
+      "description": "scan 523: 355.9°"
+    },
+    {
+      "scan_index": 524,
+      "angle_deg": 356.121,
+      "angle_rad": 6.21549,
+      "direction": "front",
+      "description": "scan 524: 356.1°"
+    },
+    {
+      "scan_index": 525,
+      "angle_deg": 356.372,
+      "angle_rad": 6.21986,
+      "direction": "front",
+      "description": "scan 525: 356.4°"
+    },
+    {
+      "scan_index": 526,
+      "angle_deg": 356.622,
+      "angle_rad": 6.22423,
+      "direction": "front",
+      "description": "scan 526: 356.6°"
+    },
+    {
+      "scan_index": 527,
+      "angle_deg": 356.872,
+      "angle_rad": 6.22859,
+      "direction": "front",
+      "description": "scan 527: 356.9°"
+    },
+    {
+      "scan_index": 528,
+      "angle_deg": 357.122,
+      "angle_rad": 6.23296,
+      "direction": "front",
+      "description": "scan 528: 357.1°"
+    },
+    {
+      "scan_index": 529,
+      "angle_deg": 357.373,
+      "angle_rad": 6.23733,
+      "direction": "front",
+      "description": "scan 529: 357.4°"
+    },
+    {
+      "scan_index": 530,
+      "angle_deg": 357.623,
+      "angle_rad": 6.2417,
+      "direction": "front",
+      "description": "scan 530: 357.6°"
+    },
+    {
+      "scan_index": 531,
+      "angle_deg": 357.873,
+      "angle_rad": 6.24606,
+      "direction": "front",
+      "description": "scan 531: 357.9°"
+    },
+    {
+      "scan_index": 532,
+      "angle_deg": 358.123,
+      "angle_rad": 6.25043,
+      "direction": "front",
+      "description": "scan 532: 358.1°"
+    },
+    {
+      "scan_index": 533,
+      "angle_deg": 358.373,
+      "angle_rad": 6.2548,
+      "direction": "front",
+      "description": "scan 533: 358.4°"
+    },
+    {
+      "scan_index": 534,
+      "angle_deg": 358.624,
+      "angle_rad": 6.25916,
+      "direction": "front",
+      "description": "scan 534: 358.6°"
+    },
+    {
+      "scan_index": 535,
+      "angle_deg": 358.874,
+      "angle_rad": 6.26353,
+      "direction": "front",
+      "description": "scan 535: 358.9°"
+    },
+    {
+      "scan_index": 536,
+      "angle_deg": 359.124,
+      "angle_rad": 6.2679,
+      "direction": "front",
+      "description": "scan 536: 359.1°"
+    },
+    {
+      "scan_index": 537,
+      "angle_deg": 359.374,
+      "angle_rad": 6.27227,
+      "direction": "front",
+      "description": "scan 537: 359.4°"
+    },
+    {
+      "scan_index": 538,
+      "angle_deg": 359.625,
+      "angle_rad": 6.27663,
+      "direction": "front",
+      "description": "scan 538: 359.6°"
+    },
+    {
+      "scan_index": 539,
+      "angle_deg": 359.875,
+      "angle_rad": 6.281,
+      "direction": "front",
+      "description": "scan 539: 359.9°"
+    },
+    {
+      "scan_index": 540,
+      "angle_deg": 0.125,
+      "angle_rad": 0.00218,
+      "direction": "front",
+      "description": "scan 540: 0.1°"
+    },
+    {
+      "scan_index": 541,
+      "angle_deg": 0.375,
+      "angle_rad": 0.00655,
+      "direction": "front",
+      "description": "scan 541: 0.4°"
+    },
+    {
+      "scan_index": 542,
+      "angle_deg": 0.626,
+      "angle_rad": 0.01092,
+      "direction": "front",
+      "description": "scan 542: 0.6°"
+    },
+    {
+      "scan_index": 543,
+      "angle_deg": 0.876,
+      "angle_rad": 0.01529,
+      "direction": "front",
+      "description": "scan 543: 0.9°"
+    },
+    {
+      "scan_index": 544,
+      "angle_deg": 1.126,
+      "angle_rad": 0.01965,
+      "direction": "front",
+      "description": "scan 544: 1.1°"
+    },
+    {
+      "scan_index": 545,
+      "angle_deg": 1.376,
+      "angle_rad": 0.02402,
+      "direction": "front",
+      "description": "scan 545: 1.4°"
+    },
+    {
+      "scan_index": 546,
+      "angle_deg": 1.627,
+      "angle_rad": 0.02839,
+      "direction": "front",
+      "description": "scan 546: 1.6°"
+    },
+    {
+      "scan_index": 547,
+      "angle_deg": 1.877,
+      "angle_rad": 0.03276,
+      "direction": "front",
+      "description": "scan 547: 1.9°"
+    },
+    {
+      "scan_index": 548,
+      "angle_deg": 2.127,
+      "angle_rad": 0.03712,
+      "direction": "front",
+      "description": "scan 548: 2.1°"
+    },
+    {
+      "scan_index": 549,
+      "angle_deg": 2.377,
+      "angle_rad": 0.04149,
+      "direction": "front",
+      "description": "scan 549: 2.4°"
+    },
+    {
+      "scan_index": 550,
+      "angle_deg": 2.627,
+      "angle_rad": 0.04586,
+      "direction": "front",
+      "description": "scan 550: 2.6°"
+    },
+    {
+      "scan_index": 551,
+      "angle_deg": 2.878,
+      "angle_rad": 0.05022,
+      "direction": "front",
+      "description": "scan 551: 2.9°"
+    },
+    {
+      "scan_index": 552,
+      "angle_deg": 3.128,
+      "angle_rad": 0.05459,
+      "direction": "front",
+      "description": "scan 552: 3.1°"
+    },
+    {
+      "scan_index": 553,
+      "angle_deg": 3.378,
+      "angle_rad": 0.05896,
+      "direction": "front",
+      "description": "scan 553: 3.4°"
+    },
+    {
+      "scan_index": 554,
+      "angle_deg": 3.628,
+      "angle_rad": 0.06333,
+      "direction": "front",
+      "description": "scan 554: 3.6°"
+    },
+    {
+      "scan_index": 555,
+      "angle_deg": 3.879,
+      "angle_rad": 0.06769,
+      "direction": "front",
+      "description": "scan 555: 3.9°"
+    },
+    {
+      "scan_index": 556,
+      "angle_deg": 4.129,
+      "angle_rad": 0.07206,
+      "direction": "front",
+      "description": "scan 556: 4.1°"
+    },
+    {
+      "scan_index": 557,
+      "angle_deg": 4.379,
+      "angle_rad": 0.07643,
+      "direction": "front",
+      "description": "scan 557: 4.4°"
+    },
+    {
+      "scan_index": 558,
+      "angle_deg": 4.629,
+      "angle_rad": 0.0808,
+      "direction": "front",
+      "description": "scan 558: 4.6°"
+    },
+    {
+      "scan_index": 559,
+      "angle_deg": 4.88,
+      "angle_rad": 0.08516,
+      "direction": "front",
+      "description": "scan 559: 4.9°"
+    },
+    {
+      "scan_index": 560,
+      "angle_deg": 5.13,
+      "angle_rad": 0.08953,
+      "direction": "front",
+      "description": "scan 560: 5.1°"
+    },
+    {
+      "scan_index": 561,
+      "angle_deg": 5.38,
+      "angle_rad": 0.0939,
+      "direction": "front",
+      "description": "scan 561: 5.4°"
+    },
+    {
+      "scan_index": 562,
+      "angle_deg": 5.63,
+      "angle_rad": 0.09827,
+      "direction": "front",
+      "description": "scan 562: 5.6°"
+    },
+    {
+      "scan_index": 563,
+      "angle_deg": 5.88,
+      "angle_rad": 0.10263,
+      "direction": "front",
+      "description": "scan 563: 5.9°"
+    },
+    {
+      "scan_index": 564,
+      "angle_deg": 6.131,
+      "angle_rad": 0.107,
+      "direction": "front",
+      "description": "scan 564: 6.1°"
+    },
+    {
+      "scan_index": 565,
+      "angle_deg": 6.381,
+      "angle_rad": 0.11137,
+      "direction": "front",
+      "description": "scan 565: 6.4°"
+    },
+    {
+      "scan_index": 566,
+      "angle_deg": 6.631,
+      "angle_rad": 0.11574,
+      "direction": "front",
+      "description": "scan 566: 6.6°"
+    },
+    {
+      "scan_index": 567,
+      "angle_deg": 6.881,
+      "angle_rad": 0.1201,
+      "direction": "front",
+      "description": "scan 567: 6.9°"
+    },
+    {
+      "scan_index": 568,
+      "angle_deg": 7.132,
+      "angle_rad": 0.12447,
+      "direction": "front",
+      "description": "scan 568: 7.1°"
+    },
+    {
+      "scan_index": 569,
+      "angle_deg": 7.382,
+      "angle_rad": 0.12884,
+      "direction": "front",
+      "description": "scan 569: 7.4°"
+    },
+    {
+      "scan_index": 570,
+      "angle_deg": 7.632,
+      "angle_rad": 0.1332,
+      "direction": "front",
+      "description": "scan 570: 7.6°"
+    },
+    {
+      "scan_index": 571,
+      "angle_deg": 7.882,
+      "angle_rad": 0.13757,
+      "direction": "front",
+      "description": "scan 571: 7.9°"
+    },
+    {
+      "scan_index": 572,
+      "angle_deg": 8.133,
+      "angle_rad": 0.14194,
+      "direction": "front",
+      "description": "scan 572: 8.1°"
+    },
+    {
+      "scan_index": 573,
+      "angle_deg": 8.383,
+      "angle_rad": 0.14631,
+      "direction": "front",
+      "description": "scan 573: 8.4°"
+    },
+    {
+      "scan_index": 574,
+      "angle_deg": 8.633,
+      "angle_rad": 0.15067,
+      "direction": "front",
+      "description": "scan 574: 8.6°"
+    },
+    {
+      "scan_index": 575,
+      "angle_deg": 8.883,
+      "angle_rad": 0.15504,
+      "direction": "front",
+      "description": "scan 575: 8.9°"
+    },
+    {
+      "scan_index": 576,
+      "angle_deg": 9.133,
+      "angle_rad": 0.15941,
+      "direction": "front",
+      "description": "scan 576: 9.1°"
+    },
+    {
+      "scan_index": 577,
+      "angle_deg": 9.384,
+      "angle_rad": 0.16378,
+      "direction": "front",
+      "description": "scan 577: 9.4°"
+    },
+    {
+      "scan_index": 578,
+      "angle_deg": 9.634,
+      "angle_rad": 0.16814,
+      "direction": "front",
+      "description": "scan 578: 9.6°"
+    },
+    {
+      "scan_index": 579,
+      "angle_deg": 9.884,
+      "angle_rad": 0.17251,
+      "direction": "front",
+      "description": "scan 579: 9.9°"
+    },
+    {
+      "scan_index": 580,
+      "angle_deg": 10.134,
+      "angle_rad": 0.17688,
+      "direction": "front",
+      "description": "scan 580: 10.1°"
+    },
+    {
+      "scan_index": 581,
+      "angle_deg": 10.385,
+      "angle_rad": 0.18125,
+      "direction": "front",
+      "description": "scan 581: 10.4°"
+    },
+    {
+      "scan_index": 582,
+      "angle_deg": 10.635,
+      "angle_rad": 0.18561,
+      "direction": "front",
+      "description": "scan 582: 10.6°"
+    },
+    {
+      "scan_index": 583,
+      "angle_deg": 10.885,
+      "angle_rad": 0.18998,
+      "direction": "front",
+      "description": "scan 583: 10.9°"
+    },
+    {
+      "scan_index": 584,
+      "angle_deg": 11.135,
+      "angle_rad": 0.19435,
+      "direction": "front",
+      "description": "scan 584: 11.1°"
+    },
+    {
+      "scan_index": 585,
+      "angle_deg": 11.386,
+      "angle_rad": 0.19872,
+      "direction": "front",
+      "description": "scan 585: 11.4°"
+    },
+    {
+      "scan_index": 586,
+      "angle_deg": 11.636,
+      "angle_rad": 0.20308,
+      "direction": "front",
+      "description": "scan 586: 11.6°"
+    },
+    {
+      "scan_index": 587,
+      "angle_deg": 11.886,
+      "angle_rad": 0.20745,
+      "direction": "front",
+      "description": "scan 587: 11.9°"
+    },
+    {
+      "scan_index": 588,
+      "angle_deg": 12.136,
+      "angle_rad": 0.21182,
+      "direction": "front",
+      "description": "scan 588: 12.1°"
+    },
+    {
+      "scan_index": 589,
+      "angle_deg": 12.386,
+      "angle_rad": 0.21618,
+      "direction": "front",
+      "description": "scan 589: 12.4°"
+    },
+    {
+      "scan_index": 590,
+      "angle_deg": 12.637,
+      "angle_rad": 0.22055,
+      "direction": "front",
+      "description": "scan 590: 12.6°"
+    },
+    {
+      "scan_index": 591,
+      "angle_deg": 12.887,
+      "angle_rad": 0.22492,
+      "direction": "front",
+      "description": "scan 591: 12.9°"
+    },
+    {
+      "scan_index": 592,
+      "angle_deg": 13.137,
+      "angle_rad": 0.22929,
+      "direction": "front",
+      "description": "scan 592: 13.1°"
+    },
+    {
+      "scan_index": 593,
+      "angle_deg": 13.387,
+      "angle_rad": 0.23365,
+      "direction": "front",
+      "description": "scan 593: 13.4°"
+    },
+    {
+      "scan_index": 594,
+      "angle_deg": 13.638,
+      "angle_rad": 0.23802,
+      "direction": "front",
+      "description": "scan 594: 13.6°"
+    },
+    {
+      "scan_index": 595,
+      "angle_deg": 13.888,
+      "angle_rad": 0.24239,
+      "direction": "front",
+      "description": "scan 595: 13.9°"
+    },
+    {
+      "scan_index": 596,
+      "angle_deg": 14.138,
+      "angle_rad": 0.24676,
+      "direction": "front",
+      "description": "scan 596: 14.1°"
+    },
+    {
+      "scan_index": 597,
+      "angle_deg": 14.388,
+      "angle_rad": 0.25112,
+      "direction": "front",
+      "description": "scan 597: 14.4°"
+    },
+    {
+      "scan_index": 598,
+      "angle_deg": 14.639,
+      "angle_rad": 0.25549,
+      "direction": "front",
+      "description": "scan 598: 14.6°"
+    },
+    {
+      "scan_index": 599,
+      "angle_deg": 14.889,
+      "angle_rad": 0.25986,
+      "direction": "front",
+      "description": "scan 599: 14.9°"
+    },
+    {
+      "scan_index": 600,
+      "angle_deg": 15.139,
+      "angle_rad": 0.26423,
+      "direction": "front",
+      "description": "scan 600: 15.1°"
+    },
+    {
+      "scan_index": 601,
+      "angle_deg": 15.389,
+      "angle_rad": 0.26859,
+      "direction": "front",
+      "description": "scan 601: 15.4°"
+    },
+    {
+      "scan_index": 602,
+      "angle_deg": 15.639,
+      "angle_rad": 0.27296,
+      "direction": "front",
+      "description": "scan 602: 15.6°"
+    },
+    {
+      "scan_index": 603,
+      "angle_deg": 15.89,
+      "angle_rad": 0.27733,
+      "direction": "front",
+      "description": "scan 603: 15.9°"
+    },
+    {
+      "scan_index": 604,
+      "angle_deg": 16.14,
+      "angle_rad": 0.2817,
+      "direction": "front",
+      "description": "scan 604: 16.1°"
+    },
+    {
+      "scan_index": 605,
+      "angle_deg": 16.39,
+      "angle_rad": 0.28606,
+      "direction": "front",
+      "description": "scan 605: 16.4°"
+    },
+    {
+      "scan_index": 606,
+      "angle_deg": 16.64,
+      "angle_rad": 0.29043,
+      "direction": "front",
+      "description": "scan 606: 16.6°"
+    },
+    {
+      "scan_index": 607,
+      "angle_deg": 16.891,
+      "angle_rad": 0.2948,
+      "direction": "front",
+      "description": "scan 607: 16.9°"
+    },
+    {
+      "scan_index": 608,
+      "angle_deg": 17.141,
+      "angle_rad": 0.29916,
+      "direction": "front",
+      "description": "scan 608: 17.1°"
+    },
+    {
+      "scan_index": 609,
+      "angle_deg": 17.391,
+      "angle_rad": 0.30353,
+      "direction": "front",
+      "description": "scan 609: 17.4°"
+    },
+    {
+      "scan_index": 610,
+      "angle_deg": 17.641,
+      "angle_rad": 0.3079,
+      "direction": "front",
+      "description": "scan 610: 17.6°"
+    },
+    {
+      "scan_index": 611,
+      "angle_deg": 17.892,
+      "angle_rad": 0.31227,
+      "direction": "front",
+      "description": "scan 611: 17.9°"
+    },
+    {
+      "scan_index": 612,
+      "angle_deg": 18.142,
+      "angle_rad": 0.31663,
+      "direction": "front",
+      "description": "scan 612: 18.1°"
+    },
+    {
+      "scan_index": 613,
+      "angle_deg": 18.392,
+      "angle_rad": 0.321,
+      "direction": "front",
+      "description": "scan 613: 18.4°"
+    },
+    {
+      "scan_index": 614,
+      "angle_deg": 18.642,
+      "angle_rad": 0.32537,
+      "direction": "front",
+      "description": "scan 614: 18.6°"
+    },
+    {
+      "scan_index": 615,
+      "angle_deg": 18.892,
+      "angle_rad": 0.32974,
+      "direction": "front",
+      "description": "scan 615: 18.9°"
+    },
+    {
+      "scan_index": 616,
+      "angle_deg": 19.143,
+      "angle_rad": 0.3341,
+      "direction": "front",
+      "description": "scan 616: 19.1°"
+    },
+    {
+      "scan_index": 617,
+      "angle_deg": 19.393,
+      "angle_rad": 0.33847,
+      "direction": "front",
+      "description": "scan 617: 19.4°"
+    },
+    {
+      "scan_index": 618,
+      "angle_deg": 19.643,
+      "angle_rad": 0.34284,
+      "direction": "front",
+      "description": "scan 618: 19.6°"
+    },
+    {
+      "scan_index": 619,
+      "angle_deg": 19.893,
+      "angle_rad": 0.34721,
+      "direction": "front",
+      "description": "scan 619: 19.9°"
+    },
+    {
+      "scan_index": 620,
+      "angle_deg": 20.144,
+      "angle_rad": 0.35157,
+      "direction": "front",
+      "description": "scan 620: 20.1°"
+    },
+    {
+      "scan_index": 621,
+      "angle_deg": 20.394,
+      "angle_rad": 0.35594,
+      "direction": "front",
+      "description": "scan 621: 20.4°"
+    },
+    {
+      "scan_index": 622,
+      "angle_deg": 20.644,
+      "angle_rad": 0.36031,
+      "direction": "front",
+      "description": "scan 622: 20.6°"
+    },
+    {
+      "scan_index": 623,
+      "angle_deg": 20.894,
+      "angle_rad": 0.36468,
+      "direction": "front",
+      "description": "scan 623: 20.9°"
+    },
+    {
+      "scan_index": 624,
+      "angle_deg": 21.145,
+      "angle_rad": 0.36904,
+      "direction": "front",
+      "description": "scan 624: 21.1°"
+    },
+    {
+      "scan_index": 625,
+      "angle_deg": 21.395,
+      "angle_rad": 0.37341,
+      "direction": "front",
+      "description": "scan 625: 21.4°"
+    },
+    {
+      "scan_index": 626,
+      "angle_deg": 21.645,
+      "angle_rad": 0.37778,
+      "direction": "front",
+      "description": "scan 626: 21.6°"
+    },
+    {
+      "scan_index": 627,
+      "angle_deg": 21.895,
+      "angle_rad": 0.38214,
+      "direction": "front",
+      "description": "scan 627: 21.9°"
+    },
+    {
+      "scan_index": 628,
+      "angle_deg": 22.146,
+      "angle_rad": 0.38651,
+      "direction": "front",
+      "description": "scan 628: 22.1°"
+    },
+    {
+      "scan_index": 629,
+      "angle_deg": 22.396,
+      "angle_rad": 0.39088,
+      "direction": "front",
+      "description": "scan 629: 22.4°"
+    },
+    {
+      "scan_index": 630,
+      "angle_deg": 22.646,
+      "angle_rad": 0.39525,
+      "direction": "front",
+      "description": "scan 630: 22.6°"
+    },
+    {
+      "scan_index": 631,
+      "angle_deg": 22.896,
+      "angle_rad": 0.39961,
+      "direction": "front",
+      "description": "scan 631: 22.9°"
+    },
+    {
+      "scan_index": 632,
+      "angle_deg": 23.146,
+      "angle_rad": 0.40398,
+      "direction": "front",
+      "description": "scan 632: 23.1°"
+    },
+    {
+      "scan_index": 633,
+      "angle_deg": 23.397,
+      "angle_rad": 0.40835,
+      "direction": "front",
+      "description": "scan 633: 23.4°"
+    },
+    {
+      "scan_index": 634,
+      "angle_deg": 23.647,
+      "angle_rad": 0.41272,
+      "direction": "front",
+      "description": "scan 634: 23.6°"
+    },
+    {
+      "scan_index": 635,
+      "angle_deg": 23.897,
+      "angle_rad": 0.41708,
+      "direction": "front",
+      "description": "scan 635: 23.9°"
+    },
+    {
+      "scan_index": 636,
+      "angle_deg": 24.147,
+      "angle_rad": 0.42145,
+      "direction": "front",
+      "description": "scan 636: 24.1°"
+    },
+    {
+      "scan_index": 637,
+      "angle_deg": 24.398,
+      "angle_rad": 0.42582,
+      "direction": "front",
+      "description": "scan 637: 24.4°"
+    },
+    {
+      "scan_index": 638,
+      "angle_deg": 24.648,
+      "angle_rad": 0.43019,
+      "direction": "front",
+      "description": "scan 638: 24.6°"
+    },
+    {
+      "scan_index": 639,
+      "angle_deg": 24.898,
+      "angle_rad": 0.43455,
+      "direction": "front",
+      "description": "scan 639: 24.9°"
+    },
+    {
+      "scan_index": 640,
+      "angle_deg": 25.148,
+      "angle_rad": 0.43892,
+      "direction": "front",
+      "description": "scan 640: 25.1°"
+    },
+    {
+      "scan_index": 641,
+      "angle_deg": 25.399,
+      "angle_rad": 0.44329,
+      "direction": "front",
+      "description": "scan 641: 25.4°"
+    },
+    {
+      "scan_index": 642,
+      "angle_deg": 25.649,
+      "angle_rad": 0.44766,
+      "direction": "front",
+      "description": "scan 642: 25.6°"
+    },
+    {
+      "scan_index": 643,
+      "angle_deg": 25.899,
+      "angle_rad": 0.45202,
+      "direction": "front",
+      "description": "scan 643: 25.9°"
+    },
+    {
+      "scan_index": 644,
+      "angle_deg": 26.149,
+      "angle_rad": 0.45639,
+      "direction": "front",
+      "description": "scan 644: 26.1°"
+    },
+    {
+      "scan_index": 645,
+      "angle_deg": 26.399,
+      "angle_rad": 0.46076,
+      "direction": "front",
+      "description": "scan 645: 26.4°"
+    },
+    {
+      "scan_index": 646,
+      "angle_deg": 26.65,
+      "angle_rad": 0.46512,
+      "direction": "front",
+      "description": "scan 646: 26.6°"
+    },
+    {
+      "scan_index": 647,
+      "angle_deg": 26.9,
+      "angle_rad": 0.46949,
+      "direction": "front",
+      "description": "scan 647: 26.9°"
+    },
+    {
+      "scan_index": 648,
+      "angle_deg": 27.15,
+      "angle_rad": 0.47386,
+      "direction": "front",
+      "description": "scan 648: 27.2°"
+    },
+    {
+      "scan_index": 649,
+      "angle_deg": 27.4,
+      "angle_rad": 0.47823,
+      "direction": "front",
+      "description": "scan 649: 27.4°"
+    },
+    {
+      "scan_index": 650,
+      "angle_deg": 27.651,
+      "angle_rad": 0.48259,
+      "direction": "front",
+      "description": "scan 650: 27.7°"
+    },
+    {
+      "scan_index": 651,
+      "angle_deg": 27.901,
+      "angle_rad": 0.48696,
+      "direction": "front",
+      "description": "scan 651: 27.9°"
+    },
+    {
+      "scan_index": 652,
+      "angle_deg": 28.151,
+      "angle_rad": 0.49133,
+      "direction": "front",
+      "description": "scan 652: 28.2°"
+    },
+    {
+      "scan_index": 653,
+      "angle_deg": 28.401,
+      "angle_rad": 0.4957,
+      "direction": "front",
+      "description": "scan 653: 28.4°"
+    },
+    {
+      "scan_index": 654,
+      "angle_deg": 28.652,
+      "angle_rad": 0.50006,
+      "direction": "front",
+      "description": "scan 654: 28.7°"
+    },
+    {
+      "scan_index": 655,
+      "angle_deg": 28.902,
+      "angle_rad": 0.50443,
+      "direction": "front",
+      "description": "scan 655: 28.9°"
+    },
+    {
+      "scan_index": 656,
+      "angle_deg": 29.152,
+      "angle_rad": 0.5088,
+      "direction": "front",
+      "description": "scan 656: 29.2°"
+    },
+    {
+      "scan_index": 657,
+      "angle_deg": 29.402,
+      "angle_rad": 0.51317,
+      "direction": "front",
+      "description": "scan 657: 29.4°"
+    },
+    {
+      "scan_index": 658,
+      "angle_deg": 29.652,
+      "angle_rad": 0.51753,
+      "direction": "front",
+      "description": "scan 658: 29.7°"
+    },
+    {
+      "scan_index": 659,
+      "angle_deg": 29.903,
+      "angle_rad": 0.5219,
+      "direction": "front",
+      "description": "scan 659: 29.9°"
+    },
+    {
+      "scan_index": 660,
+      "angle_deg": 30.153,
+      "angle_rad": 0.52627,
+      "direction": "front",
+      "description": "scan 660: 30.2°"
+    },
+    {
+      "scan_index": 661,
+      "angle_deg": 30.403,
+      "angle_rad": 0.53064,
+      "direction": "front",
+      "description": "scan 661: 30.4°"
+    },
+    {
+      "scan_index": 662,
+      "angle_deg": 30.653,
+      "angle_rad": 0.535,
+      "direction": "front",
+      "description": "scan 662: 30.7°"
+    },
+    {
+      "scan_index": 663,
+      "angle_deg": 30.904,
+      "angle_rad": 0.53937,
+      "direction": "front",
+      "description": "scan 663: 30.9°"
+    },
+    {
+      "scan_index": 664,
+      "angle_deg": 31.154,
+      "angle_rad": 0.54374,
+      "direction": "front",
+      "description": "scan 664: 31.2°"
+    },
+    {
+      "scan_index": 665,
+      "angle_deg": 31.404,
+      "angle_rad": 0.5481,
+      "direction": "front",
+      "description": "scan 665: 31.4°"
+    },
+    {
+      "scan_index": 666,
+      "angle_deg": 31.654,
+      "angle_rad": 0.55247,
+      "direction": "front",
+      "description": "scan 666: 31.7°"
+    },
+    {
+      "scan_index": 667,
+      "angle_deg": 31.905,
+      "angle_rad": 0.55684,
+      "direction": "front",
+      "description": "scan 667: 31.9°"
+    },
+    {
+      "scan_index": 668,
+      "angle_deg": 32.155,
+      "angle_rad": 0.56121,
+      "direction": "front",
+      "description": "scan 668: 32.2°"
+    },
+    {
+      "scan_index": 669,
+      "angle_deg": 32.405,
+      "angle_rad": 0.56557,
+      "direction": "front",
+      "description": "scan 669: 32.4°"
+    },
+    {
+      "scan_index": 670,
+      "angle_deg": 32.655,
+      "angle_rad": 0.56994,
+      "direction": "front",
+      "description": "scan 670: 32.7°"
+    },
+    {
+      "scan_index": 671,
+      "angle_deg": 32.905,
+      "angle_rad": 0.57431,
+      "direction": "front",
+      "description": "scan 671: 32.9°"
+    },
+    {
+      "scan_index": 672,
+      "angle_deg": 33.156,
+      "angle_rad": 0.57868,
+      "direction": "front",
+      "description": "scan 672: 33.2°"
+    },
+    {
+      "scan_index": 673,
+      "angle_deg": 33.406,
+      "angle_rad": 0.58304,
+      "direction": "front",
+      "description": "scan 673: 33.4°"
+    },
+    {
+      "scan_index": 674,
+      "angle_deg": 33.656,
+      "angle_rad": 0.58741,
+      "direction": "front",
+      "description": "scan 674: 33.7°"
+    },
+    {
+      "scan_index": 675,
+      "angle_deg": 33.906,
+      "angle_rad": 0.59178,
+      "direction": "front",
+      "description": "scan 675: 33.9°"
+    },
+    {
+      "scan_index": 676,
+      "angle_deg": 34.157,
+      "angle_rad": 0.59615,
+      "direction": "front",
+      "description": "scan 676: 34.2°"
+    },
+    {
+      "scan_index": 677,
+      "angle_deg": 34.407,
+      "angle_rad": 0.60051,
+      "direction": "front",
+      "description": "scan 677: 34.4°"
+    },
+    {
+      "scan_index": 678,
+      "angle_deg": 34.657,
+      "angle_rad": 0.60488,
+      "direction": "front",
+      "description": "scan 678: 34.7°"
+    },
+    {
+      "scan_index": 679,
+      "angle_deg": 34.907,
+      "angle_rad": 0.60925,
+      "direction": "front",
+      "description": "scan 679: 34.9°"
+    },
+    {
+      "scan_index": 680,
+      "angle_deg": 35.158,
+      "angle_rad": 0.61362,
+      "direction": "front",
+      "description": "scan 680: 35.2°"
+    },
+    {
+      "scan_index": 681,
+      "angle_deg": 35.408,
+      "angle_rad": 0.61798,
+      "direction": "front",
+      "description": "scan 681: 35.4°"
+    },
+    {
+      "scan_index": 682,
+      "angle_deg": 35.658,
+      "angle_rad": 0.62235,
+      "direction": "front",
+      "description": "scan 682: 35.7°"
+    },
+    {
+      "scan_index": 683,
+      "angle_deg": 35.908,
+      "angle_rad": 0.62672,
+      "direction": "front",
+      "description": "scan 683: 35.9°"
+    },
+    {
+      "scan_index": 684,
+      "angle_deg": 36.158,
+      "angle_rad": 0.63108,
+      "direction": "front",
+      "description": "scan 684: 36.2°"
+    },
+    {
+      "scan_index": 685,
+      "angle_deg": 36.409,
+      "angle_rad": 0.63545,
+      "direction": "front",
+      "description": "scan 685: 36.4°"
+    },
+    {
+      "scan_index": 686,
+      "angle_deg": 36.659,
+      "angle_rad": 0.63982,
+      "direction": "front",
+      "description": "scan 686: 36.7°"
+    },
+    {
+      "scan_index": 687,
+      "angle_deg": 36.909,
+      "angle_rad": 0.64419,
+      "direction": "front",
+      "description": "scan 687: 36.9°"
+    },
+    {
+      "scan_index": 688,
+      "angle_deg": 37.159,
+      "angle_rad": 0.64855,
+      "direction": "front",
+      "description": "scan 688: 37.2°"
+    },
+    {
+      "scan_index": 689,
+      "angle_deg": 37.41,
+      "angle_rad": 0.65292,
+      "direction": "front",
+      "description": "scan 689: 37.4°"
+    },
+    {
+      "scan_index": 690,
+      "angle_deg": 37.66,
+      "angle_rad": 0.65729,
+      "direction": "front",
+      "description": "scan 690: 37.7°"
+    },
+    {
+      "scan_index": 691,
+      "angle_deg": 37.91,
+      "angle_rad": 0.66166,
+      "direction": "front",
+      "description": "scan 691: 37.9°"
+    },
+    {
+      "scan_index": 692,
+      "angle_deg": 38.16,
+      "angle_rad": 0.66602,
+      "direction": "front",
+      "description": "scan 692: 38.2°"
+    },
+    {
+      "scan_index": 693,
+      "angle_deg": 38.411,
+      "angle_rad": 0.67039,
+      "direction": "front",
+      "description": "scan 693: 38.4°"
+    },
+    {
+      "scan_index": 694,
+      "angle_deg": 38.661,
+      "angle_rad": 0.67476,
+      "direction": "front",
+      "description": "scan 694: 38.7°"
+    },
+    {
+      "scan_index": 695,
+      "angle_deg": 38.911,
+      "angle_rad": 0.67913,
+      "direction": "front",
+      "description": "scan 695: 38.9°"
+    },
+    {
+      "scan_index": 696,
+      "angle_deg": 39.161,
+      "angle_rad": 0.68349,
+      "direction": "front",
+      "description": "scan 696: 39.2°"
+    },
+    {
+      "scan_index": 697,
+      "angle_deg": 39.411,
+      "angle_rad": 0.68786,
+      "direction": "front",
+      "description": "scan 697: 39.4°"
+    },
+    {
+      "scan_index": 698,
+      "angle_deg": 39.662,
+      "angle_rad": 0.69223,
+      "direction": "front",
+      "description": "scan 698: 39.7°"
+    },
+    {
+      "scan_index": 699,
+      "angle_deg": 39.912,
+      "angle_rad": 0.6966,
+      "direction": "front",
+      "description": "scan 699: 39.9°"
+    },
+    {
+      "scan_index": 700,
+      "angle_deg": 40.162,
+      "angle_rad": 0.70096,
+      "direction": "front",
+      "description": "scan 700: 40.2°"
+    },
+    {
+      "scan_index": 701,
+      "angle_deg": 40.412,
+      "angle_rad": 0.70533,
+      "direction": "front",
+      "description": "scan 701: 40.4°"
+    },
+    {
+      "scan_index": 702,
+      "angle_deg": 40.663,
+      "angle_rad": 0.7097,
+      "direction": "front",
+      "description": "scan 702: 40.7°"
+    },
+    {
+      "scan_index": 703,
+      "angle_deg": 40.913,
+      "angle_rad": 0.71406,
+      "direction": "front",
+      "description": "scan 703: 40.9°"
+    },
+    {
+      "scan_index": 704,
+      "angle_deg": 41.163,
+      "angle_rad": 0.71843,
+      "direction": "front",
+      "description": "scan 704: 41.2°"
+    },
+    {
+      "scan_index": 705,
+      "angle_deg": 41.413,
+      "angle_rad": 0.7228,
+      "direction": "front",
+      "description": "scan 705: 41.4°"
+    },
+    {
+      "scan_index": 706,
+      "angle_deg": 41.664,
+      "angle_rad": 0.72717,
+      "direction": "front",
+      "description": "scan 706: 41.7°"
+    },
+    {
+      "scan_index": 707,
+      "angle_deg": 41.914,
+      "angle_rad": 0.73153,
+      "direction": "front",
+      "description": "scan 707: 41.9°"
+    },
+    {
+      "scan_index": 708,
+      "angle_deg": 42.164,
+      "angle_rad": 0.7359,
+      "direction": "front",
+      "description": "scan 708: 42.2°"
+    },
+    {
+      "scan_index": 709,
+      "angle_deg": 42.414,
+      "angle_rad": 0.74027,
+      "direction": "front",
+      "description": "scan 709: 42.4°"
+    },
+    {
+      "scan_index": 710,
+      "angle_deg": 42.665,
+      "angle_rad": 0.74464,
+      "direction": "front",
+      "description": "scan 710: 42.7°"
+    },
+    {
+      "scan_index": 711,
+      "angle_deg": 42.915,
+      "angle_rad": 0.749,
+      "direction": "front",
+      "description": "scan 711: 42.9°"
+    },
+    {
+      "scan_index": 712,
+      "angle_deg": 43.165,
+      "angle_rad": 0.75337,
+      "direction": "front",
+      "description": "scan 712: 43.2°"
+    },
+    {
+      "scan_index": 713,
+      "angle_deg": 43.415,
+      "angle_rad": 0.75774,
+      "direction": "front",
+      "description": "scan 713: 43.4°"
+    },
+    {
+      "scan_index": 714,
+      "angle_deg": 43.665,
+      "angle_rad": 0.76211,
+      "direction": "front",
+      "description": "scan 714: 43.7°"
+    },
+    {
+      "scan_index": 715,
+      "angle_deg": 43.916,
+      "angle_rad": 0.76647,
+      "direction": "front",
+      "description": "scan 715: 43.9°"
+    },
+    {
+      "scan_index": 716,
+      "angle_deg": 44.166,
+      "angle_rad": 0.77084,
+      "direction": "front",
+      "description": "scan 716: 44.2°"
+    },
+    {
+      "scan_index": 717,
+      "angle_deg": 44.416,
+      "angle_rad": 0.77521,
+      "direction": "front",
+      "description": "scan 717: 44.4°"
+    },
+    {
+      "scan_index": 718,
+      "angle_deg": 44.666,
+      "angle_rad": 0.77958,
+      "direction": "front",
+      "description": "scan 718: 44.7°"
+    },
+    {
+      "scan_index": 719,
+      "angle_deg": 44.917,
+      "angle_rad": 0.78394,
+      "direction": "front",
+      "description": "scan 719: 44.9°"
+    },
+    {
+      "scan_index": 720,
+      "angle_deg": 45.167,
+      "angle_rad": 0.78831,
+      "direction": "left",
+      "description": "scan 720: 45.2°"
+    },
+    {
+      "scan_index": 721,
+      "angle_deg": 45.417,
+      "angle_rad": 0.79268,
+      "direction": "left",
+      "description": "scan 721: 45.4°"
+    },
+    {
+      "scan_index": 722,
+      "angle_deg": 45.667,
+      "angle_rad": 0.79704,
+      "direction": "left",
+      "description": "scan 722: 45.7°"
+    },
+    {
+      "scan_index": 723,
+      "angle_deg": 45.918,
+      "angle_rad": 0.80141,
+      "direction": "left",
+      "description": "scan 723: 45.9°"
+    },
+    {
+      "scan_index": 724,
+      "angle_deg": 46.168,
+      "angle_rad": 0.80578,
+      "direction": "left",
+      "description": "scan 724: 46.2°"
+    },
+    {
+      "scan_index": 725,
+      "angle_deg": 46.418,
+      "angle_rad": 0.81015,
+      "direction": "left",
+      "description": "scan 725: 46.4°"
+    },
+    {
+      "scan_index": 726,
+      "angle_deg": 46.668,
+      "angle_rad": 0.81451,
+      "direction": "left",
+      "description": "scan 726: 46.7°"
+    },
+    {
+      "scan_index": 727,
+      "angle_deg": 46.918,
+      "angle_rad": 0.81888,
+      "direction": "left",
+      "description": "scan 727: 46.9°"
+    },
+    {
+      "scan_index": 728,
+      "angle_deg": 47.169,
+      "angle_rad": 0.82325,
+      "direction": "left",
+      "description": "scan 728: 47.2°"
+    },
+    {
+      "scan_index": 729,
+      "angle_deg": 47.419,
+      "angle_rad": 0.82762,
+      "direction": "left",
+      "description": "scan 729: 47.4°"
+    },
+    {
+      "scan_index": 730,
+      "angle_deg": 47.669,
+      "angle_rad": 0.83198,
+      "direction": "left",
+      "description": "scan 730: 47.7°"
+    },
+    {
+      "scan_index": 731,
+      "angle_deg": 47.919,
+      "angle_rad": 0.83635,
+      "direction": "left",
+      "description": "scan 731: 47.9°"
+    },
+    {
+      "scan_index": 732,
+      "angle_deg": 48.17,
+      "angle_rad": 0.84072,
+      "direction": "left",
+      "description": "scan 732: 48.2°"
+    },
+    {
+      "scan_index": 733,
+      "angle_deg": 48.42,
+      "angle_rad": 0.84509,
+      "direction": "left",
+      "description": "scan 733: 48.4°"
+    },
+    {
+      "scan_index": 734,
+      "angle_deg": 48.67,
+      "angle_rad": 0.84945,
+      "direction": "left",
+      "description": "scan 734: 48.7°"
+    },
+    {
+      "scan_index": 735,
+      "angle_deg": 48.92,
+      "angle_rad": 0.85382,
+      "direction": "left",
+      "description": "scan 735: 48.9°"
+    },
+    {
+      "scan_index": 736,
+      "angle_deg": 49.171,
+      "angle_rad": 0.85819,
+      "direction": "left",
+      "description": "scan 736: 49.2°"
+    },
+    {
+      "scan_index": 737,
+      "angle_deg": 49.421,
+      "angle_rad": 0.86255,
+      "direction": "left",
+      "description": "scan 737: 49.4°"
+    },
+    {
+      "scan_index": 738,
+      "angle_deg": 49.671,
+      "angle_rad": 0.86692,
+      "direction": "left",
+      "description": "scan 738: 49.7°"
+    },
+    {
+      "scan_index": 739,
+      "angle_deg": 49.921,
+      "angle_rad": 0.87129,
+      "direction": "left",
+      "description": "scan 739: 49.9°"
+    },
+    {
+      "scan_index": 740,
+      "angle_deg": 50.171,
+      "angle_rad": 0.87566,
+      "direction": "left",
+      "description": "scan 740: 50.2°"
+    },
+    {
+      "scan_index": 741,
+      "angle_deg": 50.422,
+      "angle_rad": 0.88002,
+      "direction": "left",
+      "description": "scan 741: 50.4°"
+    },
+    {
+      "scan_index": 742,
+      "angle_deg": 50.672,
+      "angle_rad": 0.88439,
+      "direction": "left",
+      "description": "scan 742: 50.7°"
+    },
+    {
+      "scan_index": 743,
+      "angle_deg": 50.922,
+      "angle_rad": 0.88876,
+      "direction": "left",
+      "description": "scan 743: 50.9°"
+    },
+    {
+      "scan_index": 744,
+      "angle_deg": 51.172,
+      "angle_rad": 0.89313,
+      "direction": "left",
+      "description": "scan 744: 51.2°"
+    },
+    {
+      "scan_index": 745,
+      "angle_deg": 51.423,
+      "angle_rad": 0.89749,
+      "direction": "left",
+      "description": "scan 745: 51.4°"
+    },
+    {
+      "scan_index": 746,
+      "angle_deg": 51.673,
+      "angle_rad": 0.90186,
+      "direction": "left",
+      "description": "scan 746: 51.7°"
+    },
+    {
+      "scan_index": 747,
+      "angle_deg": 51.923,
+      "angle_rad": 0.90623,
+      "direction": "left",
+      "description": "scan 747: 51.9°"
+    },
+    {
+      "scan_index": 748,
+      "angle_deg": 52.173,
+      "angle_rad": 0.9106,
+      "direction": "left",
+      "description": "scan 748: 52.2°"
+    },
+    {
+      "scan_index": 749,
+      "angle_deg": 52.424,
+      "angle_rad": 0.91496,
+      "direction": "left",
+      "description": "scan 749: 52.4°"
+    },
+    {
+      "scan_index": 750,
+      "angle_deg": 52.674,
+      "angle_rad": 0.91933,
+      "direction": "left",
+      "description": "scan 750: 52.7°"
+    },
+    {
+      "scan_index": 751,
+      "angle_deg": 52.924,
+      "angle_rad": 0.9237,
+      "direction": "left",
+      "description": "scan 751: 52.9°"
+    },
+    {
+      "scan_index": 752,
+      "angle_deg": 53.174,
+      "angle_rad": 0.92807,
+      "direction": "left",
+      "description": "scan 752: 53.2°"
+    },
+    {
+      "scan_index": 753,
+      "angle_deg": 53.424,
+      "angle_rad": 0.93243,
+      "direction": "left",
+      "description": "scan 753: 53.4°"
+    },
+    {
+      "scan_index": 754,
+      "angle_deg": 53.675,
+      "angle_rad": 0.9368,
+      "direction": "left",
+      "description": "scan 754: 53.7°"
+    },
+    {
+      "scan_index": 755,
+      "angle_deg": 53.925,
+      "angle_rad": 0.94117,
+      "direction": "left",
+      "description": "scan 755: 53.9°"
+    },
+    {
+      "scan_index": 756,
+      "angle_deg": 54.175,
+      "angle_rad": 0.94553,
+      "direction": "left",
+      "description": "scan 756: 54.2°"
+    },
+    {
+      "scan_index": 757,
+      "angle_deg": 54.425,
+      "angle_rad": 0.9499,
+      "direction": "left",
+      "description": "scan 757: 54.4°"
+    },
+    {
+      "scan_index": 758,
+      "angle_deg": 54.676,
+      "angle_rad": 0.95427,
+      "direction": "left",
+      "description": "scan 758: 54.7°"
+    },
+    {
+      "scan_index": 759,
+      "angle_deg": 54.926,
+      "angle_rad": 0.95864,
+      "direction": "left",
+      "description": "scan 759: 54.9°"
+    },
+    {
+      "scan_index": 760,
+      "angle_deg": 55.176,
+      "angle_rad": 0.963,
+      "direction": "left",
+      "description": "scan 760: 55.2°"
+    },
+    {
+      "scan_index": 761,
+      "angle_deg": 55.426,
+      "angle_rad": 0.96737,
+      "direction": "left",
+      "description": "scan 761: 55.4°"
+    },
+    {
+      "scan_index": 762,
+      "angle_deg": 55.677,
+      "angle_rad": 0.97174,
+      "direction": "left",
+      "description": "scan 762: 55.7°"
+    },
+    {
+      "scan_index": 763,
+      "angle_deg": 55.927,
+      "angle_rad": 0.97611,
+      "direction": "left",
+      "description": "scan 763: 55.9°"
+    },
+    {
+      "scan_index": 764,
+      "angle_deg": 56.177,
+      "angle_rad": 0.98047,
+      "direction": "left",
+      "description": "scan 764: 56.2°"
+    },
+    {
+      "scan_index": 765,
+      "angle_deg": 56.427,
+      "angle_rad": 0.98484,
+      "direction": "left",
+      "description": "scan 765: 56.4°"
+    },
+    {
+      "scan_index": 766,
+      "angle_deg": 56.677,
+      "angle_rad": 0.98921,
+      "direction": "left",
+      "description": "scan 766: 56.7°"
+    },
+    {
+      "scan_index": 767,
+      "angle_deg": 56.928,
+      "angle_rad": 0.99358,
+      "direction": "left",
+      "description": "scan 767: 56.9°"
+    },
+    {
+      "scan_index": 768,
+      "angle_deg": 57.178,
+      "angle_rad": 0.99794,
+      "direction": "left",
+      "description": "scan 768: 57.2°"
+    },
+    {
+      "scan_index": 769,
+      "angle_deg": 57.428,
+      "angle_rad": 1.00231,
+      "direction": "left",
+      "description": "scan 769: 57.4°"
+    },
+    {
+      "scan_index": 770,
+      "angle_deg": 57.678,
+      "angle_rad": 1.00668,
+      "direction": "left",
+      "description": "scan 770: 57.7°"
+    },
+    {
+      "scan_index": 771,
+      "angle_deg": 57.929,
+      "angle_rad": 1.01105,
+      "direction": "left",
+      "description": "scan 771: 57.9°"
+    },
+    {
+      "scan_index": 772,
+      "angle_deg": 58.179,
+      "angle_rad": 1.01541,
+      "direction": "left",
+      "description": "scan 772: 58.2°"
+    },
+    {
+      "scan_index": 773,
+      "angle_deg": 58.429,
+      "angle_rad": 1.01978,
+      "direction": "left",
+      "description": "scan 773: 58.4°"
+    },
+    {
+      "scan_index": 774,
+      "angle_deg": 58.679,
+      "angle_rad": 1.02415,
+      "direction": "left",
+      "description": "scan 774: 58.7°"
+    },
+    {
+      "scan_index": 775,
+      "angle_deg": 58.93,
+      "angle_rad": 1.02851,
+      "direction": "left",
+      "description": "scan 775: 58.9°"
+    },
+    {
+      "scan_index": 776,
+      "angle_deg": 59.18,
+      "angle_rad": 1.03288,
+      "direction": "left",
+      "description": "scan 776: 59.2°"
+    },
+    {
+      "scan_index": 777,
+      "angle_deg": 59.43,
+      "angle_rad": 1.03725,
+      "direction": "left",
+      "description": "scan 777: 59.4°"
+    },
+    {
+      "scan_index": 778,
+      "angle_deg": 59.68,
+      "angle_rad": 1.04162,
+      "direction": "left",
+      "description": "scan 778: 59.7°"
+    },
+    {
+      "scan_index": 779,
+      "angle_deg": 59.93,
+      "angle_rad": 1.04598,
+      "direction": "left",
+      "description": "scan 779: 59.9°"
+    },
+    {
+      "scan_index": 780,
+      "angle_deg": 60.181,
+      "angle_rad": 1.05035,
+      "direction": "left",
+      "description": "scan 780: 60.2°"
+    },
+    {
+      "scan_index": 781,
+      "angle_deg": 60.431,
+      "angle_rad": 1.05472,
+      "direction": "left",
+      "description": "scan 781: 60.4°"
+    },
+    {
+      "scan_index": 782,
+      "angle_deg": 60.681,
+      "angle_rad": 1.05909,
+      "direction": "left",
+      "description": "scan 782: 60.7°"
+    },
+    {
+      "scan_index": 783,
+      "angle_deg": 60.931,
+      "angle_rad": 1.06345,
+      "direction": "left",
+      "description": "scan 783: 60.9°"
+    },
+    {
+      "scan_index": 784,
+      "angle_deg": 61.182,
+      "angle_rad": 1.06782,
+      "direction": "left",
+      "description": "scan 784: 61.2°"
+    },
+    {
+      "scan_index": 785,
+      "angle_deg": 61.432,
+      "angle_rad": 1.07219,
+      "direction": "left",
+      "description": "scan 785: 61.4°"
+    },
+    {
+      "scan_index": 786,
+      "angle_deg": 61.682,
+      "angle_rad": 1.07656,
+      "direction": "left",
+      "description": "scan 786: 61.7°"
+    },
+    {
+      "scan_index": 787,
+      "angle_deg": 61.932,
+      "angle_rad": 1.08092,
+      "direction": "left",
+      "description": "scan 787: 61.9°"
+    },
+    {
+      "scan_index": 788,
+      "angle_deg": 62.183,
+      "angle_rad": 1.08529,
+      "direction": "left",
+      "description": "scan 788: 62.2°"
+    },
+    {
+      "scan_index": 789,
+      "angle_deg": 62.433,
+      "angle_rad": 1.08966,
+      "direction": "left",
+      "description": "scan 789: 62.4°"
+    },
+    {
+      "scan_index": 790,
+      "angle_deg": 62.683,
+      "angle_rad": 1.09403,
+      "direction": "left",
+      "description": "scan 790: 62.7°"
+    },
+    {
+      "scan_index": 791,
+      "angle_deg": 62.933,
+      "angle_rad": 1.09839,
+      "direction": "left",
+      "description": "scan 791: 62.9°"
+    },
+    {
+      "scan_index": 792,
+      "angle_deg": 63.184,
+      "angle_rad": 1.10276,
+      "direction": "left",
+      "description": "scan 792: 63.2°"
+    },
+    {
+      "scan_index": 793,
+      "angle_deg": 63.434,
+      "angle_rad": 1.10713,
+      "direction": "left",
+      "description": "scan 793: 63.4°"
+    },
+    {
+      "scan_index": 794,
+      "angle_deg": 63.684,
+      "angle_rad": 1.11149,
+      "direction": "left",
+      "description": "scan 794: 63.7°"
+    },
+    {
+      "scan_index": 795,
+      "angle_deg": 63.934,
+      "angle_rad": 1.11586,
+      "direction": "left",
+      "description": "scan 795: 63.9°"
+    },
+    {
+      "scan_index": 796,
+      "angle_deg": 64.184,
+      "angle_rad": 1.12023,
+      "direction": "left",
+      "description": "scan 796: 64.2°"
+    },
+    {
+      "scan_index": 797,
+      "angle_deg": 64.435,
+      "angle_rad": 1.1246,
+      "direction": "left",
+      "description": "scan 797: 64.4°"
+    },
+    {
+      "scan_index": 798,
+      "angle_deg": 64.685,
+      "angle_rad": 1.12896,
+      "direction": "left",
+      "description": "scan 798: 64.7°"
+    },
+    {
+      "scan_index": 799,
+      "angle_deg": 64.935,
+      "angle_rad": 1.13333,
+      "direction": "left",
+      "description": "scan 799: 64.9°"
+    },
+    {
+      "scan_index": 800,
+      "angle_deg": 65.185,
+      "angle_rad": 1.1377,
+      "direction": "left",
+      "description": "scan 800: 65.2°"
+    },
+    {
+      "scan_index": 801,
+      "angle_deg": 65.436,
+      "angle_rad": 1.14207,
+      "direction": "left",
+      "description": "scan 801: 65.4°"
+    },
+    {
+      "scan_index": 802,
+      "angle_deg": 65.686,
+      "angle_rad": 1.14643,
+      "direction": "left",
+      "description": "scan 802: 65.7°"
+    },
+    {
+      "scan_index": 803,
+      "angle_deg": 65.936,
+      "angle_rad": 1.1508,
+      "direction": "left",
+      "description": "scan 803: 65.9°"
+    },
+    {
+      "scan_index": 804,
+      "angle_deg": 66.186,
+      "angle_rad": 1.15517,
+      "direction": "left",
+      "description": "scan 804: 66.2°"
+    },
+    {
+      "scan_index": 805,
+      "angle_deg": 66.437,
+      "angle_rad": 1.15954,
+      "direction": "left",
+      "description": "scan 805: 66.4°"
+    },
+    {
+      "scan_index": 806,
+      "angle_deg": 66.687,
+      "angle_rad": 1.1639,
+      "direction": "left",
+      "description": "scan 806: 66.7°"
+    },
+    {
+      "scan_index": 807,
+      "angle_deg": 66.937,
+      "angle_rad": 1.16827,
+      "direction": "left",
+      "description": "scan 807: 66.9°"
+    },
+    {
+      "scan_index": 808,
+      "angle_deg": 67.187,
+      "angle_rad": 1.17264,
+      "direction": "left",
+      "description": "scan 808: 67.2°"
+    },
+    {
+      "scan_index": 809,
+      "angle_deg": 67.437,
+      "angle_rad": 1.17701,
+      "direction": "left",
+      "description": "scan 809: 67.4°"
+    },
+    {
+      "scan_index": 810,
+      "angle_deg": 67.688,
+      "angle_rad": 1.18137,
+      "direction": "left",
+      "description": "scan 810: 67.7°"
+    },
+    {
+      "scan_index": 811,
+      "angle_deg": 67.938,
+      "angle_rad": 1.18574,
+      "direction": "left",
+      "description": "scan 811: 67.9°"
+    },
+    {
+      "scan_index": 812,
+      "angle_deg": 68.188,
+      "angle_rad": 1.19011,
+      "direction": "left",
+      "description": "scan 812: 68.2°"
+    },
+    {
+      "scan_index": 813,
+      "angle_deg": 68.438,
+      "angle_rad": 1.19447,
+      "direction": "left",
+      "description": "scan 813: 68.4°"
+    },
+    {
+      "scan_index": 814,
+      "angle_deg": 68.689,
+      "angle_rad": 1.19884,
+      "direction": "left",
+      "description": "scan 814: 68.7°"
+    },
+    {
+      "scan_index": 815,
+      "angle_deg": 68.939,
+      "angle_rad": 1.20321,
+      "direction": "left",
+      "description": "scan 815: 68.9°"
+    },
+    {
+      "scan_index": 816,
+      "angle_deg": 69.189,
+      "angle_rad": 1.20758,
+      "direction": "left",
+      "description": "scan 816: 69.2°"
+    },
+    {
+      "scan_index": 817,
+      "angle_deg": 69.439,
+      "angle_rad": 1.21194,
+      "direction": "left",
+      "description": "scan 817: 69.4°"
+    },
+    {
+      "scan_index": 818,
+      "angle_deg": 69.69,
+      "angle_rad": 1.21631,
+      "direction": "left",
+      "description": "scan 818: 69.7°"
+    },
+    {
+      "scan_index": 819,
+      "angle_deg": 69.94,
+      "angle_rad": 1.22068,
+      "direction": "left",
+      "description": "scan 819: 69.9°"
+    },
+    {
+      "scan_index": 820,
+      "angle_deg": 70.19,
+      "angle_rad": 1.22505,
+      "direction": "left",
+      "description": "scan 820: 70.2°"
+    },
+    {
+      "scan_index": 821,
+      "angle_deg": 70.44,
+      "angle_rad": 1.22941,
+      "direction": "left",
+      "description": "scan 821: 70.4°"
+    },
+    {
+      "scan_index": 822,
+      "angle_deg": 70.69,
+      "angle_rad": 1.23378,
+      "direction": "left",
+      "description": "scan 822: 70.7°"
+    },
+    {
+      "scan_index": 823,
+      "angle_deg": 70.941,
+      "angle_rad": 1.23815,
+      "direction": "left",
+      "description": "scan 823: 70.9°"
+    },
+    {
+      "scan_index": 824,
+      "angle_deg": 71.191,
+      "angle_rad": 1.24252,
+      "direction": "left",
+      "description": "scan 824: 71.2°"
+    },
+    {
+      "scan_index": 825,
+      "angle_deg": 71.441,
+      "angle_rad": 1.24688,
+      "direction": "left",
+      "description": "scan 825: 71.4°"
+    },
+    {
+      "scan_index": 826,
+      "angle_deg": 71.691,
+      "angle_rad": 1.25125,
+      "direction": "left",
+      "description": "scan 826: 71.7°"
+    },
+    {
+      "scan_index": 827,
+      "angle_deg": 71.942,
+      "angle_rad": 1.25562,
+      "direction": "left",
+      "description": "scan 827: 71.9°"
+    },
+    {
+      "scan_index": 828,
+      "angle_deg": 72.192,
+      "angle_rad": 1.25999,
+      "direction": "left",
+      "description": "scan 828: 72.2°"
+    },
+    {
+      "scan_index": 829,
+      "angle_deg": 72.442,
+      "angle_rad": 1.26435,
+      "direction": "left",
+      "description": "scan 829: 72.4°"
+    },
+    {
+      "scan_index": 830,
+      "angle_deg": 72.692,
+      "angle_rad": 1.26872,
+      "direction": "left",
+      "description": "scan 830: 72.7°"
+    },
+    {
+      "scan_index": 831,
+      "angle_deg": 72.943,
+      "angle_rad": 1.27309,
+      "direction": "left",
+      "description": "scan 831: 72.9°"
+    },
+    {
+      "scan_index": 832,
+      "angle_deg": 73.193,
+      "angle_rad": 1.27745,
+      "direction": "left",
+      "description": "scan 832: 73.2°"
+    },
+    {
+      "scan_index": 833,
+      "angle_deg": 73.443,
+      "angle_rad": 1.28182,
+      "direction": "left",
+      "description": "scan 833: 73.4°"
+    },
+    {
+      "scan_index": 834,
+      "angle_deg": 73.693,
+      "angle_rad": 1.28619,
+      "direction": "left",
+      "description": "scan 834: 73.7°"
+    },
+    {
+      "scan_index": 835,
+      "angle_deg": 73.943,
+      "angle_rad": 1.29056,
+      "direction": "left",
+      "description": "scan 835: 73.9°"
+    },
+    {
+      "scan_index": 836,
+      "angle_deg": 74.194,
+      "angle_rad": 1.29492,
+      "direction": "left",
+      "description": "scan 836: 74.2°"
+    },
+    {
+      "scan_index": 837,
+      "angle_deg": 74.444,
+      "angle_rad": 1.29929,
+      "direction": "left",
+      "description": "scan 837: 74.4°"
+    },
+    {
+      "scan_index": 838,
+      "angle_deg": 74.694,
+      "angle_rad": 1.30366,
+      "direction": "left",
+      "description": "scan 838: 74.7°"
+    },
+    {
+      "scan_index": 839,
+      "angle_deg": 74.944,
+      "angle_rad": 1.30803,
+      "direction": "left",
+      "description": "scan 839: 74.9°"
+    },
+    {
+      "scan_index": 840,
+      "angle_deg": 75.195,
+      "angle_rad": 1.31239,
+      "direction": "left",
+      "description": "scan 840: 75.2°"
+    },
+    {
+      "scan_index": 841,
+      "angle_deg": 75.445,
+      "angle_rad": 1.31676,
+      "direction": "left",
+      "description": "scan 841: 75.4°"
+    },
+    {
+      "scan_index": 842,
+      "angle_deg": 75.695,
+      "angle_rad": 1.32113,
+      "direction": "left",
+      "description": "scan 842: 75.7°"
+    },
+    {
+      "scan_index": 843,
+      "angle_deg": 75.945,
+      "angle_rad": 1.3255,
+      "direction": "left",
+      "description": "scan 843: 75.9°"
+    },
+    {
+      "scan_index": 844,
+      "angle_deg": 76.196,
+      "angle_rad": 1.32986,
+      "direction": "left",
+      "description": "scan 844: 76.2°"
+    },
+    {
+      "scan_index": 845,
+      "angle_deg": 76.446,
+      "angle_rad": 1.33423,
+      "direction": "left",
+      "description": "scan 845: 76.4°"
+    },
+    {
+      "scan_index": 846,
+      "angle_deg": 76.696,
+      "angle_rad": 1.3386,
+      "direction": "left",
+      "description": "scan 846: 76.7°"
+    },
+    {
+      "scan_index": 847,
+      "angle_deg": 76.946,
+      "angle_rad": 1.34297,
+      "direction": "left",
+      "description": "scan 847: 76.9°"
+    },
+    {
+      "scan_index": 848,
+      "angle_deg": 77.196,
+      "angle_rad": 1.34733,
+      "direction": "left",
+      "description": "scan 848: 77.2°"
+    },
+    {
+      "scan_index": 849,
+      "angle_deg": 77.447,
+      "angle_rad": 1.3517,
+      "direction": "left",
+      "description": "scan 849: 77.4°"
+    },
+    {
+      "scan_index": 850,
+      "angle_deg": 77.697,
+      "angle_rad": 1.35607,
+      "direction": "left",
+      "description": "scan 850: 77.7°"
+    },
+    {
+      "scan_index": 851,
+      "angle_deg": 77.947,
+      "angle_rad": 1.36043,
+      "direction": "left",
+      "description": "scan 851: 77.9°"
+    },
+    {
+      "scan_index": 852,
+      "angle_deg": 78.197,
+      "angle_rad": 1.3648,
+      "direction": "left",
+      "description": "scan 852: 78.2°"
+    },
+    {
+      "scan_index": 853,
+      "angle_deg": 78.448,
+      "angle_rad": 1.36917,
+      "direction": "left",
+      "description": "scan 853: 78.4°"
+    },
+    {
+      "scan_index": 854,
+      "angle_deg": 78.698,
+      "angle_rad": 1.37354,
+      "direction": "left",
+      "description": "scan 854: 78.7°"
+    },
+    {
+      "scan_index": 855,
+      "angle_deg": 78.948,
+      "angle_rad": 1.3779,
+      "direction": "left",
+      "description": "scan 855: 78.9°"
+    },
+    {
+      "scan_index": 856,
+      "angle_deg": 79.198,
+      "angle_rad": 1.38227,
+      "direction": "left",
+      "description": "scan 856: 79.2°"
+    },
+    {
+      "scan_index": 857,
+      "angle_deg": 79.449,
+      "angle_rad": 1.38664,
+      "direction": "left",
+      "description": "scan 857: 79.4°"
+    },
+    {
+      "scan_index": 858,
+      "angle_deg": 79.699,
+      "angle_rad": 1.39101,
+      "direction": "left",
+      "description": "scan 858: 79.7°"
+    },
+    {
+      "scan_index": 859,
+      "angle_deg": 79.949,
+      "angle_rad": 1.39537,
+      "direction": "left",
+      "description": "scan 859: 79.9°"
+    },
+    {
+      "scan_index": 860,
+      "angle_deg": 80.199,
+      "angle_rad": 1.39974,
+      "direction": "left",
+      "description": "scan 860: 80.2°"
+    },
+    {
+      "scan_index": 861,
+      "angle_deg": 80.449,
+      "angle_rad": 1.40411,
+      "direction": "left",
+      "description": "scan 861: 80.4°"
+    },
+    {
+      "scan_index": 862,
+      "angle_deg": 80.7,
+      "angle_rad": 1.40848,
+      "direction": "left",
+      "description": "scan 862: 80.7°"
+    },
+    {
+      "scan_index": 863,
+      "angle_deg": 80.95,
+      "angle_rad": 1.41284,
+      "direction": "left",
+      "description": "scan 863: 80.9°"
+    },
+    {
+      "scan_index": 864,
+      "angle_deg": 81.2,
+      "angle_rad": 1.41721,
+      "direction": "left",
+      "description": "scan 864: 81.2°"
+    },
+    {
+      "scan_index": 865,
+      "angle_deg": 81.45,
+      "angle_rad": 1.42158,
+      "direction": "left",
+      "description": "scan 865: 81.5°"
+    },
+    {
+      "scan_index": 866,
+      "angle_deg": 81.701,
+      "angle_rad": 1.42595,
+      "direction": "left",
+      "description": "scan 866: 81.7°"
+    },
+    {
+      "scan_index": 867,
+      "angle_deg": 81.951,
+      "angle_rad": 1.43031,
+      "direction": "left",
+      "description": "scan 867: 82.0°"
+    },
+    {
+      "scan_index": 868,
+      "angle_deg": 82.201,
+      "angle_rad": 1.43468,
+      "direction": "left",
+      "description": "scan 868: 82.2°"
+    },
+    {
+      "scan_index": 869,
+      "angle_deg": 82.451,
+      "angle_rad": 1.43905,
+      "direction": "left",
+      "description": "scan 869: 82.5°"
+    },
+    {
+      "scan_index": 870,
+      "angle_deg": 82.702,
+      "angle_rad": 1.44341,
+      "direction": "left",
+      "description": "scan 870: 82.7°"
+    },
+    {
+      "scan_index": 871,
+      "angle_deg": 82.952,
+      "angle_rad": 1.44778,
+      "direction": "left",
+      "description": "scan 871: 83.0°"
+    },
+    {
+      "scan_index": 872,
+      "angle_deg": 83.202,
+      "angle_rad": 1.45215,
+      "direction": "left",
+      "description": "scan 872: 83.2°"
+    },
+    {
+      "scan_index": 873,
+      "angle_deg": 83.452,
+      "angle_rad": 1.45652,
+      "direction": "left",
+      "description": "scan 873: 83.5°"
+    },
+    {
+      "scan_index": 874,
+      "angle_deg": 83.703,
+      "angle_rad": 1.46088,
+      "direction": "left",
+      "description": "scan 874: 83.7°"
+    },
+    {
+      "scan_index": 875,
+      "angle_deg": 83.953,
+      "angle_rad": 1.46525,
+      "direction": "left",
+      "description": "scan 875: 84.0°"
+    },
+    {
+      "scan_index": 876,
+      "angle_deg": 84.203,
+      "angle_rad": 1.46962,
+      "direction": "left",
+      "description": "scan 876: 84.2°"
+    },
+    {
+      "scan_index": 877,
+      "angle_deg": 84.453,
+      "angle_rad": 1.47399,
+      "direction": "left",
+      "description": "scan 877: 84.5°"
+    },
+    {
+      "scan_index": 878,
+      "angle_deg": 84.703,
+      "angle_rad": 1.47835,
+      "direction": "left",
+      "description": "scan 878: 84.7°"
+    },
+    {
+      "scan_index": 879,
+      "angle_deg": 84.954,
+      "angle_rad": 1.48272,
+      "direction": "left",
+      "description": "scan 879: 85.0°"
+    },
+    {
+      "scan_index": 880,
+      "angle_deg": 85.204,
+      "angle_rad": 1.48709,
+      "direction": "left",
+      "description": "scan 880: 85.2°"
+    },
+    {
+      "scan_index": 881,
+      "angle_deg": 85.454,
+      "angle_rad": 1.49146,
+      "direction": "left",
+      "description": "scan 881: 85.5°"
+    },
+    {
+      "scan_index": 882,
+      "angle_deg": 85.704,
+      "angle_rad": 1.49582,
+      "direction": "left",
+      "description": "scan 882: 85.7°"
+    },
+    {
+      "scan_index": 883,
+      "angle_deg": 85.955,
+      "angle_rad": 1.50019,
+      "direction": "left",
+      "description": "scan 883: 86.0°"
+    },
+    {
+      "scan_index": 884,
+      "angle_deg": 86.205,
+      "angle_rad": 1.50456,
+      "direction": "left",
+      "description": "scan 884: 86.2°"
+    },
+    {
+      "scan_index": 885,
+      "angle_deg": 86.455,
+      "angle_rad": 1.50893,
+      "direction": "left",
+      "description": "scan 885: 86.5°"
+    },
+    {
+      "scan_index": 886,
+      "angle_deg": 86.705,
+      "angle_rad": 1.51329,
+      "direction": "left",
+      "description": "scan 886: 86.7°"
+    },
+    {
+      "scan_index": 887,
+      "angle_deg": 86.956,
+      "angle_rad": 1.51766,
+      "direction": "left",
+      "description": "scan 887: 87.0°"
+    },
+    {
+      "scan_index": 888,
+      "angle_deg": 87.206,
+      "angle_rad": 1.52203,
+      "direction": "left",
+      "description": "scan 888: 87.2°"
+    },
+    {
+      "scan_index": 889,
+      "angle_deg": 87.456,
+      "angle_rad": 1.52639,
+      "direction": "left",
+      "description": "scan 889: 87.5°"
+    },
+    {
+      "scan_index": 890,
+      "angle_deg": 87.706,
+      "angle_rad": 1.53076,
+      "direction": "left",
+      "description": "scan 890: 87.7°"
+    },
+    {
+      "scan_index": 891,
+      "angle_deg": 87.956,
+      "angle_rad": 1.53513,
+      "direction": "left",
+      "description": "scan 891: 88.0°"
+    },
+    {
+      "scan_index": 892,
+      "angle_deg": 88.207,
+      "angle_rad": 1.5395,
+      "direction": "left",
+      "description": "scan 892: 88.2°"
+    },
+    {
+      "scan_index": 893,
+      "angle_deg": 88.457,
+      "angle_rad": 1.54386,
+      "direction": "left",
+      "description": "scan 893: 88.5°"
+    },
+    {
+      "scan_index": 894,
+      "angle_deg": 88.707,
+      "angle_rad": 1.54823,
+      "direction": "left",
+      "description": "scan 894: 88.7°"
+    },
+    {
+      "scan_index": 895,
+      "angle_deg": 88.957,
+      "angle_rad": 1.5526,
+      "direction": "left",
+      "description": "scan 895: 89.0°"
+    },
+    {
+      "scan_index": 896,
+      "angle_deg": 89.208,
+      "angle_rad": 1.55697,
+      "direction": "left",
+      "description": "scan 896: 89.2°"
+    },
+    {
+      "scan_index": 897,
+      "angle_deg": 89.458,
+      "angle_rad": 1.56133,
+      "direction": "left",
+      "description": "scan 897: 89.5°"
+    },
+    {
+      "scan_index": 898,
+      "angle_deg": 89.708,
+      "angle_rad": 1.5657,
+      "direction": "left",
+      "description": "scan 898: 89.7°"
+    },
+    {
+      "scan_index": 899,
+      "angle_deg": 89.958,
+      "angle_rad": 1.57007,
+      "direction": "left",
+      "description": "scan 899: 90.0°"
+    },
+    {
+      "scan_index": 900,
+      "angle_deg": 90.209,
+      "angle_rad": 1.57444,
+      "direction": "left",
+      "description": "scan 900: 90.2°"
+    },
+    {
+      "scan_index": 901,
+      "angle_deg": 90.459,
+      "angle_rad": 1.5788,
+      "direction": "left",
+      "description": "scan 901: 90.5°"
+    },
+    {
+      "scan_index": 902,
+      "angle_deg": 90.709,
+      "angle_rad": 1.58317,
+      "direction": "left",
+      "description": "scan 902: 90.7°"
+    },
+    {
+      "scan_index": 903,
+      "angle_deg": 90.959,
+      "angle_rad": 1.58754,
+      "direction": "left",
+      "description": "scan 903: 91.0°"
+    },
+    {
+      "scan_index": 904,
+      "angle_deg": 91.209,
+      "angle_rad": 1.59191,
+      "direction": "left",
+      "description": "scan 904: 91.2°"
+    },
+    {
+      "scan_index": 905,
+      "angle_deg": 91.46,
+      "angle_rad": 1.59627,
+      "direction": "left",
+      "description": "scan 905: 91.5°"
+    },
+    {
+      "scan_index": 906,
+      "angle_deg": 91.71,
+      "angle_rad": 1.60064,
+      "direction": "left",
+      "description": "scan 906: 91.7°"
+    },
+    {
+      "scan_index": 907,
+      "angle_deg": 91.96,
+      "angle_rad": 1.60501,
+      "direction": "left",
+      "description": "scan 907: 92.0°"
+    },
+    {
+      "scan_index": 908,
+      "angle_deg": 92.21,
+      "angle_rad": 1.60937,
+      "direction": "left",
+      "description": "scan 908: 92.2°"
+    },
+    {
+      "scan_index": 909,
+      "angle_deg": 92.461,
+      "angle_rad": 1.61374,
+      "direction": "left",
+      "description": "scan 909: 92.5°"
+    },
+    {
+      "scan_index": 910,
+      "angle_deg": 92.711,
+      "angle_rad": 1.61811,
+      "direction": "left",
+      "description": "scan 910: 92.7°"
+    },
+    {
+      "scan_index": 911,
+      "angle_deg": 92.961,
+      "angle_rad": 1.62248,
+      "direction": "left",
+      "description": "scan 911: 93.0°"
+    },
+    {
+      "scan_index": 912,
+      "angle_deg": 93.211,
+      "angle_rad": 1.62684,
+      "direction": "left",
+      "description": "scan 912: 93.2°"
+    },
+    {
+      "scan_index": 913,
+      "angle_deg": 93.462,
+      "angle_rad": 1.63121,
+      "direction": "left",
+      "description": "scan 913: 93.5°"
+    },
+    {
+      "scan_index": 914,
+      "angle_deg": 93.712,
+      "angle_rad": 1.63558,
+      "direction": "left",
+      "description": "scan 914: 93.7°"
+    },
+    {
+      "scan_index": 915,
+      "angle_deg": 93.962,
+      "angle_rad": 1.63995,
+      "direction": "left",
+      "description": "scan 915: 94.0°"
+    },
+    {
+      "scan_index": 916,
+      "angle_deg": 94.212,
+      "angle_rad": 1.64431,
+      "direction": "left",
+      "description": "scan 916: 94.2°"
+    },
+    {
+      "scan_index": 917,
+      "angle_deg": 94.462,
+      "angle_rad": 1.64868,
+      "direction": "left",
+      "description": "scan 917: 94.5°"
+    },
+    {
+      "scan_index": 918,
+      "angle_deg": 94.713,
+      "angle_rad": 1.65305,
+      "direction": "left",
+      "description": "scan 918: 94.7°"
+    },
+    {
+      "scan_index": 919,
+      "angle_deg": 94.963,
+      "angle_rad": 1.65742,
+      "direction": "left",
+      "description": "scan 919: 95.0°"
+    },
+    {
+      "scan_index": 920,
+      "angle_deg": 95.213,
+      "angle_rad": 1.66178,
+      "direction": "left",
+      "description": "scan 920: 95.2°"
+    },
+    {
+      "scan_index": 921,
+      "angle_deg": 95.463,
+      "angle_rad": 1.66615,
+      "direction": "left",
+      "description": "scan 921: 95.5°"
+    },
+    {
+      "scan_index": 922,
+      "angle_deg": 95.714,
+      "angle_rad": 1.67052,
+      "direction": "left",
+      "description": "scan 922: 95.7°"
+    },
+    {
+      "scan_index": 923,
+      "angle_deg": 95.964,
+      "angle_rad": 1.67489,
+      "direction": "left",
+      "description": "scan 923: 96.0°"
+    },
+    {
+      "scan_index": 924,
+      "angle_deg": 96.214,
+      "angle_rad": 1.67925,
+      "direction": "left",
+      "description": "scan 924: 96.2°"
+    },
+    {
+      "scan_index": 925,
+      "angle_deg": 96.464,
+      "angle_rad": 1.68362,
+      "direction": "left",
+      "description": "scan 925: 96.5°"
+    },
+    {
+      "scan_index": 926,
+      "angle_deg": 96.715,
+      "angle_rad": 1.68799,
+      "direction": "left",
+      "description": "scan 926: 96.7°"
+    },
+    {
+      "scan_index": 927,
+      "angle_deg": 96.965,
+      "angle_rad": 1.69235,
+      "direction": "left",
+      "description": "scan 927: 97.0°"
+    },
+    {
+      "scan_index": 928,
+      "angle_deg": 97.215,
+      "angle_rad": 1.69672,
+      "direction": "left",
+      "description": "scan 928: 97.2°"
+    },
+    {
+      "scan_index": 929,
+      "angle_deg": 97.465,
+      "angle_rad": 1.70109,
+      "direction": "left",
+      "description": "scan 929: 97.5°"
+    },
+    {
+      "scan_index": 930,
+      "angle_deg": 97.715,
+      "angle_rad": 1.70546,
+      "direction": "left",
+      "description": "scan 930: 97.7°"
+    },
+    {
+      "scan_index": 931,
+      "angle_deg": 97.966,
+      "angle_rad": 1.70982,
+      "direction": "left",
+      "description": "scan 931: 98.0°"
+    },
+    {
+      "scan_index": 932,
+      "angle_deg": 98.216,
+      "angle_rad": 1.71419,
+      "direction": "left",
+      "description": "scan 932: 98.2°"
+    },
+    {
+      "scan_index": 933,
+      "angle_deg": 98.466,
+      "angle_rad": 1.71856,
+      "direction": "left",
+      "description": "scan 933: 98.5°"
+    },
+    {
+      "scan_index": 934,
+      "angle_deg": 98.716,
+      "angle_rad": 1.72293,
+      "direction": "left",
+      "description": "scan 934: 98.7°"
+    },
+    {
+      "scan_index": 935,
+      "angle_deg": 98.967,
+      "angle_rad": 1.72729,
+      "direction": "left",
+      "description": "scan 935: 99.0°"
+    },
+    {
+      "scan_index": 936,
+      "angle_deg": 99.217,
+      "angle_rad": 1.73166,
+      "direction": "left",
+      "description": "scan 936: 99.2°"
+    },
+    {
+      "scan_index": 937,
+      "angle_deg": 99.467,
+      "angle_rad": 1.73603,
+      "direction": "left",
+      "description": "scan 937: 99.5°"
+    },
+    {
+      "scan_index": 938,
+      "angle_deg": 99.717,
+      "angle_rad": 1.7404,
+      "direction": "left",
+      "description": "scan 938: 99.7°"
+    },
+    {
+      "scan_index": 939,
+      "angle_deg": 99.968,
+      "angle_rad": 1.74476,
+      "direction": "left",
+      "description": "scan 939: 100.0°"
+    },
+    {
+      "scan_index": 940,
+      "angle_deg": 100.218,
+      "angle_rad": 1.74913,
+      "direction": "left",
+      "description": "scan 940: 100.2°"
+    },
+    {
+      "scan_index": 941,
+      "angle_deg": 100.468,
+      "angle_rad": 1.7535,
+      "direction": "left",
+      "description": "scan 941: 100.5°"
+    },
+    {
+      "scan_index": 942,
+      "angle_deg": 100.718,
+      "angle_rad": 1.75787,
+      "direction": "left",
+      "description": "scan 942: 100.7°"
+    },
+    {
+      "scan_index": 943,
+      "angle_deg": 100.968,
+      "angle_rad": 1.76223,
+      "direction": "left",
+      "description": "scan 943: 101.0°"
+    },
+    {
+      "scan_index": 944,
+      "angle_deg": 101.219,
+      "angle_rad": 1.7666,
+      "direction": "left",
+      "description": "scan 944: 101.2°"
+    },
+    {
+      "scan_index": 945,
+      "angle_deg": 101.469,
+      "angle_rad": 1.77097,
+      "direction": "left",
+      "description": "scan 945: 101.5°"
+    },
+    {
+      "scan_index": 946,
+      "angle_deg": 101.719,
+      "angle_rad": 1.77533,
+      "direction": "left",
+      "description": "scan 946: 101.7°"
+    },
+    {
+      "scan_index": 947,
+      "angle_deg": 101.969,
+      "angle_rad": 1.7797,
+      "direction": "left",
+      "description": "scan 947: 102.0°"
+    },
+    {
+      "scan_index": 948,
+      "angle_deg": 102.22,
+      "angle_rad": 1.78407,
+      "direction": "left",
+      "description": "scan 948: 102.2°"
+    },
+    {
+      "scan_index": 949,
+      "angle_deg": 102.47,
+      "angle_rad": 1.78844,
+      "direction": "left",
+      "description": "scan 949: 102.5°"
+    },
+    {
+      "scan_index": 950,
+      "angle_deg": 102.72,
+      "angle_rad": 1.7928,
+      "direction": "left",
+      "description": "scan 950: 102.7°"
+    },
+    {
+      "scan_index": 951,
+      "angle_deg": 102.97,
+      "angle_rad": 1.79717,
+      "direction": "left",
+      "description": "scan 951: 103.0°"
+    },
+    {
+      "scan_index": 952,
+      "angle_deg": 103.221,
+      "angle_rad": 1.80154,
+      "direction": "left",
+      "description": "scan 952: 103.2°"
+    },
+    {
+      "scan_index": 953,
+      "angle_deg": 103.471,
+      "angle_rad": 1.80591,
+      "direction": "left",
+      "description": "scan 953: 103.5°"
+    },
+    {
+      "scan_index": 954,
+      "angle_deg": 103.721,
+      "angle_rad": 1.81027,
+      "direction": "left",
+      "description": "scan 954: 103.7°"
+    },
+    {
+      "scan_index": 955,
+      "angle_deg": 103.971,
+      "angle_rad": 1.81464,
+      "direction": "left",
+      "description": "scan 955: 104.0°"
+    },
+    {
+      "scan_index": 956,
+      "angle_deg": 104.222,
+      "angle_rad": 1.81901,
+      "direction": "left",
+      "description": "scan 956: 104.2°"
+    },
+    {
+      "scan_index": 957,
+      "angle_deg": 104.472,
+      "angle_rad": 1.82338,
+      "direction": "left",
+      "description": "scan 957: 104.5°"
+    },
+    {
+      "scan_index": 958,
+      "angle_deg": 104.722,
+      "angle_rad": 1.82774,
+      "direction": "left",
+      "description": "scan 958: 104.7°"
+    },
+    {
+      "scan_index": 959,
+      "angle_deg": 104.972,
+      "angle_rad": 1.83211,
+      "direction": "left",
+      "description": "scan 959: 105.0°"
+    },
+    {
+      "scan_index": 960,
+      "angle_deg": 105.222,
+      "angle_rad": 1.83648,
+      "direction": "left",
+      "description": "scan 960: 105.2°"
+    },
+    {
+      "scan_index": 961,
+      "angle_deg": 105.473,
+      "angle_rad": 1.84085,
+      "direction": "left",
+      "description": "scan 961: 105.5°"
+    },
+    {
+      "scan_index": 962,
+      "angle_deg": 105.723,
+      "angle_rad": 1.84521,
+      "direction": "left",
+      "description": "scan 962: 105.7°"
+    },
+    {
+      "scan_index": 963,
+      "angle_deg": 105.973,
+      "angle_rad": 1.84958,
+      "direction": "left",
+      "description": "scan 963: 106.0°"
+    },
+    {
+      "scan_index": 964,
+      "angle_deg": 106.223,
+      "angle_rad": 1.85395,
+      "direction": "left",
+      "description": "scan 964: 106.2°"
+    },
+    {
+      "scan_index": 965,
+      "angle_deg": 106.474,
+      "angle_rad": 1.85831,
+      "direction": "left",
+      "description": "scan 965: 106.5°"
+    },
+    {
+      "scan_index": 966,
+      "angle_deg": 106.724,
+      "angle_rad": 1.86268,
+      "direction": "left",
+      "description": "scan 966: 106.7°"
+    },
+    {
+      "scan_index": 967,
+      "angle_deg": 106.974,
+      "angle_rad": 1.86705,
+      "direction": "left",
+      "description": "scan 967: 107.0°"
+    },
+    {
+      "scan_index": 968,
+      "angle_deg": 107.224,
+      "angle_rad": 1.87142,
+      "direction": "left",
+      "description": "scan 968: 107.2°"
+    },
+    {
+      "scan_index": 969,
+      "angle_deg": 107.475,
+      "angle_rad": 1.87578,
+      "direction": "left",
+      "description": "scan 969: 107.5°"
+    },
+    {
+      "scan_index": 970,
+      "angle_deg": 107.725,
+      "angle_rad": 1.88015,
+      "direction": "left",
+      "description": "scan 970: 107.7°"
+    },
+    {
+      "scan_index": 971,
+      "angle_deg": 107.975,
+      "angle_rad": 1.88452,
+      "direction": "left",
+      "description": "scan 971: 108.0°"
+    },
+    {
+      "scan_index": 972,
+      "angle_deg": 108.225,
+      "angle_rad": 1.88889,
+      "direction": "left",
+      "description": "scan 972: 108.2°"
+    },
+    {
+      "scan_index": 973,
+      "angle_deg": 108.475,
+      "angle_rad": 1.89325,
+      "direction": "left",
+      "description": "scan 973: 108.5°"
+    },
+    {
+      "scan_index": 974,
+      "angle_deg": 108.726,
+      "angle_rad": 1.89762,
+      "direction": "left",
+      "description": "scan 974: 108.7°"
+    },
+    {
+      "scan_index": 975,
+      "angle_deg": 108.976,
+      "angle_rad": 1.90199,
+      "direction": "left",
+      "description": "scan 975: 109.0°"
+    },
+    {
+      "scan_index": 976,
+      "angle_deg": 109.226,
+      "angle_rad": 1.90636,
+      "direction": "left",
+      "description": "scan 976: 109.2°"
+    },
+    {
+      "scan_index": 977,
+      "angle_deg": 109.476,
+      "angle_rad": 1.91072,
+      "direction": "left",
+      "description": "scan 977: 109.5°"
+    },
+    {
+      "scan_index": 978,
+      "angle_deg": 109.727,
+      "angle_rad": 1.91509,
+      "direction": "left",
+      "description": "scan 978: 109.7°"
+    },
+    {
+      "scan_index": 979,
+      "angle_deg": 109.977,
+      "angle_rad": 1.91946,
+      "direction": "left",
+      "description": "scan 979: 110.0°"
+    },
+    {
+      "scan_index": 980,
+      "angle_deg": 110.227,
+      "angle_rad": 1.92383,
+      "direction": "left",
+      "description": "scan 980: 110.2°"
+    },
+    {
+      "scan_index": 981,
+      "angle_deg": 110.477,
+      "angle_rad": 1.92819,
+      "direction": "left",
+      "description": "scan 981: 110.5°"
+    },
+    {
+      "scan_index": 982,
+      "angle_deg": 110.728,
+      "angle_rad": 1.93256,
+      "direction": "left",
+      "description": "scan 982: 110.7°"
+    },
+    {
+      "scan_index": 983,
+      "angle_deg": 110.978,
+      "angle_rad": 1.93693,
+      "direction": "left",
+      "description": "scan 983: 111.0°"
+    },
+    {
+      "scan_index": 984,
+      "angle_deg": 111.228,
+      "angle_rad": 1.94129,
+      "direction": "left",
+      "description": "scan 984: 111.2°"
+    },
+    {
+      "scan_index": 985,
+      "angle_deg": 111.478,
+      "angle_rad": 1.94566,
+      "direction": "left",
+      "description": "scan 985: 111.5°"
+    },
+    {
+      "scan_index": 986,
+      "angle_deg": 111.728,
+      "angle_rad": 1.95003,
+      "direction": "left",
+      "description": "scan 986: 111.7°"
+    },
+    {
+      "scan_index": 987,
+      "angle_deg": 111.979,
+      "angle_rad": 1.9544,
+      "direction": "left",
+      "description": "scan 987: 112.0°"
+    },
+    {
+      "scan_index": 988,
+      "angle_deg": 112.229,
+      "angle_rad": 1.95876,
+      "direction": "left",
+      "description": "scan 988: 112.2°"
+    },
+    {
+      "scan_index": 989,
+      "angle_deg": 112.479,
+      "angle_rad": 1.96313,
+      "direction": "left",
+      "description": "scan 989: 112.5°"
+    },
+    {
+      "scan_index": 990,
+      "angle_deg": 112.729,
+      "angle_rad": 1.9675,
+      "direction": "left",
+      "description": "scan 990: 112.7°"
+    },
+    {
+      "scan_index": 991,
+      "angle_deg": 112.98,
+      "angle_rad": 1.97187,
+      "direction": "left",
+      "description": "scan 991: 113.0°"
+    },
+    {
+      "scan_index": 992,
+      "angle_deg": 113.23,
+      "angle_rad": 1.97623,
+      "direction": "left",
+      "description": "scan 992: 113.2°"
+    },
+    {
+      "scan_index": 993,
+      "angle_deg": 113.48,
+      "angle_rad": 1.9806,
+      "direction": "left",
+      "description": "scan 993: 113.5°"
+    },
+    {
+      "scan_index": 994,
+      "angle_deg": 113.73,
+      "angle_rad": 1.98497,
+      "direction": "left",
+      "description": "scan 994: 113.7°"
+    },
+    {
+      "scan_index": 995,
+      "angle_deg": 113.981,
+      "angle_rad": 1.98934,
+      "direction": "left",
+      "description": "scan 995: 114.0°"
+    },
+    {
+      "scan_index": 996,
+      "angle_deg": 114.231,
+      "angle_rad": 1.9937,
+      "direction": "left",
+      "description": "scan 996: 114.2°"
+    },
+    {
+      "scan_index": 997,
+      "angle_deg": 114.481,
+      "angle_rad": 1.99807,
+      "direction": "left",
+      "description": "scan 997: 114.5°"
+    },
+    {
+      "scan_index": 998,
+      "angle_deg": 114.731,
+      "angle_rad": 2.00244,
+      "direction": "left",
+      "description": "scan 998: 114.7°"
+    },
+    {
+      "scan_index": 999,
+      "angle_deg": 114.981,
+      "angle_rad": 2.00681,
+      "direction": "left",
+      "description": "scan 999: 115.0°"
+    },
+    {
+      "scan_index": 1000,
+      "angle_deg": 115.232,
+      "angle_rad": 2.01117,
+      "direction": "left",
+      "description": "scan 1000: 115.2°"
+    },
+    {
+      "scan_index": 1001,
+      "angle_deg": 115.482,
+      "angle_rad": 2.01554,
+      "direction": "left",
+      "description": "scan 1001: 115.5°"
+    },
+    {
+      "scan_index": 1002,
+      "angle_deg": 115.732,
+      "angle_rad": 2.01991,
+      "direction": "left",
+      "description": "scan 1002: 115.7°"
+    },
+    {
+      "scan_index": 1003,
+      "angle_deg": 115.982,
+      "angle_rad": 2.02427,
+      "direction": "left",
+      "description": "scan 1003: 116.0°"
+    },
+    {
+      "scan_index": 1004,
+      "angle_deg": 116.233,
+      "angle_rad": 2.02864,
+      "direction": "left",
+      "description": "scan 1004: 116.2°"
+    },
+    {
+      "scan_index": 1005,
+      "angle_deg": 116.483,
+      "angle_rad": 2.03301,
+      "direction": "left",
+      "description": "scan 1005: 116.5°"
+    },
+    {
+      "scan_index": 1006,
+      "angle_deg": 116.733,
+      "angle_rad": 2.03738,
+      "direction": "left",
+      "description": "scan 1006: 116.7°"
+    },
+    {
+      "scan_index": 1007,
+      "angle_deg": 116.983,
+      "angle_rad": 2.04174,
+      "direction": "left",
+      "description": "scan 1007: 117.0°"
+    },
+    {
+      "scan_index": 1008,
+      "angle_deg": 117.234,
+      "angle_rad": 2.04611,
+      "direction": "left",
+      "description": "scan 1008: 117.2°"
+    },
+    {
+      "scan_index": 1009,
+      "angle_deg": 117.484,
+      "angle_rad": 2.05048,
+      "direction": "left",
+      "description": "scan 1009: 117.5°"
+    },
+    {
+      "scan_index": 1010,
+      "angle_deg": 117.734,
+      "angle_rad": 2.05485,
+      "direction": "left",
+      "description": "scan 1010: 117.7°"
+    },
+    {
+      "scan_index": 1011,
+      "angle_deg": 117.984,
+      "angle_rad": 2.05921,
+      "direction": "left",
+      "description": "scan 1011: 118.0°"
+    },
+    {
+      "scan_index": 1012,
+      "angle_deg": 118.234,
+      "angle_rad": 2.06358,
+      "direction": "left",
+      "description": "scan 1012: 118.2°"
+    },
+    {
+      "scan_index": 1013,
+      "angle_deg": 118.485,
+      "angle_rad": 2.06795,
+      "direction": "left",
+      "description": "scan 1013: 118.5°"
+    },
+    {
+      "scan_index": 1014,
+      "angle_deg": 118.735,
+      "angle_rad": 2.07232,
+      "direction": "left",
+      "description": "scan 1014: 118.7°"
+    },
+    {
+      "scan_index": 1015,
+      "angle_deg": 118.985,
+      "angle_rad": 2.07668,
+      "direction": "left",
+      "description": "scan 1015: 119.0°"
+    },
+    {
+      "scan_index": 1016,
+      "angle_deg": 119.235,
+      "angle_rad": 2.08105,
+      "direction": "left",
+      "description": "scan 1016: 119.2°"
+    },
+    {
+      "scan_index": 1017,
+      "angle_deg": 119.486,
+      "angle_rad": 2.08542,
+      "direction": "left",
+      "description": "scan 1017: 119.5°"
+    },
+    {
+      "scan_index": 1018,
+      "angle_deg": 119.736,
+      "angle_rad": 2.08979,
+      "direction": "left",
+      "description": "scan 1018: 119.7°"
+    },
+    {
+      "scan_index": 1019,
+      "angle_deg": 119.986,
+      "angle_rad": 2.09415,
+      "direction": "left",
+      "description": "scan 1019: 120.0°"
+    },
+    {
+      "scan_index": 1020,
+      "angle_deg": 120.236,
+      "angle_rad": 2.09852,
+      "direction": "left",
+      "description": "scan 1020: 120.2°"
+    },
+    {
+      "scan_index": 1021,
+      "angle_deg": 120.487,
+      "angle_rad": 2.10289,
+      "direction": "left",
+      "description": "scan 1021: 120.5°"
+    },
+    {
+      "scan_index": 1022,
+      "angle_deg": 120.737,
+      "angle_rad": 2.10725,
+      "direction": "left",
+      "description": "scan 1022: 120.7°"
+    },
+    {
+      "scan_index": 1023,
+      "angle_deg": 120.987,
+      "angle_rad": 2.11162,
+      "direction": "left",
+      "description": "scan 1023: 121.0°"
+    },
+    {
+      "scan_index": 1024,
+      "angle_deg": 121.237,
+      "angle_rad": 2.11599,
+      "direction": "left",
+      "description": "scan 1024: 121.2°"
+    },
+    {
+      "scan_index": 1025,
+      "angle_deg": 121.487,
+      "angle_rad": 2.12036,
+      "direction": "left",
+      "description": "scan 1025: 121.5°"
+    },
+    {
+      "scan_index": 1026,
+      "angle_deg": 121.738,
+      "angle_rad": 2.12472,
+      "direction": "left",
+      "description": "scan 1026: 121.7°"
+    },
+    {
+      "scan_index": 1027,
+      "angle_deg": 121.988,
+      "angle_rad": 2.12909,
+      "direction": "left",
+      "description": "scan 1027: 122.0°"
+    },
+    {
+      "scan_index": 1028,
+      "angle_deg": 122.238,
+      "angle_rad": 2.13346,
+      "direction": "left",
+      "description": "scan 1028: 122.2°"
+    },
+    {
+      "scan_index": 1029,
+      "angle_deg": 122.488,
+      "angle_rad": 2.13783,
+      "direction": "left",
+      "description": "scan 1029: 122.5°"
+    },
+    {
+      "scan_index": 1030,
+      "angle_deg": 122.739,
+      "angle_rad": 2.14219,
+      "direction": "left",
+      "description": "scan 1030: 122.7°"
+    },
+    {
+      "scan_index": 1031,
+      "angle_deg": 122.989,
+      "angle_rad": 2.14656,
+      "direction": "left",
+      "description": "scan 1031: 123.0°"
+    },
+    {
+      "scan_index": 1032,
+      "angle_deg": 123.239,
+      "angle_rad": 2.15093,
+      "direction": "left",
+      "description": "scan 1032: 123.2°"
+    },
+    {
+      "scan_index": 1033,
+      "angle_deg": 123.489,
+      "angle_rad": 2.1553,
+      "direction": "left",
+      "description": "scan 1033: 123.5°"
+    },
+    {
+      "scan_index": 1034,
+      "angle_deg": 123.74,
+      "angle_rad": 2.15966,
+      "direction": "left",
+      "description": "scan 1034: 123.7°"
+    },
+    {
+      "scan_index": 1035,
+      "angle_deg": 123.99,
+      "angle_rad": 2.16403,
+      "direction": "left",
+      "description": "scan 1035: 124.0°"
+    },
+    {
+      "scan_index": 1036,
+      "angle_deg": 124.24,
+      "angle_rad": 2.1684,
+      "direction": "left",
+      "description": "scan 1036: 124.2°"
+    },
+    {
+      "scan_index": 1037,
+      "angle_deg": 124.49,
+      "angle_rad": 2.17277,
+      "direction": "left",
+      "description": "scan 1037: 124.5°"
+    },
+    {
+      "scan_index": 1038,
+      "angle_deg": 124.741,
+      "angle_rad": 2.17713,
+      "direction": "left",
+      "description": "scan 1038: 124.7°"
+    },
+    {
+      "scan_index": 1039,
+      "angle_deg": 124.991,
+      "angle_rad": 2.1815,
+      "direction": "left",
+      "description": "scan 1039: 125.0°"
+    },
+    {
+      "scan_index": 1040,
+      "angle_deg": 125.241,
+      "angle_rad": 2.18587,
+      "direction": "left",
+      "description": "scan 1040: 125.2°"
+    },
+    {
+      "scan_index": 1041,
+      "angle_deg": 125.491,
+      "angle_rad": 2.19023,
+      "direction": "left",
+      "description": "scan 1041: 125.5°"
+    },
+    {
+      "scan_index": 1042,
+      "angle_deg": 125.741,
+      "angle_rad": 2.1946,
+      "direction": "left",
+      "description": "scan 1042: 125.7°"
+    },
+    {
+      "scan_index": 1043,
+      "angle_deg": 125.992,
+      "angle_rad": 2.19897,
+      "direction": "left",
+      "description": "scan 1043: 126.0°"
+    },
+    {
+      "scan_index": 1044,
+      "angle_deg": 126.242,
+      "angle_rad": 2.20334,
+      "direction": "left",
+      "description": "scan 1044: 126.2°"
+    },
+    {
+      "scan_index": 1045,
+      "angle_deg": 126.492,
+      "angle_rad": 2.2077,
+      "direction": "left",
+      "description": "scan 1045: 126.5°"
+    },
+    {
+      "scan_index": 1046,
+      "angle_deg": 126.742,
+      "angle_rad": 2.21207,
+      "direction": "left",
+      "description": "scan 1046: 126.7°"
+    },
+    {
+      "scan_index": 1047,
+      "angle_deg": 126.993,
+      "angle_rad": 2.21644,
+      "direction": "left",
+      "description": "scan 1047: 127.0°"
+    },
+    {
+      "scan_index": 1048,
+      "angle_deg": 127.243,
+      "angle_rad": 2.22081,
+      "direction": "left",
+      "description": "scan 1048: 127.2°"
+    },
+    {
+      "scan_index": 1049,
+      "angle_deg": 127.493,
+      "angle_rad": 2.22517,
+      "direction": "left",
+      "description": "scan 1049: 127.5°"
+    },
+    {
+      "scan_index": 1050,
+      "angle_deg": 127.743,
+      "angle_rad": 2.22954,
+      "direction": "left",
+      "description": "scan 1050: 127.7°"
+    },
+    {
+      "scan_index": 1051,
+      "angle_deg": 127.994,
+      "angle_rad": 2.23391,
+      "direction": "left",
+      "description": "scan 1051: 128.0°"
+    },
+    {
+      "scan_index": 1052,
+      "angle_deg": 128.244,
+      "angle_rad": 2.23828,
+      "direction": "left",
+      "description": "scan 1052: 128.2°"
+    },
+    {
+      "scan_index": 1053,
+      "angle_deg": 128.494,
+      "angle_rad": 2.24264,
+      "direction": "left",
+      "description": "scan 1053: 128.5°"
+    },
+    {
+      "scan_index": 1054,
+      "angle_deg": 128.744,
+      "angle_rad": 2.24701,
+      "direction": "left",
+      "description": "scan 1054: 128.7°"
+    },
+    {
+      "scan_index": 1055,
+      "angle_deg": 128.994,
+      "angle_rad": 2.25138,
+      "direction": "left",
+      "description": "scan 1055: 129.0°"
+    },
+    {
+      "scan_index": 1056,
+      "angle_deg": 129.245,
+      "angle_rad": 2.25575,
+      "direction": "left",
+      "description": "scan 1056: 129.2°"
+    },
+    {
+      "scan_index": 1057,
+      "angle_deg": 129.495,
+      "angle_rad": 2.26011,
+      "direction": "left",
+      "description": "scan 1057: 129.5°"
+    },
+    {
+      "scan_index": 1058,
+      "angle_deg": 129.745,
+      "angle_rad": 2.26448,
+      "direction": "left",
+      "description": "scan 1058: 129.7°"
+    },
+    {
+      "scan_index": 1059,
+      "angle_deg": 129.995,
+      "angle_rad": 2.26885,
+      "direction": "left",
+      "description": "scan 1059: 130.0°"
+    },
+    {
+      "scan_index": 1060,
+      "angle_deg": 130.246,
+      "angle_rad": 2.27321,
+      "direction": "left",
+      "description": "scan 1060: 130.2°"
+    },
+    {
+      "scan_index": 1061,
+      "angle_deg": 130.496,
+      "angle_rad": 2.27758,
+      "direction": "left",
+      "description": "scan 1061: 130.5°"
+    },
+    {
+      "scan_index": 1062,
+      "angle_deg": 130.746,
+      "angle_rad": 2.28195,
+      "direction": "left",
+      "description": "scan 1062: 130.7°"
+    },
+    {
+      "scan_index": 1063,
+      "angle_deg": 130.996,
+      "angle_rad": 2.28632,
+      "direction": "left",
+      "description": "scan 1063: 131.0°"
+    },
+    {
+      "scan_index": 1064,
+      "angle_deg": 131.247,
+      "angle_rad": 2.29068,
+      "direction": "left",
+      "description": "scan 1064: 131.2°"
+    },
+    {
+      "scan_index": 1065,
+      "angle_deg": 131.497,
+      "angle_rad": 2.29505,
+      "direction": "left",
+      "description": "scan 1065: 131.5°"
+    },
+    {
+      "scan_index": 1066,
+      "angle_deg": 131.747,
+      "angle_rad": 2.29942,
+      "direction": "left",
+      "description": "scan 1066: 131.7°"
+    },
+    {
+      "scan_index": 1067,
+      "angle_deg": 131.997,
+      "angle_rad": 2.30379,
+      "direction": "left",
+      "description": "scan 1067: 132.0°"
+    },
+    {
+      "scan_index": 1068,
+      "angle_deg": 132.247,
+      "angle_rad": 2.30815,
+      "direction": "left",
+      "description": "scan 1068: 132.2°"
+    },
+    {
+      "scan_index": 1069,
+      "angle_deg": 132.498,
+      "angle_rad": 2.31252,
+      "direction": "left",
+      "description": "scan 1069: 132.5°"
+    },
+    {
+      "scan_index": 1070,
+      "angle_deg": 132.748,
+      "angle_rad": 2.31689,
+      "direction": "left",
+      "description": "scan 1070: 132.7°"
+    },
+    {
+      "scan_index": 1071,
+      "angle_deg": 132.998,
+      "angle_rad": 2.32126,
+      "direction": "left",
+      "description": "scan 1071: 133.0°"
+    },
+    {
+      "scan_index": 1072,
+      "angle_deg": 133.248,
+      "angle_rad": 2.32562,
+      "direction": "left",
+      "description": "scan 1072: 133.2°"
+    },
+    {
+      "scan_index": 1073,
+      "angle_deg": 133.499,
+      "angle_rad": 2.32999,
+      "direction": "left",
+      "description": "scan 1073: 133.5°"
+    },
+    {
+      "scan_index": 1074,
+      "angle_deg": 133.749,
+      "angle_rad": 2.33436,
+      "direction": "left",
+      "description": "scan 1074: 133.7°"
+    },
+    {
+      "scan_index": 1075,
+      "angle_deg": 133.999,
+      "angle_rad": 2.33873,
+      "direction": "left",
+      "description": "scan 1075: 134.0°"
+    },
+    {
+      "scan_index": 1076,
+      "angle_deg": 134.249,
+      "angle_rad": 2.34309,
+      "direction": "left",
+      "description": "scan 1076: 134.2°"
+    },
+    {
+      "scan_index": 1077,
+      "angle_deg": 134.5,
+      "angle_rad": 2.34746,
+      "direction": "left",
+      "description": "scan 1077: 134.5°"
+    },
+    {
+      "scan_index": 1078,
+      "angle_deg": 134.75,
+      "angle_rad": 2.35183,
+      "direction": "left",
+      "description": "scan 1078: 134.7°"
+    },
+    {
+      "scan_index": 1079,
+      "angle_deg": 135.0,
+      "angle_rad": 2.35619,
+      "direction": "rear",
+      "description": "scan 1079: 135.0°"
+    }
+  ]
+}
