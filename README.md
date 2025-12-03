@@ -20,7 +20,7 @@ the file name is rosbagNumber_scenarioName.csv
 Based on the image like at this site, https://www.nature.com/articles/s41467-019-12943-7/figures/4 we can visualize scan data and use that as a feature. Since it can be treated as an image, then we can use feature-descriptor method such as FAST, color histogram. So rather using csv file, we can make that as an image(just like occupangy grid map) per each frame. 
 We chekced how long does it take to convert the given /scan data to the grid map. 
 
-So we can say that if we have 360 degree distance data, then width will be 360(360 number of bins) and height will be distances. so \theta degree value is mapped to column vector, and the height of this column vector is maximum lidar scan distance(detection range). So when the lidar has a obstacle at 2m, then 0~2m value has increasing intensity, and no value is assigned above 2~maximum lidar scan distance. So black(0) at y = 0, and white(255) at y = detected distance. the value between is smootly increased(calculated automatically). Like an RGB channel, we can choose 3 channel values. (1) Distance, (2) Density(How many points are in that range), (3) Delta(current distance - previous distance). And then we can get a RGB color map. Since we have label(isWall, isOpponent, isFree, isStatic) each columns have a label. 
+So we can say that if we have 360-degree distance data, then width will be 360 (360 number of bins) and height will be distances. So the \(\theta\)-degree value is mapped to a column vector, and the height of this column vector is the maximum lidar scan distance (detection range). When the lidar has an obstacle at \(2\text{ m}\), the values from \(0\text{ m}\) to \(2\text{ m}\) increase in intensity, and no value is assigned above \(2\text{ m}\) up to the maximum lidar scan distance. Black (0) lies at \(y = 0\), and white (255) lies at \(y\) equal to the detected distance. The values between are smoothly increased (calculated automatically). Like an RGB channel, we can choose three channel values: (1) Distance, (2) Density (how many points are in that range), and (3) Delta (current distance minus previous distance). Then we can get an RGB color map. Since we have labels \(\text{isWall}\), \(\text{isOpponent}\), \(\text{isFree}\), and \(\text{isStatic}\), each column has a label. 
 
 ## Workflow overview
 1. **Gather CSV/YAML pairs** that describe each LiDAR rosbag and run `tools/feature_vector_index_generator.py` to produce an angle-aware JSON guide per CSV.
@@ -38,26 +38,26 @@ So we can say that if we have 360 degree distance data, then width will be 360(3
 ### Detailed regression modules
 #### `models/LinearRegression.py`
 - **Input**: For each frame we consider the point set \(\mathcal{P}^{(i)} = \{(x_k, y_k)\}_{k=1}^{N_i}\) obtained by mapping the 360-range vector \(\mathbf{x}^{(i)}\) into Cartesian coordinates using \((x_k, y_k) = (r_k \cos\theta_k, r_k \sin\theta_k)\).
-- **Process**: We cluster the angles into two groups and fit two linear models \(y = a_j x + b_j\) (or \(x = c_j\) for near-vertical cases) for \(j=1,2\) by ordinary least squares. Each fit produces slope/intercept pairs \((a_j, b_j)\) plus directional vectors \(\mathbf{d}_j\) and line centroid \((\bar{x}_j, \bar{y}_j)\).
+- **Process**: We cluster the angles into two groups and fit two linear models \(y = a_j x + b_j\) (or \(x = c_j\) for near-vertical cases) for \(j = 1,2\) by ordinary least squares. Each fit produces slope/intercept pairs \((a_j, b_j)\), directional vectors \(\mathbf{d}_j\), and line centroids \((\bar{x}_j, \bar{y}_j)\).
 - **Output**: For every frame the module emits:
-  1. Two line models \(\ell_1, \ell_2\) with \((a_j, b_j)\), direction, support counts, and whether the line is vertical.
-  2. `point_info` for each scan containing `distance_to_line`, `line_id`, and a boolean `is_wall` based on the threshold \(\tau\): \(\text{isWall}_k = \min_j \text{dist}_j(k) \le \tau\), where \(\text{dist}_j(k)\) is the perpendicular residual.
+  1. Two line models \(\ell_1\) and \(\ell_2\) with \((a_j, b_j)\), direction, support counts, and a vertical flag.
+  2. `point_info` for each scan containing `distance_to_line`, `line_id`, and a boolean `is_wall` based on the threshold \(\tau\): \(\text{isWall}_k = \min_j \text{dist}_j(k) \le \tau\) where \(\text{dist}_j(k)\) denotes the perpendicular residual.
   3. Diagnostics stored in `linear_regression_metadata/` that record the fitted parameters per frame for offline verification.
 
 #### `models/LogisticRegression.py`
 - **Input**: Every training sample is the original 360-dimensional vector \(\mathbf{x}^{(i)} \in \mathbb{R}^{360}\) fed directly to the classifier.
-- **Process**: The module keeps weight matrix \(W \in \mathbb{R}^{4 \times 360}\) and bias vector \(b \in \mathbb{R}^{4}\), and computes logits \(z_j = W_j \cdot \mathbf{x}^{(i)} + b_j\). The softmax probabilities are \(p_j = \exp(z_j)/\sum_{k=1}^{4} \exp(z_k)\), and cross-entropy loss \(-\log p_{\text{label}}\) is minimized via SGD.
+- **Process**: The module keeps weight matrix \(W \in \mathbb{R}^{4 \times 360}\) and bias vector \(b \in \mathbb{R}^{4}\), computes logits \(z_j = W_j \cdot \mathbf{x}^{(i)} + b_j\), evaluates softmax probabilities \(p_j = \exp(z_j)/\sum_{k=1}^{4} \exp(z_k)\), and minimizes cross-entropy loss \(-\log p_{\text{label}}\) via SGD.
 - **Output**: After training it exposes:
   1. `predict_proba(\mathbf{x})` yielding \(p_1,\dots,p_4\),
   2. `predict(\mathbf{x}) = \arg\max_j p_j\), and
   3. Serialized weights/biases through `to_dict()` for checkpointing.
 
 #### `models/ensemble.py`
-- Combines the softmax probabilities with the linear regression distance signal. The `wall_confidence(d, \tau) = 1 - \min(d, \tau)/\tau` rescales the closest residual \(d\) into a \([0,1]\) score, and `ensemble_prediction` boosts the wall class probability by a tunable weight before voting.
+- Combines the softmax probabilities with the linear regression distance signal. The `ensemble_prediction` helper boosts the wall class probability by a tunable weight before voting after rescoring via \(\text{wall_confidence}(d, \tau) = 1 - \frac{\min(d, \tau)}{\tau}\), which rescales the closest residual \(d\) into a \([0,1]\) score.
 
 - **Usage**: `scripts/train.py` imports `ensemble_prediction` instead of duplicating the scoring logic, so both training and evaluation reuse the same blending strategy.
 
-- **`scripts/train.py`**: Orchestrates the entire pipeline. It reads the CSV+JSON data, splits frames using the requested ratio/seed, builds 360‑dim feature vectors, trains the logistic softmax on the training split, computes linear regression outputs for every frame, assembles confidence scores via the ensemble helper, reports losses/accuracies (logistic-only vs. ensemble) for both train and test sets, and writes `checkpoints/linear_wall_checkpoint.json` that bundles the logistic model, the per-frame linear summaries (including \((a_j,b_j)\)), and evaluation metrics for rapid zero-shot inference.
+- **`scripts/train.py`**: Orchestrates the entire pipeline. It reads the CSV+JSON data, splits frames using the requested ratio/seed, builds 360‑dim feature vectors, trains the logistic softmax on the training split, computes linear regression outputs for every frame, assembles confidence scores via the ensemble helper, reports losses/accuracies (logistic-only vs. ensemble) for both train and test sets, and writes `checkpoints/linear_wall_checkpoint.json` that bundles the logistic model, the per-frame linear summaries (including \((a_j, b_j)\)), and evaluation metrics for rapid zero-shot inference.
 
 ### Component details
 - `tools/feature_vector_index_generator.py` is executed first. Use it with `python3 tools/feature_vector_index_generator.py --csv_filefolder_path dataFiles` to find the YAML metadata, parse the column/angle specs, and emit `dataFiles/<csv_stem>_feature_index.json`. The generated JSON carries `vector_length`, angle ranges, column mapping, and a `vectors` array so downstream code can build 360-dimensional arrays without recalculating scan-index → angle logic.
