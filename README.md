@@ -22,26 +22,6 @@ We chekced how long does it take to convert the given /scan data to the grid map
 
 So we can say that if we have 360 degree distance data, then width will be 360(360 number of bins) and height will be distances. so \theta degree value is mapped to column vector, and the height of this column vector is maximum lidar scan distance(detection range). So when the lidar has a obstacle at 2m, then 0~2m value has increasing intensity, and no value is assigned above 2~maximum lidar scan distance. So black(0) at y = 0, and white(255) at y = detected distance. the value between is smootly increased(calculated automatically). Like an RGB channel, we can choose 3 channel values. (1) Distance, (2) Density(How many points are in that range), (3) Delta(current distance - previous distance). And then we can get a RGB color map. Since we have label(isWall, isOpponent, isFree, isStatic) each columns have a label. 
 
-### Step A: Linear regression wall filtering
-Each frame \(i\) is represented by a feature vector \(\mathbf{x}^{(i)} \in \mathbb{R}^{360}\) containing the range measurements for every scan angle. The \(k\)th range value \(r_{k}\) is converted to a Cartesian point according to
-\[
-    x_{k} = r_{k} \cos(\theta_{k}), \qquad y_{k} = r_{k} \sin(\theta_{k}), \qquad k = 1,\dots,360,
-\]
-where \(\theta_{k}\) is the scan angle mapped from the feature vector index. Step A fits the resulting points with two linear regression models, \(\ell_1\) and \(\ell_2\), each of which estimates a centroid \((\bar{x}_j, \bar{y}_j)\) and a unit direction vector \(\mathbf{d}_j\) by minimizing perpendicular residuals (similar to an SVD or PCA line fit).
-
-After both line models are determined, the distance of each point \((x_k, y_k)\) to line \(\ell_j\) is calculated as
-\[
-    \text{dist}_j(k) = \left| (x_k - \bar{x}_j) d_{j,y} - (y_k - \bar{y}_j) d_{j,x} \right|.
-\]
-Each point picks the line with the smallest residual, and it is classified as `isWall` if that distance is below a pre-defined threshold \(\tau\):
-\[
-    \text{isWall}_{k} = \begin{cases}
-        \text{True} & \text{if } \min_{j=1,2} \text{dist}_j(k) \le \tau, \\
-        \text{False} & \text{otherwise}.
-    \end{cases}
-\]
-The index set \(\mathbf{w}^{(i)} = \{\text{scan\_index} \mid \text{isWall}_{k} = \text{True}\}\) filters wall hits before Step B’s logistic regression. `models/LinearRegression.py` records each line’s angle, support size, and the wall scan indexes, and `scripts/train.py` saves this per-frame metadata in `checkpoints/linear_wall_checkpoint.json` so downstream stages can skip points already labeled as walls.
-
 ## Workflow overview
 1. **Gather CSV/YAML pairs** that describe each LiDAR rosbag and run `tools/feature_vector_index_generator.py` to produce an angle-aware JSON guide per CSV.
 2. **Create per-frame feature vectors** (360‑dim distance arrays plus angles) and feed them to `scripts/train.py`.
