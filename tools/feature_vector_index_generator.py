@@ -8,7 +8,7 @@ import csv
 import json
 import math
 from pathlib import Path
-from typing import List, Mapping, Optional
+from typing import Dict, List, Mapping, Optional, Sequence
 
 try:
     import yaml  # type: ignore
@@ -45,6 +45,12 @@ def parse_args() -> argparse.Namespace:
         type=int,
         default=DEFAULT_VECTOR_WIDTH,
         help="Fallback vector length when the YAML metadata is absent.",
+    )
+    parser.add_argument(
+        "--odom-columns",
+        nargs="+",
+        default=("x_car", "y_car", "heading_car", "x_linear_vel", "y_linear_vel", "w_angular_vel"),
+        help="Column names that should be collected per frame as per-odom data.",
     )
     return parser.parse_args()
 
@@ -181,10 +187,86 @@ def build_vector_entries(width: int, angle_min: float, angle_max: float) -> List
     return entries
 
 
+def build_frame_records(csv_path: Path, vector_length: int, odom_columns: Sequence[str]) -> List[Mapping]:
+    frames: Dict[int, Dict] = {}
+    try:
+        with csv_path.open("r", encoding="utf-8-sig", newline="") as stream:
+            reader = csv.DictReader(stream)
+            for row in reader:
+                try:
+                    frame_index = int(row.get("frame_index", -1))
+                    scan_index = int(row.get("scan_index", -1))
+                except ValueError:
+                    continue
+                frame = frames.setdefault(
+                    frame_index,
+                    {
+                        "distances": [0.0] * vector_length,
+                        "opponent_count": 0,
+                        "wall_count": 0,
+                        "free_count": 0,
+                        "last_distance": 0.0,
+                        "odom": [0.0] * len(odom_columns),
+                    },
+                )
+                distance_raw = row.get("distance")
+                if distance_raw is None:
+                    distance_raw = row.get("distance[m]")
+                try:
+                    distance_val = float(distance_raw)
+                except (TypeError, ValueError):
+                    distance_val = frame["last_distance"]
+                frame["last_distance"] = distance_val
+                if 0 <= scan_index < vector_length:
+                    frame["distances"][scan_index] = distance_val
+                if odom_columns:
+                    odom_vec = frame.get("odom", [0.0] * len(odom_columns))
+                    for idx, col in enumerate(odom_columns):
+                        value = row.get(col)
+                        try:
+                            odom_val = float(value)
+                        except (TypeError, ValueError):
+                            odom_val = odom_vec[idx]
+                        odom_vec[idx] = odom_val
+                    frame["odom"] = odom_vec
+                if _parse_boolean(row.get("isOpponent")) or _parse_boolean(row.get("isObstacle")):
+                    frame["opponent_count"] += 1
+                if _parse_boolean(row.get("isWall")):
+                    frame["wall_count"] += 1
+                if _parse_boolean(row.get("isFree")):
+                    frame["free_count"] += 1
+    except OSError:
+        return []
+    dataset: List[Mapping] = []
+    for frame_index in sorted(frames.keys()):
+        frame = frames[frame_index]
+        dataset.append(
+            {
+                "frame_index": frame_index,
+                "distances": frame["distances"],
+                "label": 1 if frame["opponent_count"] > 0 else 0,
+                "odom": frame["odom"],
+                "counts": {
+                    "opponent": frame["opponent_count"],
+                    "wall": frame["wall_count"],
+                    "free": frame["free_count"],
+                },
+            }
+        )
+    return dataset
+
+
+def _parse_boolean(value: Optional[str]) -> bool:
+    if value is None:
+        return False
+    return str(value).strip().lower() == "true"
+
+
 def prepare_feature_map(
     csv_path: Path,
     yaml_path: Optional[Path],
     default_width: int,
+    odom_columns: Sequence[str],
 ) -> Mapping:
     config = load_yaml_config(yaml_path) if yaml_path else {}
     laser_cfg = config.get("laser", {})
@@ -223,6 +305,7 @@ def prepare_feature_map(
         "observed_scan_indexes": observed_indexes,
         "columns": column_meta,
         "vectors": vector_entries,
+        "frames": build_frame_records(csv_path, width, odom_columns),
     }
 
 
@@ -244,7 +327,9 @@ def main() -> None:
         return
     for csv_path in csv_files:
         yaml_path = find_yaml_for_csv(csv_path)
-        feature_map = prepare_feature_map(csv_path, yaml_path, args.default_width)
+        feature_map = prepare_feature_map(
+            csv_path, yaml_path, args.default_width, tuple(args.odom_columns)
+        )
         output_path = output_dir / f"{csv_path.stem}_feature_index.json"
         write_json(output_path, feature_map)
         print(f"generated {output_path} (width={feature_map['vector_length']})")

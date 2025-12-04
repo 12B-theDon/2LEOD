@@ -1,0 +1,22 @@
+csv_file:
+  name: output_1.csv
+laser:
+  angle_min_deg: -180.0
+  angle_max_deg: 180.0
+  angle_model:
+    total_beams: 360
+    angle_step_deg: 0.75209
+    description: "horizontal 360° scan with LiDAR mounted on robot base"
+  range:
+    min_distance_m: 0.3
+    max_distance_m: 12.0
+  frequency_hz: 10
+  sensor_frame: base_link
+
+odom:
+  frequency_hz: 10
+  sensor_frame: base_link
+
+metadata:
+  description: "output_5.csv scan dump used for final project experiments"
+  source: "real LiDAR rosbag"

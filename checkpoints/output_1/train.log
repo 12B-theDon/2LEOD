@@ -1,0 +1,15 @@
+2025-12-04 23:42:57,807 INFO [train] Starting training run with dataset=dataFiles/output_1.csv
+2025-12-04 23:42:57,898 INFO [train] Loaded 2954 frames
+2025-12-04 23:42:57,901 INFO [train] Saved split indices to checkpoints/output_1/split_indices.json
+2025-12-04 23:42:57,973 INFO [train] Saved checkpoint artifacts to checkpoints/output_1
+2025-12-04 23:43:01,401 INFO [train] Saved t-SNE plot to train_result_figs/output_1_tsne.png
+2025-12-04 23:43:01,402 INFO [train] Training accuracy: 0.671
+2025-12-04 23:43:01,402 INFO [train] Train logistic accuracy: 0.671
+2025-12-04 23:43:01,402 INFO [train] Train ensemble accuracy: 0.671
+2025-12-04 23:43:01,402 INFO [train] Visualizing frame 2294 (label=1 prediction=1)
+2025-12-04 23:43:01,449 INFO [train] Visualizing frame 1802 (label=0 prediction=0)
+2025-12-04 23:43:01,492 INFO [train] Visualizing frame 2112 (label=1 prediction=1)
+2025-12-04 23:43:01,548 INFO [train] Visualizing frame 460 (label=0 prediction=0)
+2025-12-04 23:43:01,590 INFO [train] Visualizing frame 1111 (label=0 prediction=0)
+2025-12-04 23:43:01,631 INFO [train] Checkpoint artifacts: checkpoints/output_1
+2025-12-04 23:43:01,631 INFO [train] Split indices stored in checkpoints/output_1/split_indices.json
