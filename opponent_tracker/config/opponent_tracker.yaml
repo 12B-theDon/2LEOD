@@ -1,0 +1,7 @@
+opponent_odom_node:
+  ros__parameters:
+    model_path: "models/opponent_bundle.joblib"
+    decision_threshold: 0.55
+    smoothing_window_size: 5
+    min_cluster_points: 3
+    max_range: 10.0
