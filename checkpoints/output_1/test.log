@@ -1,8 +1,0 @@
-2025-12-04 23:43:07,264 INFO [test] Evaluating dataset=dataFiles/output_1.csv split=checkpoints/output_1/split_indices.json
-2025-12-04 23:43:07,340 INFO [test] Loaded 2954 frames for evaluation
-2025-12-04 23:43:07,348 INFO [test] Classification report: {'accuracy': 0.6818950930626058, 'precision': 0.5449101796407185, 'recall': 0.4482758620689655, 'f1': 0.4918918918918919}
-2025-12-04 23:43:07,348 INFO [test] Confusion counts: TP=91 TN=312 FP=76 FN=112
-2025-12-04 23:43:07,348 INFO [test] Test logistic accuracy: 0.682
-2025-12-04 23:43:07,348 INFO [test] Test ensemble accuracy: 0.682
-2025-12-04 23:43:07,348 INFO [test] Test evaluation duration: 0.0 sec
-2025-12-04 23:43:07,348 INFO [test] Linear regression MSE on test frames: 0.2042
