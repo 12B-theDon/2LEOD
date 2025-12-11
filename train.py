@@ -1,6 +1,7 @@
 import numpy as np
 import joblib
 import matplotlib.pyplot as plt
+import time
 from pathlib import Path
 from sklearn.metrics import (
     ConfusionMatrixDisplay,
