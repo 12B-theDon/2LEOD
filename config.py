@@ -1,8 +1,12 @@
 from pathlib import Path
 
 # File paths
-SCAN_CSV_PATH = Path("dataFiles/output_1.csv")
-ODOM_CSV_PATH = Path("dataFiles/odom_output_1.csv")
+DATA_DIR = Path("dataFiles")
+DATASET_PAIRS = [
+#   (DATA_DIR / "output_1.csv", DATA_DIR / "odom_output_1.csv"),
+    (DATA_DIR / "output_3.csv", DATA_DIR / "odom_output_3.csv"),
+]
+SCAN_CSV_PATH, ODOM_CSV_PATH = DATASET_PAIRS[0]
 
 # Raw columns
 FEATURE_COLUMNS = [
@@ -71,12 +75,14 @@ CLUSTER_FEATURE_COLUMNS = [
 TEST_SPLIT_RATIO = 0.2
 RANDOM_SEED = 42
 LOGREG_DECISION_THRESHOLD = 0.55
-MODEL_SAVE_PATH = Path("models/opponent_bundle.joblib")
+MODEL_SAVE_PATH = Path("models/opponent_bundle_xgb.joblib")
+CLUSTER_GAP_THRESHOLD = 0.2  # meters between scans to start a new cluster
 
 # Sampling/thresholding enhancements
 TARGET_BG_RATIO = 8.0
 THRESHOLDS = [0.45, 0.5, 0.55, 0.6, 0.65, 0.7]
 LOGREG_C = 0.3
 LOGREG_MAX_ITER = 2000
-CLASSIFIER_TYPE = "logreg"
+CLASSIFIER_TYPE = "xgb"  # valid options: "logreg", "svm", "xgb"
+MIN_CLUSTER_POINTS = 1
 WORLD_MATCH_DIST = 1.0

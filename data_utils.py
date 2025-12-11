@@ -1,25 +1,28 @@
 from __future__ import annotations
 
 import math
+from pathlib import Path
+
 import numpy as np
 import pandas as pd
 from sklearn.model_selection import train_test_split
 
 from config import (
     CLUSTER_FEATURE_COLUMNS,
+    CLUSTER_GAP_THRESHOLD,
     DISTANCE_COLUMN,
     FEATURE_COLUMNS,
     FRAME_ID_COLUMN,
     LABEL_CLASS_COLUMN,
-    ODOM_CSV_PATH,
+    MIN_CLUSTER_POINTS,
     ODOM_SOURCE_COLUMNS,
     ODOM_TARGET_COLUMNS,
     RANDOM_SEED,
-    SCAN_CSV_PATH,
     SCAN_INDEX_COLUMN,
     TARGET_BG_RATIO,
     TEST_SPLIT_RATIO,
     WORLD_MATCH_DIST,
+    DATASET_PAIRS,
 )
 
 GT_RADIUS = 2.2
@@ -27,6 +30,7 @@ OPP_RATIO_THRESHOLD = 0.10
 
 
 OPPONENT_CLUSTER_COLUMN = "is_opponent_cluster"
+DATASET_COLUMN = "dataset_id"
 
 
 def _ensure_required_columns(df: pd.DataFrame, columns: list[str]) -> None:
@@ -35,10 +39,10 @@ def _ensure_required_columns(df: pd.DataFrame, columns: list[str]) -> None:
         raise ValueError(f"Missing required columns: {missing}")
 
 
-def _prepare_odometry() -> pd.DataFrame:
-    df = pd.read_csv(ODOM_CSV_PATH)
+def _prepare_odometry(odom_path: Path) -> pd.DataFrame:
+    df = pd.read_csv(odom_path)
     if df.empty:
-        raise ValueError(f"Odom file is empty at {ODOM_CSV_PATH}")
+        raise ValueError(f"Odom file is empty at {odom_path}")
 
     df = df.sort_values([FRAME_ID_COLUMN, "stamp_sec", "stamp_nsec"]).reset_index(drop=True)
     df["stamp_sec"] = pd.to_numeric(df["stamp_sec"], errors="raise")
@@ -91,9 +95,9 @@ def _normalize_boolean(series: pd.Series) -> np.ndarray:
     return normalized.astype(int).to_numpy()
 
 
-def _load_merged_data() -> pd.DataFrame:
-    scan_df = pd.read_csv(SCAN_CSV_PATH)
-    odom_df = _prepare_odometry()
+def _load_single_dataset(scan_path: Path, odom_path: Path) -> pd.DataFrame:
+    scan_df = pd.read_csv(scan_path)
+    odom_df = _prepare_odometry(odom_path)
 
     scan_df["stamp_sec"] = pd.to_numeric(scan_df["stamp_sec"], errors="raise")
     scan_df["stamp_nsec"] = pd.to_numeric(scan_df["stamp_nsec"], errors="raise")
@@ -106,8 +110,11 @@ def _load_merged_data() -> pd.DataFrame:
         validate="many_to_one",
     )
     if merged.empty:
-        raise ValueError("No matching frames found between scan and odom data.")
+        raise ValueError(
+            f"No matching frames found between scan {scan_path} and odom {odom_path} data."
+        )
 
+    merged[DATASET_COLUMN] = scan_path.stem
     _ensure_required_columns(
         merged,
         [
@@ -118,6 +125,15 @@ def _load_merged_data() -> pd.DataFrame:
         ],
     )
     return merged
+
+
+def _load_merged_data() -> pd.DataFrame:
+    merged_frames: list[pd.DataFrame] = []
+    for scan_path, odom_path in DATASET_PAIRS:
+        merged_frames.append(_load_single_dataset(scan_path, odom_path))
+    if not merged_frames:
+        raise ValueError("No dataset pairs defined in DATASET_PAIRS.")
+    return pd.concat(merged_frames, ignore_index=True)
 
 
 def _extract_cluster_features(
@@ -210,6 +226,7 @@ def _extract_cluster_features(
         "frame_index": int(frame_info[FRAME_ID_COLUMN]),
         "frame_stamp": frame_stamp,
     }
+    features[DATASET_COLUMN] = frame_info[DATASET_COLUMN]
     for target in ODOM_TARGET_COLUMNS:
         features[target] = float(frame_info[target])
 
@@ -224,29 +241,47 @@ def _extract_cluster_features(
 
 def _build_clusters(df: pd.DataFrame) -> pd.DataFrame:
     clusters: list[dict] = []
-    prev_clusters: list[dict] = []
-    for _, frame in df.groupby(FRAME_ID_COLUMN):
-        frame = frame.sort_values(SCAN_INDEX_COLUMN).reset_index(drop=True)
-        if frame.empty:
-            continue
-        frame_info = frame.iloc[0]
-        cluster_rows: list[pd.Series] = []
-        prev_idx = None
-        current_frame_clusters: list[dict] = []
-        for _, row in frame.iterrows():
-            scan_idx = int(row[SCAN_INDEX_COLUMN])
-            if prev_idx is not None and scan_idx != prev_idx + 1:
-                features, info = _extract_cluster_features(cluster_rows, prev_clusters, frame_info)
-                clusters.append(features)
-                current_frame_clusters.append(info)
+    for _, dataset_df in df.groupby(DATASET_COLUMN, sort=True):
+        prev_clusters: list[dict] = []
+        for _, frame in dataset_df.groupby(FRAME_ID_COLUMN, sort=True):
+            frame = frame.sort_values(SCAN_INDEX_COLUMN).reset_index(drop=True)
+            if frame.empty:
+                continue
+            frame_info = frame.iloc[0]
+            cluster_rows: list[pd.Series] = []
+
+            def flush_cluster_rows() -> None:
+                nonlocal cluster_rows, prev_idx, prev_distance
+                if len(cluster_rows) >= MIN_CLUSTER_POINTS:
+                    features, info = _extract_cluster_features(
+                        cluster_rows, prev_clusters, frame_info
+                    )
+                    clusters.append(features)
+                    current_frame_clusters.append(info)
                 cluster_rows = []
-            cluster_rows.append(row)
-            prev_idx = scan_idx
-        if cluster_rows:
-            features, info = _extract_cluster_features(cluster_rows, prev_clusters, frame_info)
-            clusters.append(features)
-            current_frame_clusters.append(info)
-        prev_clusters = current_frame_clusters
+                prev_idx = None
+                prev_distance = None
+
+            prev_idx = None
+            prev_distance = None
+            current_frame_clusters: list[dict] = []
+            for _, row in frame.iterrows():
+                scan_idx = int(row[SCAN_INDEX_COLUMN])
+                distance = float(row[DISTANCE_COLUMN])
+                gap_cond = (
+                    prev_distance is not None
+                    and abs(distance - prev_distance) > CLUSTER_GAP_THRESHOLD
+                )
+                if prev_idx is not None and scan_idx != prev_idx + 1:
+                    flush_cluster_rows()
+                elif gap_cond:
+                    flush_cluster_rows()
+                cluster_rows.append(row)
+                prev_idx = scan_idx
+                prev_distance = distance
+            if cluster_rows:
+                flush_cluster_rows()
+            prev_clusters = current_frame_clusters
     if not clusters:
         raise ValueError("No clusters extracted from scan data.")
     cluster_df = pd.DataFrame(clusters)
@@ -254,7 +289,9 @@ def _build_clusters(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def _attach_motion_features(clusters_df: pd.DataFrame) -> pd.DataFrame:
-    clusters_df = clusters_df.sort_values(["frame_index", "cluster_cx", "cluster_cy"]).reset_index(drop=True)
+    clusters_df = clusters_df.sort_values(
+        [DATASET_COLUMN, "frame_index", "cluster_cx", "cluster_cy"]
+    ).reset_index(drop=True)
     local_motion_cols = ["cluster_vx", "cluster_vy", "cluster_speed", "cluster_vr"]
     world_motion_cols = ["cluster_vx_world", "cluster_vy_world", "cluster_speed_world"]
     relative_motion_cols = ["cluster_rel_vx", "cluster_rel_vy", "cluster_rel_speed"]
@@ -264,9 +301,12 @@ def _attach_motion_features(clusters_df: pd.DataFrame) -> pd.DataFrame:
 
     prev_frame_df: pd.DataFrame | None = None
     prev_stamp: float | None = None
-    for frame_idx, frame_group in clusters_df.groupby("frame_index", sort=True):
+    prev_dataset: str | None = None
+    for (dataset_id, _), frame_group in clusters_df.groupby(
+        [DATASET_COLUMN, "frame_index"], sort=True
+    ):
         frame_stamp = float(frame_group["frame_stamp"].iloc[0])
-        if prev_frame_df is not None and prev_stamp is not None:
+        if prev_dataset == dataset_id and prev_frame_df is not None and prev_stamp is not None:
             dt = frame_stamp - prev_stamp
             if dt <= 0:
                 dt = 1e-3
@@ -308,6 +348,7 @@ def _attach_motion_features(clusters_df: pd.DataFrame) -> pd.DataFrame:
 
         prev_stamp = frame_stamp
         prev_frame_df = frame_group.copy()
+        prev_dataset = dataset_id
 
     return clusters_df
 

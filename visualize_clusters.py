@@ -80,6 +80,22 @@ def visualize_frame(frame_index: int | None = None) -> None:
             f"{opp_rows[['cluster_cx','cluster_cy','cluster_opponent_ratio','pred_prob','gt_label']].to_string(index=False)}"
         )
 
+    debug_dir = "figs"
+    os.makedirs(debug_dir, exist_ok=True)
+    frame_clusters[
+        [
+            "cluster_cx",
+            "cluster_cy",
+            "global_x",
+            "global_y",
+            "label_new",
+            "gt_label",
+            "pred_prob",
+            "pred_label",
+            "cluster_opponent_ratio",
+        ]
+    ].to_csv(os.path.join(debug_dir, f"cluster_debug_frame_{frame_index}.csv"), index=False)
+
     fig, ax = plt.subplots(figsize=(8, 8))
 
     colors = {
@@ -135,8 +151,7 @@ def visualize_frame(frame_index: int | None = None) -> None:
     ax.legend()
     ax.set_aspect("equal", "box")
 
-    os.makedirs("figs", exist_ok=True)
-    filepath = f"figs/cluster_debug_frame_{frame_index}.png"
+    filepath = os.path.join(debug_dir, f"cluster_debug_frame_{frame_index}.png")
     fig.savefig(filepath)
     logger.info(f"[viz] Saved cluster debug figure to {filepath}")
     if os.environ.get("VISUALIZE_SHOW", "1") == "1":

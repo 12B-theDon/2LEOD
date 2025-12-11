@@ -5,3 +5,5 @@ opponent_odom_node:
     smoothing_window_size: 5
     min_cluster_points: 3
     max_range: 10.0
+    classifier_type: "auto"
+    smoothing_alpha: 0.5

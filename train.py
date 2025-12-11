@@ -1,6 +1,9 @@
 import numpy as np
 import joblib
+import matplotlib.pyplot as plt
+from pathlib import Path
 from sklearn.metrics import (
+    ConfusionMatrixDisplay,
     accuracy_score,
     average_precision_score,
     balanced_accuracy_score,
@@ -15,7 +18,6 @@ from sklearn.metrics import (
 from config import (
     CLASSIFIER_TYPE,
     LOGREG_C,
-    LOGREG_DECISION_THRESHOLD,
     LOGREG_MAX_ITER,
     MODEL_SAVE_PATH,
     ODOM_TARGET_COLUMNS,
@@ -28,7 +30,11 @@ from models import build_classifier_pipeline, build_regressor
 
 
 def _evaluate_thresholds(
-    thresholds: list[float], y_true: np.ndarray, y_prob: np.ndarray, logger
+    thresholds: list[float],
+    y_true: np.ndarray,
+    y_prob: np.ndarray,
+    logger,
+    label: str,
 ) -> dict:
     best = {
         "threshold": thresholds[0],
@@ -48,11 +54,11 @@ def _evaluate_thresholds(
         balanced = balanced_accuracy_score(y_true, y_pred)
 
         logger.info(
-            f"[train][threshold={threshold:.2f}] precision={precision:.4f}, recall={recall:.4f}, "
+            f"[train][threshold][{label}={threshold:.2f}] precision={precision:.4f}, recall={recall:.4f}, "
             f"f1={f1:.4f}, balanced={balanced:.4f}"
         )
         logger.info(
-            f"[train][threshold={threshold:.2f}] confusion matrix:\n"
+            f"[train][threshold][{label}={threshold:.2f}] confusion matrix:\n"
             + str(confusion_matrix(y_true, y_pred))
         )
 
@@ -92,7 +98,7 @@ def _evaluate_thresholds(
         selected = best
 
     logger.info(
-        f"[train][threshold] Selected threshold={selected['threshold']:.2f} "
+        f"[train][threshold][{label}] Selected threshold={selected['threshold']:.2f} "
         f"(precision={selected['precision']:.4f}, recall={selected['recall']:.4f}, "
         f"balanced={selected['balanced']:.4f})"
     )
@@ -101,8 +107,47 @@ def _evaluate_thresholds(
         table_lines.append(
             f"{threshold:>9.2f} | {precision:>9.4f} | {recall:>6.4f} | {f1:>4.4f} | {balanced:>8.4f}"
         )
-    logger.info("[train][threshold] Summary:\n" + "\n".join(table_lines))
+    logger.info(f"[train][threshold][{label}] Summary:\n" + "\n".join(table_lines))
     return selected
+
+
+def _save_accuracy_diagnostic_plot(
+    prefix: str,
+    train_acc: float,
+    test_acc: float,
+    bal_acc: float,
+    y_true: np.ndarray,
+    y_pred: np.ndarray,
+    logger,
+) -> None:
+    fig, axes = plt.subplots(ncols=2, figsize=(10, 4))
+    scores = [train_acc, test_acc, bal_acc]
+    labels = ["train acc", "test acc", "balanced"]
+    colors = ["#1f77b4", "#ff7f0e", "#2ca02c"]
+    axes[0].bar(labels, scores, color=colors)
+    axes[0].set_ylim(0, 1)
+    axes[0].set_ylabel("Score")
+    axes[0].set_title(f"[train][{prefix}] Accuracy summary")
+    for idx, value in enumerate(scores):
+        axes[0].text(idx, value + 0.02, f"{value:.2f}", ha="center")
+
+    disp = ConfusionMatrixDisplay.from_predictions(
+        y_true,
+        y_pred,
+        display_labels=[0, 1],
+        cmap="Blues",
+        values_format="d",
+        ax=axes[1],
+    )
+    axes[1].set_title(f"[train][{prefix}] Confusion matrix (test)")
+
+    stats_dir = Path("figs") / "train_eval"
+    stats_dir.mkdir(parents=True, exist_ok=True)
+    fig_path = stats_dir / f"{prefix}_accuracy.png"
+    fig.tight_layout()
+    fig.savefig(fig_path, dpi=150)
+    plt.close(fig)
+    logger.info(f"[train][{prefix}] Saved accuracy diagnostics to {fig_path}")
 
 
 def _log_relabel_metrics(
@@ -259,6 +304,15 @@ def main() -> None:
     logger.info(f"[train][{prefix}] Train accuracy: {train_acc:.4f}")
     logger.info(f"[train][{prefix}] Test accuracy:  {test_acc:.4f}")
     logger.info(f"[train][{prefix}] Balanced accuracy: {bal_acc:.4f}")
+    _save_accuracy_diagnostic_plot(
+        prefix,
+        train_acc,
+        test_acc,
+        bal_acc,
+        y_class_test,
+        y_pred_test,
+        logger,
+    )
     logger.info(
         f"[train][{prefix}] Confusion matrix:\n" + str(confusion_matrix(y_class_test, y_pred_test))
     )
@@ -267,16 +321,48 @@ def main() -> None:
         + classification_report(y_class_test, y_pred_test)
     )
 
-    y_prob = clf_pipe.predict_proba(X_test)[:, 1]
-    roc_auc = roc_auc_score(y_class_test, y_prob)
-    pr_auc = average_precision_score(y_class_test, y_prob)
-    logger.info(f"[train][threshold] ROC-AUC={roc_auc:.4f}, PR-AUC={pr_auc:.4f}")
-    _evaluate_thresholds(THRESHOLDS, y_class_test, y_prob, logger)
-    fixed_threshold = LOGREG_DECISION_THRESHOLD
-    logger.info(
-        f"[train][threshold] Using fixed deployment threshold={fixed_threshold:.2f}"
-    )
+    if CLASSIFIER_TYPE == "svm":
+        y_score = clf_pipe.decision_function(X_test)
+        low, high = np.quantile(y_score, [0.05, 0.95])
+        thresholds = (
+            [low]
+            if low == high
+            else np.linspace(low, high, num=10).tolist()
+        )
+        score_label = "decision_function"
+        logger.info(
+            f"[train][threshold][svm] score={score_label}, range=[{low:.4f}, {high:.4f}]"
+        )
+    elif CLASSIFIER_TYPE == "xgb":
+        y_score = clf_pipe.predict_proba(X_test)[:, 1]
+        low, high = np.quantile(y_score, [0.05, 0.95])
+        if low == high:
+            thresholds = [low]
+        else:
+            thresholds = np.linspace(low, high, num=10).tolist()
+        score_label = "predict_proba"
+        logger.info(
+            f"[train][threshold][xgb] score={score_label}, range=[{low:.4f}, {high:.4f}]"
+        )
+    else:
+        y_score = clf_pipe.predict_proba(X_test)[:, 1]
+        thresholds = THRESHOLDS
+        score_label = "predict_proba"
+        logger.info(
+            f"[train][threshold][{CLASSIFIER_TYPE}] score={score_label}, "
+            f"range=[{np.min(y_score):.4f}, {np.max(y_score):.4f}]"
+        )
 
+    roc_auc = roc_auc_score(y_class_test, y_score)
+    pr_auc = average_precision_score(y_class_test, y_score)
+    logger.info(f"[train][threshold] ROC-AUC={roc_auc:.4f}, PR-AUC={pr_auc:.4f}")
+    selected = _evaluate_thresholds(
+        thresholds, y_class_test, y_score, logger, score_label
+    )
+    best_threshold = selected["threshold"]
+    logger.info(
+        f"[train][threshold][{score_label}] Using selected threshold={best_threshold:.2f}"
+    )
     if not np.any(train_visible_mask):
         raise RuntimeError("No opponent clusters available for regression training.")
 
@@ -306,7 +392,10 @@ def main() -> None:
         {
             "clf_pipe": clf_pipe,
             "regressor": regressor,
-            "threshold": fixed_threshold,
+            "feature_dim": X_train.shape[1],
+            "classifier_type": CLASSIFIER_TYPE,
+            "cls_score_type": score_label,
+            "cls_threshold": float(best_threshold),
         },
         MODEL_SAVE_PATH,
     )

@@ -101,6 +101,11 @@ Each dataset therefore ships with one frame CSV and one point CSV that cover the
    python3 visualize_clusters.py --frame-index 123
    ```
    Inspect the plot for cluster coloring, classifier candidate scores, and GT overlap.
+6. Inspect cluster grouping:
+   ```bash
+   python3 cluster_quality.py --focus-positives --max-frames 5
+   ```
+   Saves plain cluster-overview PNGs under `figs/clustering/` so you can confirm the raw clustering aligns with the GT positions.
 
 ## ROS2 Integration (Preview)
 - A separate ROS2 package (documented elsewhere) loads `models/opponent_bundle.joblib` and subscribes to `/scan` and `/odom`.
@@ -109,11 +114,13 @@ Each dataset therefore ships with one frame CSV and one point CSV that cover the
 
 ## Project Layout (Key Files)
 ```
+   After rendering `clusters.mp4`, a scatter plot of the per-frame mean cluster speed plus its running mean is saved at `figs/clusters_velocity.png`.
 final_project/
 ├── data_utils.py          # CSV loading, clustering, featurization, relabeling, sampling
 ├── train.py               # Training + threshold sweep logic, model bundle output
 ├── test.py                # (If present) evaluation script for saved bundle
 ├── visualize_clusters.py  # Debug/visualization per frame
+├── cluster_quality.py     # Frame snapshots of raw cluster centroids
 ├── realtime_encoder.py    # Runtime encoder that reuses the training pipeline
 ├── models/                # Serialized bundles (`opponent_bundle.joblib`)
 ├── dataFiles/             # CSV datasets (frame + scan files)
