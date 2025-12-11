@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import math
+import time
 from pathlib import Path
 from typing import Optional, Tuple
 
@@ -71,6 +72,8 @@ class OpponentOdomNode(Node):
         if self.latest_odom is None:
             return
 
+        callback_start = time.perf_counter()
+
         clusters = self.builder.build_clusters_from_scan(msg)
         if not clusters:
             return
@@ -105,6 +108,10 @@ class OpponentOdomNode(Node):
 
         self.publisher.publish(msg)
         self.get_logger().info(f'Published opponent @ ({x:.2f},{y:.2f})')
+        elapsed = time.perf_counter() - callback_start
+        self.get_logger().debug(
+            f"[runtime] scan processed in {elapsed:.4f}s, features={features.shape[0]}, candidates={mask.sum()}"
+        )
 
     def _compute_opponent_scores(self, features: np.ndarray) -> np.ndarray:
         if self.cls_score_type == 'proba':

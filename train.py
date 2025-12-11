@@ -208,8 +208,11 @@ def _log_relabel_metrics(
 
 def main() -> None:
     logger = get_logger("train_logger")
+    total_start = time.perf_counter()
     logger.info("Loading dataset...")
+    load_start = time.perf_counter()
     data = load_dataset()
+    logger.info(f"[train][timing] Dataset load took {(time.perf_counter() - load_start):.2f}s")
 
     X_train = data["X_train"]
     X_test = data["X_test"]
@@ -291,8 +294,12 @@ def main() -> None:
             "subsample=0.8, colsample_bytree=0.8"
         )
 
+    clf_start = time.perf_counter()
     logger.info("Training classifier...")
     clf_pipe.fit(X_train, y_class_train)
+    logger.info(
+        f"[train][timing] Classifier training took {(time.perf_counter() - clf_start):.2f}s"
+    )
 
     y_pred_train = clf_pipe.predict(X_train)
     y_pred_test = clf_pipe.predict(X_test)
@@ -322,6 +329,7 @@ def main() -> None:
         + classification_report(y_class_test, y_pred_test)
     )
 
+    threshold_start = time.perf_counter()
     if CLASSIFIER_TYPE == "svm":
         y_score = clf_pipe.decision_function(X_test)
         low, high = np.quantile(y_score, [0.05, 0.95])
@@ -364,20 +372,31 @@ def main() -> None:
     logger.info(
         f"[train][threshold][{score_label}] Using selected threshold={best_threshold:.2f}"
     )
+    logger.info(
+        f"[train][timing] Threshold sweep took {(time.perf_counter() - threshold_start):.2f}s"
+    )
     if not np.any(train_visible_mask):
         raise RuntimeError("No opponent clusters available for regression training.")
 
+    reg_prep_start = time.perf_counter()
     logger.info("Preparing regression data (visible clusters)...")
     X_train_visible = X_train[train_visible_mask]
     y_reg_train_visible = y_reg_train[train_visible_mask]
     X_test_visible = X_test[test_visible_mask]
     y_reg_test_visible = y_reg_test[test_visible_mask]
 
-    logger.info(f"[train][reg] Visible train clusters: {len(X_train_visible)}")
+    logger.info(
+        f"[train][reg] Visible train clusters: {len(X_train_visible)} "
+        f"(prep took {(time.perf_counter() - reg_prep_start):.2f}s)"
+    )
 
     regressor = build_regressor()
+    reg_start = time.perf_counter()
     logger.info("Training regressor (visible frames only)...")
     regressor.fit(X_train_visible, y_reg_train_visible)
+    logger.info(
+        f"[train][timing] Regressor training took {(time.perf_counter() - reg_start):.2f}s"
+    )
 
     if len(X_test_visible) > 0:
         y_reg_pred = regressor.predict(X_test_visible)
@@ -387,6 +406,7 @@ def main() -> None:
     else:
         logger.warning("[train][reg] Skipping regression eval; no visible test clusters.")
 
+    save_start = time.perf_counter()
     logger.info("Saving model bundle...")
     MODEL_SAVE_PATH.parent.mkdir(parents=True, exist_ok=True)
     joblib.dump(
@@ -401,6 +421,12 @@ def main() -> None:
         MODEL_SAVE_PATH,
     )
     logger.info(f"Saved model to {MODEL_SAVE_PATH}")
+    logger.info(
+        f"[train][timing] Model save took {(time.perf_counter() - save_start):.2f}s"
+    )
+    logger.info(
+        f"[train][timing] Total training runtime {(time.perf_counter() - total_start):.2f}s"
+    )
     logger.info("Training complete.")
 
 
