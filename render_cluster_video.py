@@ -20,7 +20,7 @@ from config import (
     LOGREG_DECISION_THRESHOLD,
     MODEL_SAVE_PATH,
 )
-from data_utils import _load_merged_data, build_clusters_dataframe
+from data_utils import _load_merged_data, build_clusters_dataframe, load_dataset_pair
 
 VIDEO_DIR = Path("figs")
 
@@ -365,6 +365,16 @@ def parse_args() -> argparse.Namespace:
         default=VIDEO_DIR / "clusters.mp4",
         help="Output mp4 path.",
     )
+    parser.add_argument(
+        "--scan-csv",
+        type=Path,
+        help="Single scan CSV to render instead of all datasets defined in config.",
+    )
+    parser.add_argument(
+        "--odom-csv",
+        type=Path,
+        help="Matching odom CSV that shares timestamps with --scan-csv.",
+    )
     return parser.parse_args()
 
 
@@ -377,8 +387,20 @@ def main() -> None:
     print(f"[video] Loading classifier from {args.model}")
     clf_pipe, threshold = load_classifier(args.model)
     print(f"[video] Loaded classifier (threshold={threshold:.2f})")
-    print("[video] Loading merged scan/odom data")
-    merged = _load_merged_data()
+    if args.scan_csv or args.odom_csv:
+        if not args.scan_csv or not args.odom_csv:
+            raise SystemExit("Both --scan-csv and --odom-csv must be provided together.")
+        if not args.scan_csv.exists():
+            raise SystemExit(f"Scan CSV not found at {args.scan_csv}")
+        if not args.odom_csv.exists():
+            raise SystemExit(f"Odometry CSV not found at {args.odom_csv}")
+        print(
+            f"[video] Loading data from {args.scan_csv.name} / {args.odom_csv.name}"
+        )
+        merged = load_dataset_pair(args.scan_csv, args.odom_csv)
+    else:
+        print("[video] Loading merged scan/odom data")
+        merged = _load_merged_data()
     clusters_df, _ = build_clusters_dataframe(merged)
     frame_indices = sorted(clusters_df[FRAME_ID_COLUMN].unique())
     if not frame_indices:

@@ -1,0 +1,18 @@
+bag_path: dataFiles/simple_box_2_fast/simple_box_2_fast_0.db3
+model_path: models/opponent_bundle.joblib
+frame_id: odom
+csv_path: logs/predictions.csv
+rmse_plot_path: logs/rmse_trajectory.png
+use_sim_time: true
+rviz_enabled: true
+rviz_config: rviz/eval_opponent.rviz
+evaluate_opponent:
+  ros__parameters:
+    model_path: models/opponent_bundle.joblib
+    frame_id: odom
+    csv_path: logs/predictions.csv
+    rmse_plot_path: logs/rmse_trajectory.png
+    publish_markers: true
+    marker_ns: pred_opponent
+    marker_scale: 0.5
+    log_interval: 10

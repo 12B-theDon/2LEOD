@@ -107,10 +107,42 @@ Each dataset therefore ships with one frame CSV and one point CSV that cover the
    ```
    Saves plain cluster-overview PNGs under `figs/clustering/` so you can confirm the raw clustering aligns with the GT positions.
 
+## Rendering Video
+- Render clustered frames with `python3 render_cluster_video.py` and customize `--duration`/`--fps` as needed.
+- By default the script consumes every scan/odom pair listed in `config.DATASET_PAIRS`, but you can target a single dataset by passing `--scan-csv <scan_file.csv> --odom-csv <odom_file.csv>`.
+- Example: `python3 render_cluster_video.py --model models/iccas_opponent_bundle_logreg.joblib --duration 30 --fps 5 --scan-csv dataFiles/iccas_track_1.csv --odom-csv dataFiles/iccas_track_odom_output_1.csv`.
+
 ## ROS2 Integration (Preview)
 - A separate ROS2 package (documented elsewhere) loads `models/opponent_bundle.joblib` and subscribes to `/scan` and `/odom`.
 - It builds the same cluster-level geometric/motion features (excluding label ratios), invocations the classifier & regressor, and publishes `/opponent_odom` (`nav_msgs/Odometry`) only when the classifier probability exceeds the stored deployment threshold.
 - This keeps the perception stack lightweight and deterministic since it relies on classical ML rather than deep nets.
+
+## Evaluation & Visualization Tools
+- `opponent_tracker/evaluate_opponent.py` reuses the cluster feature builder to:
+  - subscribe to `/odom`, `/scan` and `/opponent_odom` (GT).
+  - publish `/pred_opponent_odom`, `/pred_opponent_path`, `/gt_opponent_path`, and an optional `/pred_opponent_marker`.
+  - compute RMSE between predictions and GT (position + yaw) while buffering the most recent GT samples, logging both incremental and final RMSE, and writing an optional CSV (`csv_path` parameter) at runtime.
+  - monitor real-time inference delays by comparing `time.perf_counter()` to each scan timestamp, reporting avg/median/max delay every `log_interval` predictions, and keeping a max delay gauge.
+  - emit a rainbow-colored PNG of the predicted trajectory where the colour encodes the instantaneous RMSE; the file path is controlled by `rmse_plot_path` (default `rmse_trajectory.png`) and the plot includes GT/pred lines, a colourbar legend, and axes labels.
+- The `opponent_tracker/launch/eval_opponent_bag.launch.py` launch file:
+  - plays a bag via `ros2 bag play <bag_path> --clock`.
+  - runs the evaluation node with configurable `model_path`, `frame_id`, `csv_path`, and `rmse_plot_path`.
+  - optionally starts RViz2 with `opponent_tracker/rviz/eval_opponent.rviz` to show `/scan`, ego odometry, `/pred_opponent_odom`, both paths, and prediction markers in the `odom` frame.
+
+### Running the evaluation launch
+1. Source your ROS2 Humble workspace and activate any Python virtualenv that has the dependencies installed (make sure `matplotlib` is available — it is listed in `opponent_tracker/setup.py` and `package.xml`).
+2. Run:
+   ```bash
+   ros2 launch opponent_tracker eval_opponent_bag.launch.py \
+     bag_path:=/path/to/your.bag \
+     model_path:=models/opponent_bundle.joblib \
+     frame_id:=odom \
+     csv_path:=logs/predictions.csv \
+     rmse_plot_path:=logs/rmse_trajectory.png
+   ```
+   *omit `csv_path` or `rmse_plot_path` if you only need the live ROS topics.*
+   If you prefer to skip CLI arguments, update `opponent_tracker/config/eval_opponent.yaml` (it now contains both bag defaults and evaluate_opponent parameters) with your bag/model/CSV paths and the launch will pick those defaults so you can run `ros2 launch opponent_tracker eval_opponent_bag.launch.py` directly.
+3. After the bag finishes, the log will show RMSE and real-time delay stats, and the PNG will be saved under the chosen `rmse_plot_path`. Use RViz to inspect the `/pred_opponent_*` topics and verify the marker+path alignment.
 
 ## Project Layout (Key Files)
 ```

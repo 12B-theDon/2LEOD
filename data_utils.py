@@ -5,7 +5,8 @@ from pathlib import Path
 
 import numpy as np
 import pandas as pd
-from sklearn.model_selection import train_test_split
+from sklearn.model_selection import GroupShuffleSplit
+import logging
 
 from config import (
     CLUSTER_FEATURE_COLUMNS,
@@ -125,6 +126,11 @@ def _load_single_dataset(scan_path: Path, odom_path: Path) -> pd.DataFrame:
         ],
     )
     return merged
+
+
+def load_dataset_pair(scan_path: Path, odom_path: Path) -> pd.DataFrame:
+    """Load a single scan/odom pair without reading every entry in DATASET_PAIRS."""
+    return _load_single_dataset(scan_path, odom_path)
 
 
 def _load_merged_data() -> pd.DataFrame:
@@ -374,6 +380,25 @@ def build_clusters_dataframe(merged: pd.DataFrame | None = None) -> tuple[pd.Dat
     return clusters_df, relabel_stats
 
 
+def split_by_frame_indices(
+    frame_indices: np.ndarray, test_ratio: float, random_state: int
+) -> tuple[np.ndarray, np.ndarray, set[int], set[int]]:
+    logger = logging.getLogger(__name__)
+    groups = np.asarray(frame_indices).flatten()
+    dummy = np.zeros((len(groups), 1))
+    splitter = GroupShuffleSplit(n_splits=1, test_size=test_ratio, random_state=random_state)
+    train_idx, test_idx = next(splitter.split(dummy, groups=groups))
+    train_frames = set(groups[train_idx])
+    test_frames = set(groups[test_idx])
+    overlap = train_frames & test_frames
+    logger.info(
+        f"[data][split] train_frames={len(train_frames)}, test_frames={len(test_frames)}, overlap={len(overlap)}"
+    )
+    if overlap:
+        raise RuntimeError(f"Frame overlap detected ({len(overlap)}) between train and test.")
+    return train_idx, test_idx, train_frames, test_frames
+
+
 def _downsample_background(
     X: np.ndarray, y: np.ndarray, y_reg: np.ndarray, *extras: np.ndarray
 ) -> tuple:
@@ -442,29 +467,33 @@ def load_dataset() -> dict:
     gt_valid = clusters_df["gt_valid"].astype(int).to_numpy()
     label_orig = clusters_df["label_orig"].to_numpy()
 
-    (
-        X_train,
-        X_test,
-        y_class_train,
-        y_class_test,
-        y_reg_train,
-        y_reg_test,
-        gt_label_train,
-        gt_label_test,
-        gt_valid_train,
-        gt_valid_test,
-        label_orig_train,
-        label_orig_test,
-    ) = train_test_split(
-        X,
-        y_class,
-        y_reg,
-        gt_label,
-        gt_valid,
-        label_orig,
-        test_size=TEST_SPLIT_RATIO,
-        random_state=RANDOM_SEED,
-        stratify=y_class,
+    frame_indices = clusters_df[FRAME_ID_COLUMN].to_numpy()
+    train_idx, test_idx, train_frames, test_frames = split_by_frame_indices(
+        frame_indices, TEST_SPLIT_RATIO, RANDOM_SEED
+    )
+    logger = logging.getLogger(__name__)
+    X_train = X[train_idx]
+    X_test = X[test_idx]
+    y_class_train = y_class[train_idx]
+    y_class_test = y_class[test_idx]
+    y_reg_train = y_reg[train_idx]
+    y_reg_test = y_reg[test_idx]
+    gt_label_train = gt_label[train_idx]
+    gt_label_test = gt_label[test_idx]
+    gt_valid_train = gt_valid[train_idx]
+    gt_valid_test = gt_valid[test_idx]
+    label_orig_train = label_orig[train_idx]
+    label_orig_test = label_orig[test_idx]
+    pos_train = int(np.sum(y_class_train == 1))
+    neg_train = int(np.sum(y_class_train == 0))
+    pos_test = int(np.sum(y_class_test == 1))
+    neg_test = int(np.sum(y_class_test == 0))
+    logger.info(
+        f"[data][split] Train frames={len(train_frames)}, Test frames={len(test_frames)}"
+    )
+    logger.info(
+        f"[data][split] Train class dist pos={pos_train}, neg={neg_train}; "
+        f"Test class dist pos={pos_test}, neg={neg_test}"
     )
 
     (

@@ -1,0 +1,2 @@
+dataFiles/**/*.csv filter=lfs diff=lfs merge=lfs -text
+dataFiles/**/*.db3 filter=lfs diff=lfs merge=lfs -text

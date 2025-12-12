@@ -11,10 +11,17 @@ from sklearn.metrics import (
     classification_report,
     confusion_matrix,
     f1_score,
+    precision_recall_curve,
     precision_score,
     recall_score,
     roc_auc_score,
+    roc_curve,
 )
+
+try:
+    from scipy.stats import gaussian_kde
+except ImportError:  # pragma: no cover
+    gaussian_kde = None
 
 from config import (
     CLASSIFIER_TYPE,
@@ -145,10 +152,160 @@ def _save_accuracy_diagnostic_plot(
     stats_dir = Path("figs") / "train_eval"
     stats_dir.mkdir(parents=True, exist_ok=True)
     fig_path = stats_dir / f"{prefix}_accuracy.png"
-    fig.tight_layout()
+    fig.tight_layout(rect=[0, 0, 1, 0.95])
     fig.savefig(fig_path, dpi=150)
     plt.close(fig)
     logger.info(f"[train][{prefix}] Saved accuracy diagnostics to {fig_path}")
+
+
+def _score_axis_label(score_type: str) -> str:
+    if score_type == "decision_function":
+        return "Decision score"
+    return "Predicted probability P(y=1|x)"
+
+
+def _plot_score_distribution_on_ax(
+    ax,
+    y_score: np.ndarray,
+    y_true: np.ndarray,
+    best_threshold: float | None,
+    score_type: str,
+    title: str,
+) -> None:
+    y_score = np.asarray(y_score).flatten()
+    y_true = np.asarray(y_true).flatten()
+    neg_mask = y_true == 0
+    pos_mask = y_true == 1
+    range_min = float(np.min(y_score))
+    range_max = float(np.max(y_score))
+    if score_type == "predict_proba":
+        range_min, range_max = 0.0, 1.0
+        y_score = np.clip(y_score, range_min, range_max)
+        neg_scores = np.clip(y_score[neg_mask], range_min, range_max)
+        pos_scores = np.clip(y_score[pos_mask], range_min, range_max)
+    else:
+        neg_scores = y_score[neg_mask]
+        pos_scores = y_score[pos_mask]
+    if np.isclose(range_min, range_max):
+        delta = abs(range_min) * 0.1 if abs(range_min) > 0 else 1.0
+        range_min -= delta
+        range_max += delta
+    bins = np.linspace(range_min, range_max, 50)
+    ax.hist(
+        neg_scores,
+        bins=bins,
+        density=True,
+        alpha=0.45,
+        label="background (0)",
+        color="#1f77b4",
+        edgecolor="black",
+        linewidth=0.3,
+    )
+    ax.hist(
+        pos_scores,
+        bins=bins,
+        density=True,
+        alpha=0.45,
+        label="opponent (1)",
+        color="#ff7f0e",
+        edgecolor="black",
+        linewidth=0.3,
+    )
+    if gaussian_kde is not None:
+        xs = np.linspace(range_min, range_max, 200)
+        if neg_scores.size > 1:
+            try:
+                kde_neg = gaussian_kde(neg_scores)
+                ax.plot(xs, kde_neg(xs), color="#1f77b4", linestyle="--", linewidth=1.5)
+            except Exception:  # guard against edge cases
+                pass
+        if pos_scores.size > 1:
+            try:
+                kde_pos = gaussian_kde(pos_scores)
+                ax.plot(xs, kde_pos(xs), color="#ff7f0e", linestyle="--", linewidth=1.5)
+            except Exception:
+                pass
+    if best_threshold is not None:
+        ax.axvline(best_threshold, color="red", linestyle="--", linewidth=1.5, label="selected threshold")
+    ax.set_xlim(range_min, range_max)
+    ax.set_xlabel(_score_axis_label(score_type))
+    ax.set_ylabel("Density")
+    ax.set_title(title)
+    ax.grid(alpha=0.3)
+    ax.legend(loc="upper right")
+
+
+def _save_score_distribution_plot(
+    y_score: np.ndarray,
+    y_true: np.ndarray,
+    best_threshold: float,
+    out_path: Path,
+    score_type: str,
+    title_prefix: str,
+    logger,
+) -> None:
+    fig, ax = plt.subplots(figsize=(6, 4))
+    _plot_score_distribution_on_ax(
+        ax,
+        y_score,
+        y_true,
+        best_threshold,
+        score_type,
+        title_prefix,
+    )
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    fig.tight_layout(rect=[0, 0, 1, 0.95])
+    fig.savefig(out_path, dpi=150)
+    plt.close(fig)
+    logger.info(f"{title_prefix} score distribution saved to {out_path}")
+
+
+def _save_roc_pr_plot(
+    prefix: str,
+    y_true: np.ndarray,
+    y_score: np.ndarray,
+    roc_auc: float,
+    pr_auc: float,
+    best_threshold: float,
+    score_type: str,
+    logger,
+) -> None:
+    fpr, tpr, _ = roc_curve(y_true, y_score)
+    precision, recall, _ = precision_recall_curve(y_true, y_score)
+    fig, axes = plt.subplots(ncols=3, figsize=(16, 5))
+    axes[0].plot(fpr, tpr, label="ROC curve", color="#1f77b4", linewidth=2.0)
+    axes[0].plot([0, 1], [0, 1], linestyle="--", color="gray", alpha=0.7)
+    axes[0].set_xlabel("False positive rate")
+    axes[0].set_ylabel("True positive rate")
+    axes[0].set_title(f"ROC (AUC={roc_auc:.3f})")
+    axes[0].grid(alpha=0.3)
+    axes[0].legend(loc="lower right")
+
+    axes[1].plot(recall, precision, label="Precision-Recall", color="#d62728", linewidth=2.0)
+    axes[1].set_xlabel("Recall")
+    axes[1].set_ylabel("Precision")
+    axes[1].set_title(f"Precision-Recall (AP={pr_auc:.3f})")
+    axes[1].set_xlim(0, 1)
+    axes[1].set_ylim(0, 1)
+    axes[1].grid(alpha=0.3)
+    axes[1].legend(loc="lower left")
+
+    _plot_score_distribution_on_ax(
+        axes[2],
+        y_score,
+        y_true,
+        best_threshold,
+        score_type,
+        "Test score distribution",
+    )
+
+    fig.tight_layout(rect=[0, 0, 1, 0.95])
+    stats_dir = Path("figs") / "train_eval"
+    stats_dir.mkdir(parents=True, exist_ok=True)
+    fig_path = stats_dir / f"{prefix}_roc_pr_score.png"
+    fig.savefig(fig_path, dpi=150)
+    plt.close(fig)
+    logger.info(f"[train][{prefix}] Saved ROC/PR/score diagnostics to {fig_path}")
 
 
 def _log_relabel_metrics(
@@ -331,44 +488,69 @@ def main() -> None:
 
     threshold_start = time.perf_counter()
     if CLASSIFIER_TYPE == "svm":
-        y_score = clf_pipe.decision_function(X_test)
-        low, high = np.quantile(y_score, [0.05, 0.95])
-        thresholds = (
-            [low]
-            if low == high
-            else np.linspace(low, high, num=10).tolist()
-        )
+        y_score_train = clf_pipe.decision_function(X_train)
+        y_score_test = clf_pipe.decision_function(X_test)
+        low, high = np.quantile(y_score_test, [0.05, 0.95])
+        thresholds = [low] if low == high else np.linspace(low, high, num=10).tolist()
         score_label = "decision_function"
         logger.info(
             f"[train][threshold][svm] score={score_label}, range=[{low:.4f}, {high:.4f}]"
         )
     elif CLASSIFIER_TYPE == "xgb":
-        y_score = clf_pipe.predict_proba(X_test)[:, 1]
-        low, high = np.quantile(y_score, [0.05, 0.95])
-        if low == high:
-            thresholds = [low]
-        else:
-            thresholds = np.linspace(low, high, num=10).tolist()
+        y_score_train = clf_pipe.predict_proba(X_train)[:, 1]
+        y_score_test = clf_pipe.predict_proba(X_test)[:, 1]
+        low, high = np.quantile(y_score_test, [0.05, 0.95])
+        thresholds = [low] if low == high else np.linspace(low, high, num=10).tolist()
         score_label = "predict_proba"
         logger.info(
             f"[train][threshold][xgb] score={score_label}, range=[{low:.4f}, {high:.4f}]"
         )
     else:
-        y_score = clf_pipe.predict_proba(X_test)[:, 1]
+        y_score_train = clf_pipe.predict_proba(X_train)[:, 1]
+        y_score_test = clf_pipe.predict_proba(X_test)[:, 1]
         thresholds = THRESHOLDS
         score_label = "predict_proba"
         logger.info(
             f"[train][threshold][{CLASSIFIER_TYPE}] score={score_label}, "
-            f"range=[{np.min(y_score):.4f}, {np.max(y_score):.4f}]"
+            f"range=[{np.min(y_score_test):.4f}, {np.max(y_score_test):.4f}]"
         )
 
-    roc_auc = roc_auc_score(y_class_test, y_score)
-    pr_auc = average_precision_score(y_class_test, y_score)
+    roc_auc = roc_auc_score(y_class_test, y_score_test)
+    pr_auc = average_precision_score(y_class_test, y_score_test)
     logger.info(f"[train][threshold] ROC-AUC={roc_auc:.4f}, PR-AUC={pr_auc:.4f}")
     selected = _evaluate_thresholds(
-        thresholds, y_class_test, y_score, logger, score_label
+        thresholds, y_class_test, y_score_test, logger, score_label
     )
     best_threshold = selected["threshold"]
+    _save_roc_pr_plot(
+        prefix,
+        y_class_test,
+        y_score_test,
+        roc_auc,
+        pr_auc,
+        best_threshold,
+        score_label,
+        logger,
+    )
+    stats_dir = Path("figs") / "train_eval"
+    _save_score_distribution_plot(
+        y_score_train,
+        y_class_train,
+        best_threshold,
+        stats_dir / f"{prefix}_score_dist_train.png",
+        score_label,
+        f"[train][{prefix}] {score_label} distribution (train)",
+        logger,
+    )
+    _save_score_distribution_plot(
+        y_score_test,
+        y_class_test,
+        best_threshold,
+        stats_dir / f"{prefix}_score_dist_test.png",
+        score_label,
+        f"[train][{prefix}] {score_label} distribution (test)",
+        logger,
+    )
     logger.info(
         f"[train][threshold][{score_label}] Using selected threshold={best_threshold:.2f}"
     )

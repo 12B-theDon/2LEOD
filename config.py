@@ -4,7 +4,19 @@ from pathlib import Path
 DATA_DIR = Path("dataFiles")
 DATASET_PAIRS = [
 #   (DATA_DIR / "output_1.csv", DATA_DIR / "odom_output_1.csv"),
-    (DATA_DIR / "output_3.csv", DATA_DIR / "odom_output_3.csv"),
+#   (DATA_DIR / "output_3.csv", DATA_DIR / "odom_output_3.csv"),
+    (DATA_DIR / "iccas_track_1.csv", DATA_DIR / "iccas_track_odom_output_1.csv"),
+    (DATA_DIR / "iccas_track_1_fast.csv", DATA_DIR / "iccas_track_odom_output_1_fast.csv"),
+    (DATA_DIR / "iccas_track_2.csv", DATA_DIR / "iccas_track_odom_output_2.csv"),
+    (DATA_DIR / "iccas_track_2_fast.csv", DATA_DIR / "iccas_track_odom_output_2_fast.csv"),
+    (DATA_DIR / "simple_box_1.csv", DATA_DIR / "simple_box_odom_output_1.csv"),
+    (DATA_DIR / "simple_box_1_fast.csv", DATA_DIR / "simple_box_odom_output_1_fast.csv"),
+    (DATA_DIR / "simple_box_2.csv", DATA_DIR / "simple_box_odom_output_2.csv"),
+    (DATA_DIR / "simple_box_2_fast.csv", DATA_DIR / "simple_box_odom_output_2_fast.csv"),
+    (DATA_DIR / "one_hairpin_1.csv", DATA_DIR / "one_hairpin_odom_output_1.csv"),
+    (DATA_DIR / "one_hairpin_1_fast.csv", DATA_DIR / "one_hairpin_odom_output_1_fast.csv"),
+    (DATA_DIR / "one_hairpin_2.csv", DATA_DIR / "one_hairpin_odom_output_2.csv"),
+    (DATA_DIR / "one_hairpin_2_fast.csv", DATA_DIR / "one_hairpin_odom_output_2_fast.csv"),
 ]
 SCAN_CSV_PATH, ODOM_CSV_PATH = DATASET_PAIRS[0]
 
@@ -75,7 +87,7 @@ CLUSTER_FEATURE_COLUMNS = [
 TEST_SPLIT_RATIO = 0.2
 RANDOM_SEED = 42
 LOGREG_DECISION_THRESHOLD = 0.55
-MODEL_SAVE_PATH = Path("models/opponent_bundle_xgb.joblib")
+MODEL_SAVE_PATH = Path("models/iccas_opponent_bundle_logreg.joblib")
 CLUSTER_GAP_THRESHOLD = 0.2  # meters between scans to start a new cluster
 
 # Sampling/thresholding enhancements
@@ -83,6 +95,6 @@ TARGET_BG_RATIO = 8.0
 THRESHOLDS = [0.45, 0.5, 0.55, 0.6, 0.65, 0.7]
 LOGREG_C = 0.3
 LOGREG_MAX_ITER = 2000
-CLASSIFIER_TYPE = "xgb"  # valid options: "logreg", "svm", "xgb"
-MIN_CLUSTER_POINTS = 1
+CLASSIFIER_TYPE = "logreg"  # valid options: "logreg", "svm", "xgb"
+MIN_CLUSTER_POINTS = 2
 WORLD_MATCH_DIST = 1.0

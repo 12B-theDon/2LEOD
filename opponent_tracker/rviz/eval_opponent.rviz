@@ -1,0 +1,48 @@
+Panels:
+  - Class: "rviz_common/Displays"
+Visualization Manager:
+  Class: "rviz_common/VisualizationManager"
+  Displays:
+    - Name: "LaserScan /scan"
+      Class: "rviz_default_plugins/LaserScan"
+      Enabled: true
+      Topic: "/scan"
+      Queue Size: 10
+      Color: { r: 0.0, g: 1.0, b: 1.0 }
+    - Name: "Ego odometry"
+      Class: "rviz_default_plugins/Odometry"
+      Enabled: true
+      Topic: "/odom"
+      Color: { r: 0.2, g: 0.8, b: 0.2 }
+      Alpha: 1.0
+    - Name: "Predicted opponent odometry"
+      Class: "rviz_default_plugins/Odometry"
+      Enabled: true
+      Topic: "/pred_opponent_odom"
+      Color: { r: 1.0, g: 0.5, b: 0.0 }
+      Alpha: 1.0
+    - Name: "GT opponent path"
+      Class: "rviz_default_plugins/Path"
+      Enabled: true
+      Topic: "/gt_opponent_path"
+      Color: { r: 1.0, g: 1.0, b: 0.0 }
+      Alpha: 1.0
+    - Name: "Predicted opponent path"
+      Class: "rviz_default_plugins/Path"
+      Enabled: true
+      Topic: "/pred_opponent_path"
+      Color: { r: 1.0, g: 0.0, b: 0.0 }
+      Alpha: 1.0
+    - Name: "Predicted opponent marker"
+      Class: "rviz_default_plugins/Marker"
+      Enabled: true
+      Topic: "/pred_opponent_marker"
+  Tools:
+    - Class: "rviz_default_plugins/Interact"
+      Name: "Interact"
+    - Class: "rviz_default_plugins/MoveCamera"
+      Name: "Move Camera"
+    - Class: "rviz_default_plugins/Select"
+      Name: "Select"
+  Global Options:
+    Fixed Frame: "odom"
