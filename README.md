@@ -32,6 +32,31 @@ Each dataset therefore ships with one frame CSV and one point CSV that cover the
   - These ratios help distinguish surfaces even though they are not available at inference time.
 - **Feature vector**: At training time each cluster contributes a ~38-dimensional vector combining geometric, motion, and label-ratio statistics.
 
+## Classifier Hyperparameters
+
+- **`LogisticRegression` pipeline (`models.py:8-24`)**
+  - `StandardScaler` 재스케일 후 `LogisticRegression`을 쓰고, `n_jobs=-1`로 학습/예측에 CPU 코어를 최대한 활용합니다.
+  - `C`는 규제 강도의 역수 (`C=0.3`)로, 작을수록 파라미터 크기를 억제해서 과적합과 극단적인 결정 경계를 완화합니다.
+  - `max_iter=2000`은 `lbfgs` 최적화가 수렴할 충분한 반복을 허용하되 무한 루프를 방지합니다.
+  - `class_weight='balanced'`는 샘플 비율(`TARGET_BG_RATIO`)로부터 유추한 클래스 비율을 반영하여 minority 클래스 손실에 더 큰 가중치를 줍니다.
+
+- **`SVC` pipeline (`models.py:26-43`)**
+  - `StandardScaler` → `LinearDiscriminantAnalysis` → `SVC(kernel='rbf', probability=True)` 흐름으로 거리 기반 SVM을 시도하면서 차원 축소(LDA)로 노이즈를 완화합니다.
+  - `C=1.0`과 `gamma='scale'`은 기본값이지만, `C`는 잘못된 판별을 줄이기 위해 결정 경계의 여유를 조절합니다.
+  - `class_weight='balanced'`가 불균형을 보정하고, `probability=True`로 ROC/PR 곡선 생성을 위한 확률 스코어를 허용합니다.
+  - `n_jobs`는 `SVC`에 직접 지정하지 않지만, `LinearDiscriminantAnalysis`와 `StandardScaler`가 내부 연산에서 NumPy/BLAS의 스레드를 활용하며, 전반적으로 병렬화된 환경에서 빠르게 동작합니다.
+
+- **`XGBClassifier` pipeline (`models.py:45-76`)**
+  - `max_depth=4`로 각 트리의 복잡도를 제한하여 과적합을 억제하고 논리적인 움직임을 포착합니다.
+  - `learning_rate=0.1`은 새 트리가 기존 예측을 얼마나 빠르게 수정할지를 정하며, 작게 둬서 학습을 안정화합니다.
+  - `n_estimators=300`은 생성할 트리 개수로, 충분히 많은 트리로 복잡도를 확보하면서 `learning_rate`가 작으므로 과적합을 피합니다.
+  - `subsample=0.8`과 `colsample_bytree=0.8`은 각각 샘플과 피처의 무작위 부분집합을 사용하여 과대적합 방지와 다양성 확보를 지원합니다.
+  - `scale_pos_weight`는 `train.py`에서 `neg_train / max(1, pos_train)`으로 계산된 값으로, 클래스 불균형(다수 클래스에 비해 소수 클래스의 중요도)을 반영하여 다음 트리에서 positive 샘플의 영향력을 키웁니다.
+  - `use_label_encoder=False`는 오래된 XGBoost label encoder를 비활성화해서 `eval_metric`이 정상적으로 로그/경고 없이 작동하게 합니다.
+  - `eval_metric="logloss"`는 학습 과정에서 손실 로그를 추적하는 지표로, log-loss 값을 줄이는 방향으로 트리를 업데이트합니다.
+
+각 파이프라인에는 `StandardScaler`가 앞단에 있어서 서로 다른 feature 스케일에 의한 모델 편향을 줄이고, 불균형 환경에서는 `class_weight`/`scale_pos_weight`를 통해 minority에 대한 감도를 높이는 방향으로 설계되어 있습니다. 필요시 위 파라미터들을 `config.py` 또는 `models.py`에서 튜닝하면서 `train.py`의 정확도/PR 로그로 영향도를 점검하세요.
+
 ## Re-labeling Strategy (Point → Cluster)
 - **Problem**: Point-level labels are noisy (mixed classes inside a cluster) and suffer from severe class imbalance.
 - **GT-based cluster label**:

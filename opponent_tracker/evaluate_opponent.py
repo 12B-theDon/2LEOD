@@ -40,6 +40,7 @@ class EvaluateOpponentNode(Node):
         self.declare_parameter('csv_path', '')
         self.declare_parameter('log_interval', 10)
         self.declare_parameter('rmse_plot_path', 'rmse_trajectory.png')
+        self.declare_parameter('speed_plot_path', 'speed_error.png')
 
         model_path = Path(self.get_parameter('model_path').value)
         self.frame_id = self.get_parameter('frame_id').value
@@ -53,6 +54,8 @@ class EvaluateOpponentNode(Node):
         self.log_interval = max(1, int(self.get_parameter('log_interval').value))
         rmse_plot_path = self.get_parameter('rmse_plot_path').value
         self.rmse_plot_path = Path(rmse_plot_path) if rmse_plot_path else None
+        speed_plot_path = self.get_parameter('speed_plot_path').value
+        self.speed_plot_path = Path(speed_plot_path) if speed_plot_path else None
 
         self.decision_threshold = float(self.get_parameter('decision_threshold').value)
         self.smoothing_alpha = float(self.get_parameter('smoothing_alpha').value)
@@ -95,6 +98,7 @@ class EvaluateOpponentNode(Node):
         self.match_gt_positions: list[Tuple[float, float]] = []
         self.match_pred_positions: list[Tuple[float, float]] = []
         self.match_errors: list[float] = []
+        self.match_timestamps: list[float] = []
 
         self.delay_sum = 0.0
         self.delay_count = 0
@@ -233,6 +237,7 @@ class EvaluateOpponentNode(Node):
         self.match_gt_positions.append((gt_x, gt_y))
         self.match_pred_positions.append((pred_x, pred_y))
         self.match_errors.append(error)
+        self.match_timestamps.append(timestamp)
 
         if self.csv_writer:
             self.csv_writer.writerow([f'{timestamp:.6f}', gt_x, gt_y, pred_x, pred_y, error])
@@ -375,11 +380,57 @@ class EvaluateOpponentNode(Node):
         plt.close(fig)
         self.get_logger().info(f'Saved RMSE trajectory plot to {self.rmse_plot_path}')
 
+    def _plot_speed_error(self) -> None:
+        if self.speed_plot_path is None or len(self.match_timestamps) < 2:
+            return
+        timestamps = np.array(self.match_timestamps)
+        pred_positions = np.array(self.match_pred_positions)
+        gt_positions = np.array(self.match_gt_positions)
+        if len(pred_positions) < 2 or len(gt_positions) < 2:
+            return
+        dt = np.diff(timestamps)
+        valid = dt > 1e-6
+        if not valid.any():
+            return
+        pred_deltas = np.linalg.norm(np.diff(pred_positions, axis=0), axis=1)[valid]
+        gt_deltas = np.linalg.norm(np.diff(gt_positions, axis=0), axis=1)[valid]
+        dt_valid = dt[valid]
+        times = timestamps[1:][valid]
+        pred_speeds = pred_deltas / dt_valid
+        gt_speeds = gt_deltas / dt_valid
+        speed_errors = np.abs(pred_speeds - gt_speeds)
+
+        fig, ax = plt.subplots(figsize=(10, 6))
+        ax.plot(times, gt_speeds, label='GT speed', color='tab:blue', linewidth=2)
+        ax.plot(times, pred_speeds, label='Predicted speed', color='tab:orange', linewidth=2)
+        sc = ax.scatter(
+            times,
+            pred_speeds,
+            c=speed_errors,
+            cmap='rainbow',
+            edgecolor='black',
+            s=40,
+            label='Speed error (abs)',
+        )
+        cbar = fig.colorbar(sc, ax=ax)
+        cbar.set_label('speed difference (m/s)')
+        ax.set_xlabel('timestamp (s)')
+        ax.set_ylabel('speed (m/s)')
+        ax.set_title('Opponent speed prediction (rainbow = error)')
+        ax.legend()
+        ax.grid(True)
+        fig.tight_layout()
+        self.speed_plot_path.parent.mkdir(parents=True, exist_ok=True)
+        fig.savefig(self.speed_plot_path, dpi=200)
+        plt.close(fig)
+        self.get_logger().info(f'Saved speed error plot to {self.speed_plot_path}')
+
     def destroy_node(self) -> None:
         self._log_rmse(final=True)
         if self.csv_file:
             self.csv_file.close()
         self._plot_rmse_trajectory()
+        self._plot_speed_error()
         super().destroy_node()
 
 

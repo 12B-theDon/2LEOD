@@ -66,6 +66,11 @@ def generate_launch_description():
         default_value=_DEFAULTS.get('rmse_plot_path', 'rmse_trajectory.png'),
         description='PNG filename for the rainbow RMSE trajectory plot.',
     )
+    speed_plot_arg = DeclareLaunchArgument(
+        'speed_plot_path',
+        default_value=_DEFAULTS.get('speed_plot_path', 'speed_error.png'),
+        description='PNG filename for the rainbow speed error plot.',
+    )
     rviz_enabled_arg = DeclareLaunchArgument(
         'rviz_enabled',
         default_value=_bool_to_str(_DEFAULTS.get('rviz_enabled', True)),
@@ -113,6 +118,7 @@ def generate_launch_description():
                 'frame_id': LaunchConfiguration('frame_id'),
                 'csv_path': LaunchConfiguration('csv_path'),
                 'rmse_plot_path': LaunchConfiguration('rmse_plot_path'),
+                'speed_plot_path': LaunchConfiguration('speed_plot_path'),
                 'use_sim_time': LaunchConfiguration('use_sim_time'),
             },
         ],
@@ -134,6 +140,7 @@ def generate_launch_description():
         use_sim_time_arg,
         csv_path_arg,
         rmse_plot_arg,
+        speed_plot_arg,
         rviz_enabled_arg,
         rviz_config_arg,
         config_file_arg,
