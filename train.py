@@ -436,19 +436,26 @@ def main() -> None:
     logger.info(f"[train][classifier] Type={CLASSIFIER_TYPE}")
     logger.info("Building classifier pipeline...")
     clf_pipe = build_classifier_pipeline(CLASSIFIER_TYPE, scale_pos_weight)
+    clf = clf_pipe.named_steps["clf"]
+    lda = clf_pipe.named_steps.get("lda")
     if CLASSIFIER_TYPE == "logreg":
         logger.info(
-            f"[train][logreg] Hyperparameters: C={LOGREG_C}, max_iter={LOGREG_MAX_ITER}, solver=lbfgs, n_jobs=-1"
+            "[train][logreg] Hyperparameters: "
+            f"class_weight={clf.class_weight}, C={clf.C}, max_iter={clf.max_iter}, "
+            f"solver={clf.solver}, n_jobs={clf.n_jobs}"
         )
     elif CLASSIFIER_TYPE == "svm":
         logger.info(
-            "[train][svm] Hyperparameters: kernel=rbf, C=1.0, gamma=scale, "
-            "lda components=1, probability=True"
+            "[train][svm] Hyperparameters: "
+            f"kernel={clf.kernel}, C={clf.C}, gamma={clf.gamma}, class_weight={clf.class_weight}, "
+            f"probability={clf.probability}, lda components={(lda.n_components if lda else 'n/a')}"
         )
     elif CLASSIFIER_TYPE == "xgb":
         logger.info(
-            "[train][xgb] Hyperparameters: max_depth=4, lr=0.1, estimators=300, "
-            "subsample=0.8, colsample_bytree=0.8"
+            "[train][xgb] Hyperparameters: "
+            f"max_depth={clf.max_depth}, learning_rate={clf.learning_rate}, n_estimators={clf.n_estimators}, "
+            f"subsample={clf.subsample}, colsample_bytree={clf.colsample_bytree}, "
+            f"scale_pos_weight={clf.scale_pos_weight}"
         )
 
     clf_start = time.perf_counter()
