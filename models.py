@@ -55,12 +55,13 @@ def build_xgb_pipeline(scale_pos_weight: float) -> Pipeline:
             (
                 "clf",
                 XGBClassifier(
-                    max_depth=4,
+                    max_depth=12,
                     learning_rate=0.1,
                     n_estimators=300,
                     subsample=0.8,
                     colsample_bytree=0.8,
                     scale_pos_weight=scale_pos_weight,
+                    min_child_weight=10,
                     use_label_encoder=False,
                     eval_metric="logloss",
                 ),
