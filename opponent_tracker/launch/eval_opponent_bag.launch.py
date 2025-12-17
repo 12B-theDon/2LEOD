@@ -2,10 +2,6 @@ from pathlib import Path
 
 import yaml
 from ament_index_python.packages import get_package_share_directory
-from pathlib import Path
-
-import yaml
-from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument, ExecuteProcess
 from launch.conditions import IfCondition
@@ -77,23 +73,40 @@ def generate_launch_description():
         description='Whether to launch RViz2 automatically.',
     )
     rviz_rel = _DEFAULTS.get('rviz_config', 'rviz/eval_opponent.rviz')
-    rviz_parts = [part for part in rviz_rel.split('/') if part]
-    if not rviz_parts:
-        rviz_parts = ['rviz', 'eval_opponent.rviz']
+    if rviz_rel and rviz_rel.startswith('/'):
+        rviz_default = rviz_rel
+    else:
+        rviz_parts = [part for part in rviz_rel.split('/') if part]
+        if not rviz_parts:
+            rviz_parts = ['rviz', 'eval_opponent.rviz']
+        rviz_default = PathJoinSubstitution(
+            [FindPackageShare('opponent_tracker'), *rviz_parts]
+        )
     rviz_config_arg = DeclareLaunchArgument(
         'rviz_config',
-        default_value=PathJoinSubstitution(
-            [FindPackageShare('opponent_tracker'), *rviz_parts]
-        ),
+        default_value=rviz_default,
         description='RViz configuration for visualizing odometry, paths, and markers.',
     )
-    config_file_arg = DeclareLaunchArgument(
-        'config_file',
-        default_value=str(Path(get_package_share_directory('opponent_tracker')) / 'config' /
-                          'eval_opponent.yaml'),
-        description='Evaluation node parameter file.',
+    scan_topic_arg = DeclareLaunchArgument(
+        'scan_topic',
+        default_value=_DEFAULTS.get('scan_topic', '/scan'),
+        description='Laser scan topic to feed the evaluator and RViz.',
     )
-
+    odom_topic_arg = DeclareLaunchArgument(
+        'odom_topic',
+        default_value=_DEFAULTS.get('odom_topic', '/odom'),
+        description='Odometry topic providing ego motion for feature computation.',
+    )
+    gt_topic_arg = DeclareLaunchArgument(
+        'gt_topic',
+        default_value=_DEFAULTS.get('gt_topic', '/opponent_odom'),
+        description='Ground-truth opponent odometry topic for evaluation metrics.',
+    )
+    tf_qos_arg = DeclareLaunchArgument(
+        'tf_qos_overrides',
+        default_value=str(Path(get_package_share_directory('opponent_tracker')) / 'config' / 'tf_qos_overrides.yaml'),
+        description='QoS override file to replay /tf and /tf_static reliably for RViz.',
+    )
     bag_play = ExecuteProcess(
         cmd=[
             'ros2',
@@ -101,6 +114,8 @@ def generate_launch_description():
             'play',
             LaunchConfiguration('bag_path'),
             '--clock',
+            '--qos-profile-overrides-path',
+            LaunchConfiguration('tf_qos_overrides'),
         ],
         output='screen',
     )
@@ -111,7 +126,6 @@ def generate_launch_description():
         name='evaluate_opponent',
         output='screen',
         parameters=[
-            LaunchConfiguration('config_file'),
             _node_defaults(),
             {
                 'model_path': LaunchConfiguration('model_path'),
@@ -120,6 +134,9 @@ def generate_launch_description():
                 'rmse_plot_path': LaunchConfiguration('rmse_plot_path'),
                 'speed_plot_path': LaunchConfiguration('speed_plot_path'),
                 'use_sim_time': LaunchConfiguration('use_sim_time'),
+                'scan_topic': LaunchConfiguration('scan_topic'),
+                'odom_topic': LaunchConfiguration('odom_topic'),
+                'gt_topic': LaunchConfiguration('gt_topic'),
             },
         ],
     )
@@ -130,6 +147,7 @@ def generate_launch_description():
         name='eval_opponent_rviz',
         output='screen',
         arguments=['-d', LaunchConfiguration('rviz_config')],
+        parameters=[{'use_sim_time': LaunchConfiguration('use_sim_time')}],
         condition=IfCondition(LaunchConfiguration('rviz_enabled')),
     )
 
@@ -143,7 +161,10 @@ def generate_launch_description():
         speed_plot_arg,
         rviz_enabled_arg,
         rviz_config_arg,
-        config_file_arg,
+        scan_topic_arg,
+        odom_topic_arg,
+        gt_topic_arg,
+        tf_qos_arg,
         bag_play,
         evaluation_node,
         rviz_node,

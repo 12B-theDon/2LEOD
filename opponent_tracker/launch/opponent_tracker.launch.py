@@ -1,6 +1,7 @@
 from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument
-from launch.substitutions import LaunchConfiguration
+from launch.substitutions import LaunchConfiguration, PathJoinSubstitution
+from launch_ros.substitutions import FindPackageShare
 from launch_ros.actions import Node
 
 
@@ -16,11 +17,13 @@ def generate_launch_description():
         description='Use simulation time'
     )
 
-    config_file = LaunchConfiguration('config_file', default='config/opponent_tracker.yaml')
+    config_file = PathJoinSubstitution(
+        [FindPackageShare('opponent_tracker'), 'config', 'opponent_tracker.yaml']
+    )
 
     node = Node(
         package='opponent_tracker',
-        executable='opponent_odom_node',
+        executable='opponent_odom_node.py',
         name='opponent_odom_node',
         output='screen',
         parameters=[config_file, {'model_path': LaunchConfiguration('model_path')}],

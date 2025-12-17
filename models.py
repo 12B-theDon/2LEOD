@@ -5,7 +5,22 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.svm import SVC
 from xgboost import XGBClassifier
 
-from config import LOGREG_C, LOGREG_MAX_ITER
+from config import (
+    LOGREG_C,
+    LOGREG_MAX_ITER,
+    SVM_C,
+    SVM_GAMMA,
+    SVM_KERNEL,
+    SVM_LDA_COMPONENTS,
+    XGB_COLSAMPLE_BYTREE,
+    XGB_EVAL_METRIC,
+    XGB_LEARNING_RATE,
+    XGB_MAX_DEPTH,
+    XGB_MIN_CHILD_WEIGHT,
+    XGB_N_ESTIMATORS,
+    XGB_SUBSAMPLE,
+    XGB_USE_LABEL_ENCODER,
+)
 
 
 def build_logistic_pipeline() -> Pipeline:
@@ -32,13 +47,13 @@ def build_svm_pipeline() -> Pipeline:
     return Pipeline(
         [
             ("scaler", StandardScaler()),
-            ("lda", LinearDiscriminantAnalysis(n_components=1)),
+            ("lda", LinearDiscriminantAnalysis(n_components=SVM_LDA_COMPONENTS)),
             (
                 "clf",
                 SVC(
-                    kernel="rbf",
-                    C=1.0,
-                    gamma="scale",
+                    kernel=SVM_KERNEL,
+                    C=SVM_C,
+                    gamma=SVM_GAMMA,
                     class_weight="balanced",
                     probability=True,
                 ),
@@ -55,15 +70,15 @@ def build_xgb_pipeline(scale_pos_weight: float) -> Pipeline:
             (
                 "clf",
                 XGBClassifier(
-                    max_depth=12,
-                    learning_rate=0.1,
-                    n_estimators=300,
-                    subsample=0.8,
-                    colsample_bytree=0.8,
+                    max_depth=XGB_MAX_DEPTH,
+                    learning_rate=XGB_LEARNING_RATE,
+                    n_estimators=XGB_N_ESTIMATORS,
+                    subsample=XGB_SUBSAMPLE,
+                    colsample_bytree=XGB_COLSAMPLE_BYTREE,
                     scale_pos_weight=scale_pos_weight,
-                    min_child_weight=10,
-                    use_label_encoder=False,
-                    eval_metric="logloss",
+                    min_child_weight=XGB_MIN_CHILD_WEIGHT,
+                    use_label_encoder=XGB_USE_LABEL_ENCODER,
+                    eval_metric=XGB_EVAL_METRIC,
                 ),
             ),
         ]

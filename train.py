@@ -429,7 +429,12 @@ def main() -> None:
 
     pos_train = int(np.sum(y_class_train == 1))
     neg_train = int(np.sum(y_class_train == 0))
-    scale_pos_weight = neg_train / max(1, pos_train)
+    
+    #scale_pos_weight = neg_train / max(1, pos_train)
+    spw_mult = 4.0
+    scale_pos_weight = (neg_train / max(1, pos_train)) * spw_mult
+
+    print(f"[train][xgb] scale_pos_weight = {scale_pos_weight:.4f}")
     logger.info(
         f"[train][data] Training positives={pos_train}, negatives={neg_train}, scale_pos_weight={scale_pos_weight:.2f}"
     )

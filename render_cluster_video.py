@@ -1,4 +1,5 @@
 import argparse
+import importlib.util
 import os
 from pathlib import Path
 
@@ -23,6 +24,25 @@ from config import (
 from data_utils import _load_merged_data, build_clusters_dataframe, load_dataset_pair
 
 VIDEO_DIR = Path("figs")
+
+
+def _apply_config_override(config_path: Path | None) -> None:
+    """Optionally import another config module and rebind the globals."""
+    if config_path is None:
+        return
+    spec = importlib.util.spec_from_file_location("render_video_config_override", config_path)
+    if spec is None or spec.loader is None:
+        raise RuntimeError(f"Unable to import config override from {config_path}")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    for name in (
+        "CLUSTER_FEATURE_COLUMNS",
+        "FRAME_ID_COLUMN",
+        "LOGREG_DECISION_THRESHOLD",
+        "MODEL_SAVE_PATH",
+    ):
+        if hasattr(module, name):
+            globals()[name] = getattr(module, name)
 
 
 def bool_mask(series: pd.Series) -> np.ndarray:
@@ -375,11 +395,17 @@ def parse_args() -> argparse.Namespace:
         type=Path,
         help="Matching odom CSV that shares timestamps with --scan-csv.",
     )
+    parser.add_argument(
+        "--config-override",
+        type=Path,
+        help="Optional config module to apply before running (e.g., 36_config.py).",
+    )
     return parser.parse_args()
 
 
 def main() -> None:
     args = parse_args()
+    _apply_config_override(args.config_override)
     if imageio is None:
         raise SystemExit("Install imageio (`pip install imageio`) to render videos.")
     if args.duration <= 0 or args.fps <= 0:

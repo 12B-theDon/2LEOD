@@ -1,20 +1,44 @@
-bag_path: dataFiles/simple_box_2_fast/simple_box_2_fast_0.db3
-model_path: models/opponent_bundle.joblib
-frame_id: odom
-csv_path: logs/predictions.csv
-rmse_plot_path: logs/rmse_trajectory.png
-speed_plot_path: logs/speed_error.png
+bag_path: /dataFiles/two_Lshape_outer/two_Lshape_outer_0.db3
+model_path: /2leod_ws/src/2LEOD/models/36_opponent_bundle_xgb.joblib
+frame_id: map
+decision_threshold: 0.4
+use_model_cls_threshold: true
+csv_path: /2leod_ws/src/2LEOD/logs/predictions.csv
+rmse_plot_path: /2leod_ws/src/2LEOD/logs/rmse_trajectory.png
+speed_plot_path: /2leod_ws/src/2LEOD/logs/speed_error.png
+prediction_debug: true
 use_sim_time: true
 rviz_enabled: true
-rviz_config: rviz/eval_opponent.rviz
+rviz_config: /2leod_ws/src/2LEOD/rviz/eval_opponent.rviz
+scan_topic: /ferrari/scan
+odom_topic: /wheel_odom
+gt_topic: /wheel_odom_op
+enable_scan_angle_filter: false
+scan_angle_min_deg: -30.0
+scan_angle_max_deg: 30.0
+use_tf_odom: false
+tf_world_frame: map
+tf_odom_frame: base_link
 evaluate_opponent:
   ros__parameters:
-    model_path: models/opponent_bundle.joblib
-    frame_id: odom
-    csv_path: logs/predictions.csv
-    rmse_plot_path: logs/rmse_trajectory.png
-    speed_plot_path: logs/speed_error.png
+    model_path: /2leod_ws/src/2LEOD/models/36_opponent_bundle_xgb.joblib
+    frame_id: map
+    decision_threshold: 0.4
+    use_model_cls_threshold: true
+    csv_path: /2leod_ws/src/2LEOD/logs/predictions.csv
+    rmse_plot_path: /2leod_ws/src/2LEOD/logs/rmse_trajectory.png
+    speed_plot_path: /2leod_ws/src/2LEOD/logs/speed_error.png
+    prediction_debug: true
     publish_markers: true
     marker_ns: pred_opponent
-    marker_scale: 0.5
+    marker_scale: 0.25
     log_interval: 10
+    scan_topic: /ferrari/scan
+    odom_topic: /wheel_odom
+    gt_topic: /wheel_odom_op
+    enable_scan_angle_filter: false
+    scan_angle_min_deg: -30.0
+    scan_angle_max_deg: 30.0
+    use_tf_odom: false
+    tf_world_frame: map
+    tf_odom_frame: base_link

@@ -1,0 +1,11 @@
+/tf:
+  reliability: reliable
+  history: keep_last
+  depth: 10
+  durability: volatile
+
+/tf_static:
+  reliability: reliable
+  history: keep_last
+  depth: 1
+  durability: transient_local
