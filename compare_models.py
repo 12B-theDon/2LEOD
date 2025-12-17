@@ -12,6 +12,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from sklearn.metrics import average_precision_score, precision_recall_curve, roc_auc_score, roc_curve
 
+from config import CLUSTER_FEATURE_COLUMNS
 from logger import get_logger
 
 
@@ -51,26 +52,49 @@ def _load_dataset() -> dict[str, np.ndarray]:
     return load_dataset()
 
 
-def _score(bundle: dict, X: np.ndarray) -> np.ndarray:
+def _build_dataset_variants(X: np.ndarray) -> dict[int, np.ndarray]:
+    variants: dict[int, np.ndarray] = {X.shape[1]: X}
+    try:
+        ratio_idx = CLUSTER_FEATURE_COLUMNS.index("cluster_opponent_ratio")
+    except ValueError:
+        return variants
+    if not (0 <= ratio_idx < X.shape[1]):
+        return variants
+    trimmed = np.delete(X, ratio_idx, axis=1)
+    variants.setdefault(trimmed.shape[1], trimmed)
+    return variants
+
+
+def _score(bundle: dict, dataset_variants: dict[int, np.ndarray]) -> np.ndarray:
     clf_pipe = bundle["clf_pipe"]
     if not hasattr(clf_pipe, "predict_proba"):
         raise ValueError("Classifier bundle lacks predict_proba.")
+    feature_dim = bundle.get("feature_dim")
+    if feature_dim is None:
+        feature_dim = max(dataset_variants)
+    X = dataset_variants.get(feature_dim)
+    if X is None:
+        raise ValueError(
+            f"Bundle expects {feature_dim} features but dataset variants only have {sorted(dataset_variants)}"
+        )
     return np.array(clf_pipe.predict_proba(X)[:, 1], dtype=float)
 
 
 def _plot_curves(
-    datasets: tuple[np.ndarray, np.ndarray],
+    dataset_variants: dict[int, np.ndarray],
+    y_test: np.ndarray,
     bundles: list[tuple[str, dict]],
     out_path: Path,
 ) -> None:
-    X_test, y_test = datasets
+    X_test = next(iter(dataset_variants.values()))
+    fig, axes = plt.subplots(ncols=3, figsize=(18, 5))
     fig, axes = plt.subplots(ncols=3, figsize=(18, 5))
     roc_ax, pr_ax, score_ax = axes
 
     bins = np.linspace(0.0, 1.0, 51)
     colors = plt.rcParams["axes.prop_cycle"].by_key()["color"]
     for idx, (label, bundle) in enumerate(bundles):
-        scores = _score(bundle, X_test)
+        scores = _score(bundle, dataset_variants)
         fpr, tpr, _ = roc_curve(y_test, scores)
         prec, rec, _ = precision_recall_curve(y_test, scores)
         roc_auc = roc_auc_score(y_test, scores)
@@ -154,8 +178,7 @@ def main() -> None:
     parser.add_argument(
         "--config-override",
         type=Path,
-        default=Path("36_config.py"),
-        help="Optional config module to import before building the dataset (default: %(default)s).",
+        help="Optional config module to import before building the dataset.",
     )
     args = parser.parse_args()
 
@@ -167,7 +190,8 @@ def main() -> None:
     logger.info("Loading dataset for model comparison...")
     dataset = _load_dataset()
     logger.info("Dataset ready; scaffolding comparison.")
-    datasets = (dataset["X_test"], dataset["y_class_test"])
+    dataset_variants = _build_dataset_variants(dataset["X_test"])
+    y_test = dataset["y_class_test"]
 
     loaded: list[tuple[str, dict]] = []
     if args.bundles:
@@ -188,7 +212,7 @@ def main() -> None:
             logger.info(f"Loaded preset bundle '{label}' from {bundle_path}")
 
     logger.info("Plotting ROC and PR curves.")
-    _plot_curves(datasets, loaded, args.output)
+    _plot_curves(dataset_variants, y_test, loaded, args.output)
     logger.info(f"Wrote comparison figure to {args.output}")
 
 
